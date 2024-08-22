@@ -48,7 +48,7 @@ vertical_blend :=
 color_blend :=
 {
 	#### The selected colors
-	colors := sort_text(order: "(croygbiv)", colors_to_letters(input))
+	colors := sort_text(order: "croygbiv", colors_to_letters(input))
 	if colors == "" then colors := empty_color
 	color_count := length(colors)
 	#### The selected blend
