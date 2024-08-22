@@ -133,11 +133,6 @@ styling field:
 
 styling field:
 	type:			boolean
-	name:			automatic collector number
-	description:	Automatically calculate the card number, or manually type it in?
-
-styling field:
-	type:			boolean
 	name:			center name
 	description:	Center the name on the card.
 	initial:		yes
@@ -190,6 +185,11 @@ styling field:
 	type:			text
 	name:			custom info font
 	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
+
+styling field:
+	type:			boolean
+	name:			automatic collector number
+	description:	Automatically calculate the card number, or manually type it in?
 
 ####################################### Card styles
 

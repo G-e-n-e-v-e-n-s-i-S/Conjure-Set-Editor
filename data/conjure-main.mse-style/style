@@ -116,11 +116,6 @@ styling field:
 
 styling field:
 	type:			boolean
-	name:			automatic collector number
-	description:	Automatically calculate the card number, or manually type it in?
-
-styling field:
-	type:			boolean
 	name:			center name
 	description:	Center the name on the card.
 	initial:		no
@@ -208,6 +203,11 @@ styling field:
 	name:			custom info font
 	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
 
+styling field:
+	type:			boolean
+	name:			automatic collector number
+	description:	Automatically calculate the card number, or manually type it in?
+
 ####################################### Styling styles
 
 styling style:
@@ -217,7 +217,7 @@ styling style:
 			always:				/conjure.mse-game/menu icons/center-always.png
 			3 lines or less:	/conjure.mse-game/menu icons/center-3-lines.png
 			2 lines or less:	/conjure.mse-game/menu icons/center-2-lines.png
-			1 line or less:		/conjure.mse-game/menu icons/center-3-line.png
+			1 line or less:		/conjure.mse-game/menu icons/center-1-line.png
 			never:				/conjure.mse-game/menu icons/center-never.png
 
 ####################################### Card styles
