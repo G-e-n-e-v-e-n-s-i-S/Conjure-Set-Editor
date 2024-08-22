@@ -45,7 +45,8 @@ Conjure-Set-Editor/data/conjure.mse-game/keywords
 Open it with a text editor, then look at how existing keywords a formatted to add yours.
 Always make a backup of your keyword file, as when you'll want to update CSE, you might overwrite it, loosing your modifications.
 
-To export renders of your cards, go to "File" menu, then "Export", then "All card images..."
+To export renders of your cards, go to "File" menu, then "Export", then "All card images...".
+This may take a long time if there are a lot of cards in your set. (My computer takes about 4 minutes for 100 cards.)
 
 If you have problems with this, come ask questions on the Discord server:
 https://discord.gg/t3tetd5YMc
