@@ -307,7 +307,7 @@ card style:
 	type 1:
 		left:				156
 		right:				1344
-		top:				224
+		top:				{ 224 + type_font_vertical() }
 		height:				66
 		z index:			1000
 		alignment:			{if styling.center_type then "middle center shrink-overflow" else "middle left shrink-overflow"}
@@ -322,8 +322,8 @@ card style:
 	rule text 1:
 		left:				140
 		right:				1360
-		top:				{ if has_lore() then 1335 else 1355 }
-		bottom:				{ rule_text_bottom() }
+		top:				{ (if has_lore() then 1335 else 1355) + rule_font_vertical() }
+		bottom:				{ rule_text_bottom() + rule_font_vertical() }
 		z index:			1010
 		line height soft:		0.9
 		line height hard:		{ if is_modal(card.rule_text_1) then 0.9 else 1.2 }
@@ -350,8 +350,8 @@ card style:
 	lore text 1:
 		left:				70
 		right:				1430
-		top:				{ if has_rule() then rule_text_bottom() else 1355 }
-		bottom:				1978
+		top:				{ (if has_rule() then rule_text_bottom() else 1355) + lore_font_vertical() }
+		bottom:				{ 1978 + lore_font_vertical() }
 		z index:			1000
 		line height soft:		0.9
 		line height hard:		{ if is_modal(card.rule_text_1) then 0.9 else 1.2 }
@@ -526,7 +526,7 @@ card style:
 	############################# Information
 	designer 1:
 		left:				134
-		top:				1976
+		top:				{ 1976 + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -539,7 +539,7 @@ card style:
 			scale down to:		10
 	artist line 1:
 		right:				1366
-		top:				1976
+		top:				{ 1976 + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -552,7 +552,7 @@ card style:
 			scale down to:		10
 	saga line 1:
 		left:				134
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -565,7 +565,7 @@ card style:
 			scale down to:		10
 	auto collector number 1:
 		right:				1366
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				{ if auto_collector_number() then 545 else 0 }
 		height:				44
 		z index:			1000
@@ -578,7 +578,7 @@ card style:
 			scale down to:		10
 	custom collector number 1:
 		right:				1366
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				{ if auto_collector_number() then 0 else 545 }
 		height:				44
 		z index:			1000
@@ -591,7 +591,7 @@ card style:
 			scale down to:		10
 	revision 1:
 		left:				695
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				110
 		height:				44
 		z index:			1000

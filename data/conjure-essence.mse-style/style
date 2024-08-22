@@ -267,7 +267,7 @@ card style:
 	type 1:
 		left:				156
 		right:				1344
-		top:				224
+		top:				{ 224 + type_font_vertical() }
 		height:				66
 		z index:			1000
 		alignment:			{if styling.center_type then "middle center shrink-overflow" else "middle left shrink-overflow"}
@@ -281,7 +281,7 @@ card style:
 	############################# Information
 	designer 1:
 		left:				134
-		top:				1976
+		top:				{ 1976 + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -294,7 +294,7 @@ card style:
 			scale down to:		10
 	artist line 1:
 		right:				1366
-		top:				1976
+		top:				{ 1976 + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -307,7 +307,7 @@ card style:
 			scale down to:		10
 	saga line 1:
 		left:				134
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -320,7 +320,7 @@ card style:
 			scale down to:		10
 	auto collector number 1:
 		right:				1366
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				{ if auto_collector_number() then 545 else 0 }
 		height:				44
 		z index:			1000
@@ -333,7 +333,7 @@ card style:
 			scale down to:		10
 	custom collector number 1:
 		right:				1366
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				{ if auto_collector_number() then 0 else 545 }
 		height:				44
 		z index:			1000
@@ -346,7 +346,7 @@ card style:
 			scale down to:		10
 	revision 1:
 		left:				695
-		top:				2026
+		top:				{ 2026 + info_font_vertical() }
 		width:				110
 		height:				44
 		z index:			1000
@@ -357,6 +357,7 @@ card style:
 			color:				{ info_font_color() }
 			size:				{ info_font_size() }
 			scale down to:		10
+	
 	
 	############################# Illustration
 	art 1:
