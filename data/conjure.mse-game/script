@@ -221,18 +221,18 @@ letters_to_colors :=
 }
 
 symbol_context :=
-	"(?ix)								### case insensitive, ignore whitespace
-	(^|[\\s(\"“‘'’,:;—-]|[0-9])			### start of the string, white space, parentheses, quote, comma, colon, dash or number
-	<match>								### the actual symbol
-	([\\s),\\.\"”’':;—-]|$)"			### white space, parentheses, comma, dot, quote, colon, dash or end of the string
+	"(?ix)										### case insensitive, ignore whitespace
+	(^|[\\s(\"“‘'’,:;—-]|[0-9]|<param-mana>)	### start of the string, white space, parentheses, quote, comma, colon, dash or number
+	<match>										### the actual symbol
+	([\\s),\\.\"”’':;—-]|</param-mana>|$)"		### white space, parentheses, comma, dot, quote, colon, dash or end of the string
 
 replace_symbols := replace@(match: "([ROYGBIVLU]+[0-9]*X?)", in_context: symbol_context, replace: {"<sym-auto>" + _1 + "</sym-auto>"})
 
 symbol_number_context :=
-	"(?ix)															### case insensitive, ignore whitespace
-	(^|[(\"“‘'’,:;—]|pay\\s|add\\s|create\\s|</sym>|</sym-auto>)	### start of the string, parentheses, quote, comma, colon, dash, pay, add or sym tag
-	<match>															### the actual symbol
-	([\\s),\\.\"”’':;—-]|$)"										### white space, parentheses, comma, dot, quote, colon, dash or end of the string
+	"(?ix)																		### case insensitive, ignore whitespace
+	(^|[(\"“‘'’,:;—]|pay\\s|add\\s|create\\s|</sym>|</sym-auto>|<param-mana>)	### start of the string, parentheses, quote, comma, colon, dash, pay, add or sym tag
+	<match>																		### the actual symbol
+	([\\s),\\.\"”’':;—-]|</param-mana>|$)"										### white space, parentheses, comma, dot, quote, colon, dash or end of the string
 
 replace_number_symbols := replace@(match: "([0-9X][0-9]?)", in_context: symbol_number_context, replace: {"<sym-auto>" + _1 + "</sym-auto>"})
 

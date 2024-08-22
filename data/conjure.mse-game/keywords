@@ -43,19 +43,175 @@ keyword parameter type:
 ####################################### Keywords
 
 keyword:
+	keyword: Absolute
+	match: Absolute
+	mode: core
+	reminder: Absolute — This card can only be played or arrive to the Field if its mana cost is paid.
+
+keyword:
 	keyword: Airborne
 	match: Airborne
 	mode: core
-	reminder: Airborne - This Character can only be blocked by other Characters with Airborne.
+	reminder: Airborne — This Character can only be blocked by other Characters with Airborne.
+
+keyword:
+	keyword: Barrier
+	match: Barrier
+	mode: core
+	reminder: Barrier — This card can’t be targeted by cards or abilities you opponents control.
+
+keyword:
+	keyword: Barrier
+	match: Barrier <atom-param>mana</atom-param>
+	mode: core
+	reminder: Barrier — This card can’t be targeted by cards or abilities you opponents control unless the controller of that card or ability pays {param1}.
+
+keyword:
+	keyword: Bloodlust
+	match: Bloodlust
+	mode: core
+	reminder: Bloodlust — This Character must attack each Battle if able.
+
+keyword:
+	keyword: Coalesce
+	match: Coalesce
+	mode: core
+	reminder: Coalesce — Whenever an Essence arrives under your control, [Effect]
+
+keyword:
+	keyword: Depleted
+	match: Depleted
+	mode: core
+	reminder: Depleted — This card cannot be Crystallized.
+
+keyword:
+	keyword: Domain
+	match: Domain over <atom-param>name</atom-param>
+	mode: core
+	reminder: Domain — If this card is your Lord you may have an additional Lord card as long as it's a {english_singular(param1)} card.
+
+keyword:
+	keyword: Dredge
+	match: Dredge
+	mode: core
+	reminder: Dredge — You may banish any number of cards from your Grave when you play this card or use this ability. If you do, each card you banish pays for <sym>1</sym> in the mana cost.
 
 keyword:
 	keyword: Firebreathing
 	match: Firebreathing <atom-param>mana</atom-param>
 	mode: core
-	reminder: Firebreathing - {param1}: This Character gains +1 Attack this turn.
+	reminder: Firebreathing — {param1}: This Character gains +1 Attack this turn.
+
+keyword:
+	keyword: Fortify
+	match: Fortify <atom-param>mana</atom-param>
+	mode: core
+	reminder: Fortify — {param1}: This Character gains +1 Health this turn.
+
+keyword:
+	keyword: Fury
+	match: Fury
+	mode: core
+	reminder: Fury — This Character deals Battle damage before each other Character without Fury during the Battle damage phase.
 
 keyword:
 	keyword: Gouge
 	match: Gouge <atom-param>number</atom-param>
 	mode: core
-	reminder: Gouge - Whenever this card deals damage to a player, that player Grinds ({english_number(param1)} times) that many cards.
+	reminder: Gouge — Whenever this card deals damage to a player, that player Grinds {if param1.value == "1" then "" else english_number(param1) + " times "}that many cards.
+
+keyword:
+	keyword: Guardian
+	match: Guardian
+	mode: core
+	reminder: Guardian — This card can't attack.
+
+keyword:
+	keyword: Immune
+	match: Immune to <atom-param>name</atom-param>
+	mode: core
+	reminder: Immune — This card can't be dealt damage, targeted, blocked, or destroyed by {param1} cards.
+
+keyword:
+	keyword: Intimidate
+	match: Intimidate <atom-param>number</atom-param>
+	mode: core
+	reminder: Intimidate — This card must be blocked by {english_number_a(param1)} additional Character(s).
+
+keyword:
+	keyword: Invulnerable
+	match: Invulnerable
+	mode: core
+	reminder: Invulnerable — This card cannot be destroyed due to damage or non-rendering effects.
+
+keyword:
+	keyword: Lethal
+	match: Lethal
+	mode: core
+	reminder: Lethal — Whenever this card deals damage to a Character, destroy that Character.
+
+keyword:
+	keyword: Lucky
+	match: Lucky <atom-param>number</atom-param>
+	mode: core
+	reminder: Lucky — Whenever this card would be destroyed, instead flip {if param1.value == "1" then "a coin" else "up to " + param1.value + " coins"}. If you win {if param1.value == "1" then "the" else "a"} flip, don't destroy it, and remove all damage from it.
+
+keyword:
+	keyword: Meditate
+	match: Meditate <atom-param>mana</atom-param>
+	mode: core
+	reminder: Meditate — {param1}: This Character gains +1 Arcane this turn.
+
+keyword:
+	keyword: Overwhelm
+	match: Overwhelm
+	mode: core
+	reminder: Overwhelm — This card deals excess damage to the controller of the card it’s dealing damage to.
+
+keyword:
+	keyword: Prismatic
+	match: Prismatic
+	mode: core
+	reminder: Prismatic — For each color of mana used to play this card, [Effect]
+
+keyword:
+	keyword: Snare
+	match: Snare
+	mode: core
+	reminder: Snare — This Character may block Characters with Airborne.
+
+keyword:
+	keyword: Steadfast
+	match: Steadfast
+	mode: core
+	reminder: Steadfast — This Character can block if it's locked.
+
+keyword:
+	keyword: Sustain
+	match: Sustain <atom-param>number</atom-param>
+	mode: core
+	reminder: Sustain — Whenever this card deals damage, you gain {if param1.value == "1" then "" else english_number(param1) + " times "}that much life.
+
+keyword:
+	keyword: Swift
+	match: Swift
+	mode: core
+	reminder: Swift — This Character can attack and activate lock abilities the turn it's played.
+
+keyword:
+	keyword: Unblockable
+	match: Unblockable
+	mode: core
+	reminder: Unblockable — This card can’t be blocked.
+
+keyword:
+	keyword: Unique
+	match: Unique
+	mode: core
+	reminder: Unique — Decks may contain only 1 of this card.
+
+keyword:
+	keyword: Unlimited
+	match: Unlimited
+	mode: core
+	reminder: Unlimited — Decks may contain any number of this card.
