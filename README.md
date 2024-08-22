@@ -13,3 +13,23 @@ Version of Magic Set Editor made for the Conjure Uncollectible Card Game.
 
 # Use
 While on the "Card" tab, you can edit the values on the card directly by clicking on them.
+
+Some values are not obvious to find. for example the box for the lore text is in this red area:
+
+![lore](https://github.com/G-e-n-e-v-e-n-s-i-S/Conjure-Set-Editor/blob/main/readme_images/lore.png)
+
+It will become bigger once you have written text inside.
+
+The color of the frame should adapt automatically to the mana cost, but if you want to change it manually, click somwhere here:
+
+![frame](https://github.com/G-e-n-e-v-e-n-s-i-S/Conjure-Set-Editor/blob/main/readme_images/frame.png)
+
+To change to shape of the border, click here:
+
+![border](https://github.com/G-e-n-e-v-e-n-s-i-S/Conjure-Set-Editor/blob/main/readme_images/border.png)
+
+To change the type of stat boxes, click here:
+
+![stats](https://github.com/G-e-n-e-v-e-n-s-i-S/Conjure-Set-Editor/blob/main/readme_images/stats.png)
+
+There are some additional customization options in the "Style" and "Set info" tabs.
