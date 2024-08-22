@@ -1,0 +1,247 @@
+statistics dimension:
+	name: Color
+	position hint: 0
+	icon: stats icons/color.png
+	description: The color combination of the card.
+	show empty: false
+	script: color_stat()
+	colors:
+		​C			: rgb(190,190,190)					# There is a zero width space before the "C" so that it always appears first.
+		​​R			: rgb(249,170,143)					# There are two zero width spaces before the "R" so that it always appear after the "C".
+		​​​O			: rgb(231,175,131)					# There are three zero width spaces before the "O", etc...
+		​​​​Y			: rgb(255,247,153)
+		​​​​​G			: rgb(155,211,174)
+		​​​​​​B			: rgb(170,224,250)
+		​​​​​​​I			: rgb(178,152,240)
+		​​​​​​​​V			: rgb(232,152,222)
+		​​​​​​​​​RO:		rgb(100,100,100)
+		​​​​​​​​​​RY:		rgb(100,100,100)
+		​​​​​​​​​​​RG:		rgb(100,100,100)
+		​​​​​​​​​​​​RB:		rgb(100,100,100)
+		​​​​​​​​​​​​​RI:		rgb(100,100,100)
+		​​​​​​​​​​​​​​RV:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​OY:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​OG:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​OB:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​OI:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​OV:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​YG:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​YB:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​YI:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​YV:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​​GB:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​​​GI:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​GV:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​BI:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​BV:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​IV:		rgb(100,100,100)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROY:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROG:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROB:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYG:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYB:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RGB:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RGI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RGV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RBI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RBV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RIV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYG:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYB:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OGB:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OGI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OGV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OBI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OBV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OIV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YGB:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YGI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YGV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YBI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YBV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YIV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​GBI:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​GBV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​GIV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​BIV:		rgb(50,50,50)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​4+:		rgb(0,0,0)
+
+statistics dimension:
+	name: Color Count
+	position hint: 1
+	icon: stats icons/color.png
+	description: The number of different colors of the card.
+	script: color_count_stat()
+
+statistics dimension:
+	name: Pip Count
+	position hint: 2
+	icon: stats icons/pips.png
+	description: The number of different colored symbols of the card.
+	split list: true
+	show empty: false
+	script: pip_count_stat()
+	colors:
+		​R:		rgb(249,170,143)
+		​​RR:		rgb(249,170,143)
+		​​​RRR:		rgb(249,170,143)
+		​​​​RRRR+:		rgb(249,170,143)
+		​​​​​O:		rgb(231,175,131)
+		​​​​​​OO:		rgb(231,175,131)
+		​​​​​​​OOO:		rgb(231,175,131)
+		​​​​​​​​OOOO+:		rgb(231,175,131)
+		​​​​​​​​​Y:		rgb(255,247,153)
+		​​​​​​​​​​YY:		rgb(255,247,153)
+		​​​​​​​​​​​YYY:		rgb(255,247,153)
+		​​​​​​​​​​​​YYYY+:		rgb(255,247,153)
+		​​​​​​​​​​​​​G:		rgb(155,211,174)
+		​​​​​​​​​​​​​​GG:		rgb(155,211,174)
+		​​​​​​​​​​​​​​​GGG:		rgb(155,211,174)
+		​​​​​​​​​​​​​​​​GGGG+:		rgb(155,211,174)
+		​​​​​​​​​​​​​​​​​B:		rgb(170,224,250)
+		​​​​​​​​​​​​​​​​​​BB:		rgb(170,224,250)
+		​​​​​​​​​​​​​​​​​​​BBB:		rgb(170,224,250)
+		​​​​​​​​​​​​​​​​​​​​BBBB+:		rgb(170,224,250)
+		​​​​​​​​​​​​​​​​​​​​​I:		rgb(178,152,240)
+		​​​​​​​​​​​​​​​​​​​​​​II:		rgb(178,152,240)
+		​​​​​​​​​​​​​​​​​​​​​​​III:		rgb(178,152,240)
+		​​​​​​​​​​​​​​​​​​​​​​​​IIII+:		rgb(178,152,240)
+		​​​​​​​​​​​​​​​​​​​​​​​​​V:		rgb(232,152,222)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​VV:		rgb(232,152,222)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​VVV:		rgb(232,152,222)
+		​​​​​​​​​​​​​​​​​​​​​​​​​​​​VVVV+:		rgb(232,152,222)
+
+
+statistics dimension:
+	name: Mana Cost
+	position hint: 10
+	icon: stats icons/mana.png
+	description: The mana cost of the card.
+	script: mana_cost_stat()
+
+statistics dimension:
+	name: Mana Value
+	position hint: 11
+	icon: stats icons/cmc.png
+	description: The mana value of the card.
+	numeric: true
+	show empty: false
+	script: cmc_stat()
+
+statistics dimension:
+	name: Attack
+	position hint: 20
+	icon: stats icons/attack.png
+	description: The attack value of the card.
+	script: attack_stat()
+
+statistics dimension:
+	name: Health
+	position hint: 21
+	icon: stats icons/health.png
+	description: The health value of the card.
+	script: health_stat()
+
+statistics dimension:
+	name: Arcane
+	position hint: 22
+	icon: stats icons/arcane.png
+	description: The arcane value of the card.
+	script: arcane_stat()
+
+statistics dimension:
+	name: Super Type Prefix
+	position hint: 30
+	icon: stats icons/type.png
+	description: The super type prefixe(s) of the card.
+	split list: true
+	show empty: false
+	script: super_type_prefix_stat()
+
+statistics dimension:
+	name: Super Type
+	position hint: 31
+	icon: stats icons/type.png
+	description: The super type(s) of the card.
+	split list: true
+	show empty: false
+	script: super_type_stat()
+
+statistics dimension:
+	name: Sub Type
+	position hint: 32
+	icon: stats icons/type.png
+	description: The sub type(s) of the card.
+	split list: true
+	show empty: false
+	script: sub_type_stat()
+
+statistics dimension:
+	name: keywords
+	position hint: 300
+	icon: stats icons/keywords.png
+	description: The keywords of the card.
+	split list: true
+	show empty: false
+	script: keyword_usage(unique: true)
+
+statistics dimension:
+	name: rules word count
+	position hint: 400
+	icon: stats icons/text_length.png
+	description: How many words are in the card's rule text.
+	numeric: true
+	bin size: 5
+	show empty: false
+	script: rules_word_count_stat()
+
+statistics dimension:
+	name: split notes
+	position hint: 500
+	icon: stats icons/text_length.png
+	description: Cuts the card notes at each semicolon, each dot, each exclamation mark and each comma. For example, if you write "Removal, Board Wipe; Draw" the card will count in the "Removal" category, the "Board Wipe" and the "Draw" category. You can make whatever categories you like.
+	split list: true
+	show empty: false
+	script: split_notes_stat()
+
+statistics dimension:
+	name: Revision
+	position hint: 600
+	icon: stats icons/revision.png
+	description: The revision number of the card.
+	show empty: false
+	script: revision_stat()
+
+statistics dimension:
+	name: Artist
+	position hint: 610
+	icon: stats icons/artist.png
+	description: The illustrator of the card.
+	split list: true
+	show empty: false
+	script: artist_stat()
+
+statistics dimension:
+	name: template
+	position hint: 620
+	icon: stats icons/stylesheet.png
+	description: The stylesheet used by the card.
+	show empty: false
+	script: stylesheet.short_name
+
+#statistics dimension:
+#	name: filter
+#	position hint: 2000
+#	icon: stats icons/filter.png
+#	description: Shows which cards have been filtered by the conditions written in the "filter statistics" field in the Set info tab.
+#	show empty: false
+#	script: filter_stat()
+#	colors:
+#		Kept		: rgb(15,80,166)
+#		Filtered	: rgb(156,15,15)

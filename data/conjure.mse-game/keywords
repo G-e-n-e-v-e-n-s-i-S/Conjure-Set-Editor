@@ -1,0 +1,61 @@
+﻿
+has keywords: true
+
+####################################### Keyword modes
+
+keyword mode:
+	name: core
+	description: Core set keywords
+keyword mode:
+	name: expert
+	description: Expert set keywords
+keyword mode:
+	is default: true
+	name: custom
+	description: Custom keywords
+
+####################################### Keyword parameter types
+
+keyword parameter type:
+	name: mana
+	match: [0-9XROYGBIV/]+
+	refer script:
+		name: normal
+		description: No changes made
+		script: \{{input}\}
+
+keyword parameter type:
+	name: number
+	match: [X0-9]+
+	refer script:
+		name: normal
+		description: No changes made
+		script: \{{input}\}
+
+keyword parameter type:
+	name: name
+	match: ([^(.:;\n—]+|[ ])
+	refer script:
+		name: normal
+		description: No changes made.
+		script: \{{input}\}
+
+####################################### Keywords
+
+keyword:
+	keyword: Airborne
+	match: Airborne
+	mode: core
+	reminder: Airborne - This Character can only be blocked by other Characters with Airborne.
+
+keyword:
+	keyword: Firebreathing
+	match: Firebreathing <atom-param>mana</atom-param>
+	mode: core
+	reminder: Firebreathing - {param1}: This Character gains +1 Attack this turn.
+
+keyword:
+	keyword: Gouge
+	match: Gouge <atom-param>number</atom-param>
+	mode: core
+	reminder: Gouge - Whenever this card deals damage to a player, that player Grinds ({english_number(param1)} times) that many cards.

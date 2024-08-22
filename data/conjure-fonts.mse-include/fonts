@@ -1,0 +1,648 @@
+############################################################## Custom fonts
+swap_font := {styling.apply_custom_fonts or else true}
+split_font := split_text@(match:";")
+pop_font_name := {split_font(input).0 or else ""}
+pop_font_size := {split_font(input).1 or else ""}
+pop_font_color := {split_font(input).2 or else ""}
+pop_font_vertical := {split_font(input).3 or else ""}
+pop_font_italic := {split_font(input).4 or else ""}
+#### General swap functions
+swap_font_name := {
+	if swap_font() then (
+		test := pop_font_name(src)
+		if test != "" then font_name := test
+	)
+	
+	font_name
+}
+swap_font_size := {
+	if swap_font() then (
+		test := pop_font_size(src)
+		if test != "" then font_size := test
+	)
+	
+	font_size
+}
+swap_font_color := {
+	if swap_font() then (
+		test := pop_font_color(src)
+		nums := split_text(test, match:",")
+		test_color := nil
+		
+		if length(nums) >= 4 then test_color := rgba(nums.0, nums.1, nums.2, nums.3) or else nil
+		if test_color == nil and length(nums) >= 3 then test_color := rgb(nums.0, nums.1, nums.2) or else nil
+		if test_color == nil and test != "" then test_color := to_color(test) or else nil
+		if test_color != nil then font_color := test_color
+	) else ""
+	
+	font_color
+}
+swap_font_vertical := {
+	if swap_font() then (
+		test := pop_font_vertical(src)
+		if test != "" then vertical := to_number(test)
+	)
+	
+	vertical
+}
+swap_font_italic := {
+	if swap_font() then (
+		test := pop_font_italic(src)
+		test2 := pop_font_name(src)
+		if test != "" then font_name := test
+		else if test2 != "" then font_name := ""
+	)
+	
+	font_name
+}
+#### defaults, can be changed in style
+swap_fonts_name_default := [
+	name: {"Book Antiqua Bold"},
+	size: {64},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Bold Italic"}
+]
+swap_fonts_name2_default := [
+	name: {"Book Antiqua Bold"},
+	size: {64},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Bold Italic"}
+]
+swap_fonts_name3_default := [
+	name: {"Book Antiqua Bold"},
+	size: {64},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Bold Italic"}
+]
+swap_fonts_type_default := [
+	name: {"Book Antiqua Bold"},
+	size: {38},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Bold Italic"}
+]
+swap_fonts_type2_default := [
+	name: {"Book Antiqua Bold"},
+	size: {38},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Bold Italic"}
+]
+swap_fonts_type3_default := [
+	name: {"Book Antiqua Bold"},
+	size: {38},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Bold Italic"}
+]
+swap_fonts_rule_default := [
+	name: {"Book Antiqua"},
+	size: {64},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_rule2_default := [
+	name: {"Book Antiqua"},
+	size: {64},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_rule3_default := [
+	name: {"Book Antiqua"},
+	size: {64},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_lore_default := [
+	name: {"Book Antiqua"},
+	size: {44},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_lore2_default := [
+	name: {"Book Antiqua"},
+	size: {48},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_lore3_default := [
+	name: {"Book Antiqua"},
+	size: {48},
+	color: {"black"},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_info_default := [
+	name: {"Book Antiqua"},
+	size: {26},
+	color: {rgb(185,180,185)},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_info2_default := [
+	name: {"Book Antiqua"},
+	size: {26},
+	color: {rgb(185,180,185)},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_info3_default := [
+	name: {"Book Antiqua"},
+	size: {26},
+	color: {rgb(185,180,185)},
+	vertical: {0},
+	italic: {"Book Antiqua Italic"}
+]
+swap_fonts_name_src :=		{ styling.custom_name_font		or else "" }
+swap_fonts_name2_src :=		{ styling.custom_name_2_font	or else "" }
+swap_fonts_name3_src :=		{ styling.custom_name_3_font	or else "" }
+swap_fonts_type_src :=		{ styling.custom_type_font		or else "" }
+swap_fonts_type2_src :=		{ styling.custom_type_2_font	or else "" }
+swap_fonts_type3_src :=		{ styling.custom_type_3_font	or else "" }
+swap_fonts_rule_src :=		{ styling.custom_rule_font		or else "" }
+swap_fonts_rule2_src :=		{ styling.custom_rule_2_font	or else "" }
+swap_fonts_rule3_src :=		{ styling.custom_rule_3_font	or else "" }
+swap_fonts_lore_src :=		{ styling.custom_lore_font		or else "" }
+swap_fonts_lore2_src :=		{ styling.custom_lore_2_font	or else "" }
+swap_fonts_lore3_src :=		{ styling.custom_lore_3_font	or else "" }
+swap_fonts_info_src :=		{ styling.custom_info_font		or else "" }
+swap_fonts_info2_src :=		{ styling.custom_info_2_font	or else "" }
+swap_fonts_info3_src :=		{ styling.custom_info_3_font	or else "" }
+#### specific swap functions
+name_font := {
+	swap_font_name(
+		src: swap_fonts_name_src(), 
+		font_name: swap_fonts_name_default.name()
+	)
+}
+name_font_size := {
+	swap_font_size(
+		src: swap_fonts_name_src(), 
+		font_size: swap_fonts_name_default.size()
+	) - shrink_name()
+}
+name_font_color := {
+	swap_font_color(
+		src: swap_fonts_name_src(),
+		font_color: swap_fonts_name_default.color()
+	)
+}
+name_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_name_src(),
+		vertical: swap_fonts_name_default.vertical()
+	)
+}
+name_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_name_src(),
+		font_name: swap_fonts_name_default.italic()
+	)
+}
+
+name2_font := {
+	swap_font_name(
+		src: swap_fonts_name2_src(), 
+		font_name: swap_fonts_name2_default.name()
+	)
+}
+name2_font_size := {
+	swap_font_size(
+		src: swap_fonts_name2_src(), 
+		font_size: swap_fonts_name2_default.size()
+	) - shrink_name2()
+}
+name2_font_color := {
+	swap_font_color(
+		src: swap_fonts_name2_src(),
+		font_color: swap_fonts_name2_default.color()
+	)
+}
+name2_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_name2_src(),
+		vertical: swap_fonts_name2_default.vertical()
+	)
+}
+name2_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_name2_src(),
+		font_name: swap_fonts_name2_default.italic()
+	)
+}
+
+name3_font := {
+	swap_font_name(
+		src: swap_fonts_name3_src(), 
+		font_name: swap_fonts_name3_default.name()
+	)
+}
+name3_font_size := {
+	swap_font_size(
+		src: swap_fonts_name3_src(), 
+		font_size: swap_fonts_name3_default.size()
+	) - shrink_name2()
+}
+name3_font_color := {
+	swap_font_color(
+		src: swap_fonts_name3_src(),
+		font_color: swap_fonts_name3_default.color()
+	)
+}
+name3_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_name3_src(),
+		vertical: swap_fonts_name3_default.vertical()
+	)
+}
+name3_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_name3_src(),
+		font_name: swap_fonts_name3_default.italic()
+	)
+}
+
+type_font := {
+	swap_font_name(
+		src: swap_fonts_type_src(), 
+		font_name: swap_fonts_type_default.name()
+	)
+}
+type_font_size := {
+	swap_font_size(
+		src: swap_fonts_type_src(), 
+		font_size: swap_fonts_type_default.size()
+	) - shrink_type()
+}
+type_font_color := {
+	swap_font_color(
+		src: swap_fonts_type_src(),
+		font_color: swap_fonts_type_default.color()
+	)
+}
+type_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_type_src(),
+		vertical: swap_fonts_type_default.vertical()
+	)
+}
+type_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_type_src(),
+		font_name: swap_fonts_type_default.italic()
+	)
+}
+
+type2_font := {
+	swap_font_name(
+		src: swap_fonts_type2_src(), 
+		font_name: swap_fonts_type2_default.name()
+	)
+}
+type2_font_size := {
+	swap_font_size(
+		src: swap_fonts_type2_src(), 
+		font_size: swap_fonts_type2_default.size()
+	) - shrink_type2()
+}
+type2_font_color := {
+	swap_font_color(
+		src: swap_fonts_type2_src(),
+		font_color: swap_fonts_type2_default.color()
+	)
+}
+type2_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_type2_src(),
+		vertical: swap_fonts_type2_default.vertical()
+	)
+}
+type2_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_type2_src(),
+		font_name: swap_fonts_type2_default.italic()
+	)
+}
+
+type3_font := {
+	swap_font_name(
+		src: swap_fonts_type3_src(), 
+		font_name: swap_fonts_type3_default.name()
+	)
+}
+type3_font_size := {
+	swap_font_size(
+		src: swap_fonts_type3_src(), 
+		font_size: swap_fonts_type3_default.size()
+	) - shrink_type2()
+}
+type3_font_color := {
+	swap_font_color(
+		src: swap_fonts_type3_src(),
+		font_color: swap_fonts_type3_default.color()
+	)
+}
+type3_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_type3_src(),
+		vertical: swap_fonts_type3_default.vertical()
+	)
+}
+type3_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_type3_src(),
+		font_name: swap_fonts_type3_default.italic()
+	)
+}
+
+rule_font := {
+	swap_font_name(
+		src: swap_fonts_rule_src(), 
+		font_name: swap_fonts_rule_default.name()
+	)
+}
+rule_font_size := {
+	swap_font_size(
+		src: swap_fonts_rule_src(), 
+		font_size: swap_fonts_rule_default.size()
+	)
+}
+rule_font_color := {
+	swap_font_color(
+		src: swap_fonts_rule_src(),
+		font_color: swap_fonts_rule_default.color()
+	)
+}
+rule_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_rule_src(),
+		vertical: swap_fonts_rule_default.vertical()
+	)
+}
+rule_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_rule_src(),
+		font_name: swap_fonts_rule_default.italic()
+	)
+}
+
+rule2_font := {
+	swap_font_name(
+		src: swap_fonts_rule2_src(), 
+		font_name: swap_fonts_rule2_default.name()
+	)
+}
+rule2_font_size := {
+	swap_font_size(
+		src: swap_fonts_rule2_src(), 
+		font_size: swap_fonts_rule2_default.size()
+	)
+}
+rule2_font_color := {
+	swap_font_color(
+		src: swap_fonts_rule2_src(),
+		font_color: swap_fonts_rule2_default.color()
+	)
+}
+rule2_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_rule2_src(),
+		vertical: swap_fonts_rule2_default.vertical()
+	)
+}
+rule2_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_rule2_src(),
+		font_name: swap_fonts_rule2_default.italic()
+	)
+}
+
+rule3_font := {
+	swap_font_name(
+		src: swap_fonts_rule3_src(), 
+		font_name: swap_fonts_rule3_default.name()
+	)
+}
+rule3_font_size := {
+	swap_font_size(
+		src: swap_fonts_rule3_src(), 
+		font_size: swap_fonts_rule3_default.size()
+	)
+}
+rule3_font_color := {
+	swap_font_color(
+		src: swap_fonts_rule3_src(),
+		font_color: swap_fonts_rule3_default.color()
+	)
+}
+rule3_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_rule3_src(),
+		vertical: swap_fonts_rule3_default.vertical()
+	)
+}
+rule3_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_rule3_src(),
+		font_name: swap_fonts_rule3_default.italic()
+	)
+}
+
+lore_font := {
+	swap_font_name(
+		src: swap_fonts_lore_src(), 
+		font_name: swap_fonts_lore_default.name()
+	)
+}
+lore_font_size := {
+	swap_font_size(
+		src: swap_fonts_lore_src(), 
+		font_size: swap_fonts_lore_default.size()
+	)
+}
+lore_font_color := {
+	swap_font_color(
+		src: swap_fonts_lore_src(),
+		font_color: swap_fonts_lore_default.color()
+	)
+}
+lore_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_lore_src(),
+		vertical: swap_fonts_lore_default.vertical()
+	)
+}
+lore_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_lore_src(),
+		font_name: swap_fonts_lore_default.italic()
+	)
+}
+
+lore2_font := {
+	swap_font_name(
+		src: swap_fonts_lore2_src(), 
+		font_name: swap_fonts_lore2_default.name()
+	)
+}
+lore2_font_size := {
+	swap_font_size(
+		src: swap_fonts_lore2_src(), 
+		font_size: swap_fonts_lore2_default.size()
+	)
+}
+lore2_font_color := {
+	swap_font_color(
+		src: swap_fonts_lore2_src(),
+		font_color: swap_fonts_lore2_default.color()
+	)
+}
+lore2_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_lore2_src(),
+		vertical: swap_fonts_lore2_default.vertical()
+	)
+}
+lore2_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_lore2_src(),
+		font_name: swap_fonts_lore2_default.italic()
+	)
+}
+
+lore3_font := {
+	swap_font_name(
+		src: swap_fonts_lore3_src(), 
+		font_name: swap_fonts_lore3_default.name()
+	)
+}
+lore3_font_size := {
+	swap_font_size(
+		src: swap_fonts_lore3_src(), 
+		font_size: swap_fonts_lore3_default.size()
+	)
+}
+lore3_font_color := {
+	swap_font_color(
+		src: swap_fonts_lore3_src(),
+		font_color: swap_fonts_lore3_default.color()
+	)
+}
+lore3_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_lore3_src(),
+		vertical: swap_fonts_lore3_default.vertical()
+	)
+}
+lore3_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_lore3_src(),
+		font_name: swap_fonts_lore3_default.italic()
+	)
+}
+
+info_font := {
+	swap_font_name(
+		src: swap_fonts_info_src(), 
+		font_name: swap_fonts_info_default.name()
+	)
+}
+info_font_size := {
+	swap_font_size(
+		src: swap_fonts_info_src(), 
+		font_size: swap_fonts_info_default.size()
+	)
+}
+info_font_color := {
+	swap_font_color(
+		src: swap_fonts_info_src(),
+		font_color: swap_fonts_info_default.color()
+	)
+}
+info_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_info_src(),
+		vertical: swap_fonts_info_default.vertical()
+	)
+}
+info_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_info_src(),
+		font_name: swap_fonts_info_default.italic()
+	)
+}
+
+info2_font := {
+	swap_font_name(
+		src: swap_fonts_info2_src(), 
+		font_name: swap_fonts_info2_default.name()
+	)
+}
+info2_font_size := {
+	swap_font_size(
+		src: swap_fonts_info2_src(), 
+		font_size: swap_fonts_info2_default.size()
+	)
+}
+info2_font_color := {
+	swap_font_color(
+		src: swap_fonts_info2_src(),
+		font_color: swap_fonts_info2_default.color()
+	)
+}
+info2_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_info2_src(),
+		vertical: swap_fonts_info2_default.vertical()
+	)
+}
+info2_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_info2_src(),
+		font_name: swap_fonts_info2_default.italic()
+	)
+}
+
+info3_font := {
+	swap_font_name(
+		src: swap_fonts_info3_src(), 
+		font_name: swap_fonts_info3_default.name()
+	)
+}
+info3_font_size := {
+	swap_font_size(
+		src: swap_fonts_info3_src(), 
+		font_size: swap_fonts_info3_default.size()
+	)
+}
+info3_font_color := {
+	swap_font_color(
+		src: swap_fonts_info3_src(),
+		font_color: swap_fonts_info3_default.color()
+	)
+}
+info3_font_vertical := {
+	swap_font_vertical(
+		src: swap_fonts_info3_src(),
+		vertical: swap_fonts_info3_default.vertical()
+	)
+}
+info3_font_italic := {
+	swap_font_italic(
+		src: swap_fonts_info3_src(),
+		font_name: swap_fonts_info3_default.italic()
+	)
+}
+
+shrink_name :=  {0}
+shrink_type :=  {0}
+shrink_name2 := {0}
+shrink_type2 := {0}

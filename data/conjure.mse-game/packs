@@ -1,0 +1,12 @@
+﻿pack type:
+	name: random
+	selectable: false
+	select: no replace
+	filter: not is_token()
+
+pack type:
+	name: opening hand
+	selectable: true
+	item:
+		name: random
+		amount: 6

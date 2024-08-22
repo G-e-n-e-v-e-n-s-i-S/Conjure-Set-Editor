@@ -1,0 +1,68 @@
+#### For visual vertical alignment of the code, set tab spacing to 4.
+
+
+#### Path to the assets
+template := { folder + "/" + input + ".png" }
+mask_template := { mask_folder + "/" + input + ".png" }
+
+#### Maximum number of colors
+max_color_count := 8
+
+#### Prefix of colorless frame
+empty_color := "c"
+
+#### Blend behavior
+horizontal_blend :=
+{
+	color_count := length(colors)
+	if		color_count == 0 then template(empty_color)
+	else if	color_count == 1 then template(colors[0])
+	else (
+	color_count := clamp(color_count, minimum: 2, maximum: max_color_count)
+	fade_size_percent := (color_count - 2) / (max_color_count - 2)
+	fade_size := 0.05 * (1 - fade_size_percent) + 0.02 * fade_size_percent
+	result := template(colors[offset mod color_count])
+	for x from 1 to color_count-1 do (
+		result :=	linear_blend(
+						image1:	result,
+						image2:	template(colors[(offset + x) mod color_count]),
+						x1:		x/color_count - fade_size,
+						x2:		x/color_count + fade_size,
+						y1:		0,
+						y2:		0
+					)
+		""
+	)
+	result)
+}
+
+vertical_blend :=
+{
+	#### Switch x and y axes, then invoke horizontal code
+	do_linear_blend := linear_blend
+	linear_blend := { do_linear_blend(x1: 0, x2: 0, y1: x1, y2: x2) }
+	horizontal_blend(colors: colors)
+}
+
+#### Blend the card frame based on the card.frame_1 multiple choice field input value, or similar value
+color_blend :=
+{
+	#### The selected colors
+	colors := sort_text(order: "(croygbiv)", colors_to_letters(input))
+	if colors == "" then colors := empty_color
+	color_count := length(colors)
+	#### The selected blend
+	offset := 0
+	if contains(input, match:"offset 1") then offset := offset + 1
+	if contains(input, match:"offset 2") then offset := offset + 2
+	if contains(input, match:"offset 4") then offset := offset + 4
+	if contains(input, match:"reversed") then colors := reverse(colors)
+	result := if contains(input, match:"vertical") then vertical_blend(colors: colors, offset: offset) else horizontal_blend(colors: colors, offset: offset)
+	if mask_folder != "" then
+	(
+		template := mask_template
+		mask := if contains(input, match:"vertical") then vertical_blend(colors: colors, offset: offset) else horizontal_blend(colors: colors, offset: offset)
+		result := set_mask(image: result, mask: mask)
+	)
+	result
+}@(mask_folder: "")

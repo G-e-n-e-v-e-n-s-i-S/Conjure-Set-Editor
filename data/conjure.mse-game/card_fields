@@ -1,0 +1,510 @@
+﻿
+card field:
+	type: multiple choice
+	name: frame 1
+	show statistics: false
+	choice: red
+	choice: orange
+	choice: yellow
+	choice: green
+	choice: blue
+	choice: indigo
+	choice: violet
+	choice:
+		name: grey
+		line below: true
+	choice:
+		name: blend
+		choice: reversed
+		choice:
+			name: vertical
+			line below: true
+		choice: offset 1
+		choice: offset 2
+		choice: offset 4
+	empty choice: grey
+	default: stylesheet; frame_default(input: value, id: 1)
+	script: card.mana_cost_1; card.super_type_1; frame_script(input: value, id: 1)
+	card list visible: true
+	card list name: Color
+	card list column: 40
+	card list width: 170
+	description: The background frame of the card.
+
+card field:
+	type: choice
+	name: outer border 1
+	show statistics: false
+	choice: top and bottom
+	choice: bottom
+	choice: bottom full art
+	choice: hidden
+	default: stylesheet; outer_border_default(input: value, id: 1)
+	script: outer_border_script(input: value, id: 1)
+	card list visible: true
+	card list name: Border
+	card list column: 1000
+	card list width: 100
+	description: The colored outer border of the card.
+
+card field:
+	type: choice
+	name: inner border 1
+	show statistics: false
+	editable: false
+	choice: shown
+	choice: hidden
+	script: card.outer_border_1; inner_border_script(input: value, id: 1)
+	card list allow: false
+	#card list visible: false
+	#card list name: Inner Border
+	#card list column: 1010
+	#card list width: 100
+	description: The colored inner border of the card.
+
+#card field:
+#	type: choice
+#	name: bleed border 1
+#	show statistics: false
+#	choice: rounded
+#	choice: square
+#	choice: diagonal
+#	choice: hidden
+#	default: stylesheet; bleed_border_default(input: value, id: 1)
+#	script: bleed_border_script(input: value, id: 1)
+#	card list visible: false
+#	card list name: Bleed Border
+#	card list column: 1020
+#	card list width: 100
+#	description: The black border around the card.
+
+card field:
+	type: text
+	name: name 1
+	identifying: true
+	show statistics: false
+	default: stylesheet; name_default(input: value, id: 1)
+	script: name_script(input: value, id: 1)
+	card list visible: true
+	card list name: Name
+	card list column: 0
+	card list width: 250
+	description: The name of the card.
+
+card field:
+	type: text
+	name: super type 1
+	show statistics: false
+	default: stylesheet; super_type_default(input: value, id: 1)
+	script: super_type_script(input: value, id: 1)
+	card list visible: false
+	card list name: Supertype
+	card list column: 20
+	card list width: 200
+	description: The super type(s) of the card.
+
+card field:
+	type: text
+	name: sub type 1
+	show statistics: false
+	default: stylesheet; sub_type_default(input: value, id: 1)
+	script: sub_type_script(input: value, id: 1)
+	card list visible: false
+	card list name: Subtype
+	card list column: 30
+	card list width: 200
+	description: The sub type(s) of the card.
+
+card field:
+	type: text
+	name: type 1
+	show statistics: false
+	script: type_script(input: value, id: 1)
+	card list visible: true
+	card list name: Type
+	card list column: 10
+	card list width: 250
+	description: The typeline of the card, combining super type and sub type.
+
+card field:
+	type: text
+	name: mana cost 1
+	show statistics: false
+	default: stylesheet; mana_cost_default(input: value, id: 1)
+	script: mana_cost_script(input: value, id: 1)
+	card list visible: true
+	card list name: Cost
+	card list column: 50
+	card list width: 80
+	description: The mana cost of the card.
+
+card field:
+	type: text
+	name: cmc 1
+	show statistics: false
+	editable: false
+	script: cmc(card.mana_cost_1)
+	card list visible: true
+	card list name: CMC
+	card list column: 51
+	card list width: 50
+	description: The converted mana cost of the card.
+
+card field:
+	type: choice
+	name: orb 1
+	show statistics: false
+	choice: attack
+	choice: health
+	choice: arcane
+	choice: attack and arcane
+	choice: health and arcane
+	choice: blank
+	choice: hidden
+	default: stylesheet; card.stat_1; orb_default(input: value, id: 1)
+	script: orb_script(input: value, id: 1)
+	card list visible: false
+	card list name: Orb 1
+	card list column: 800
+	card list width: 100
+	description: The first orb of the card.
+card field:
+	type: choice
+	name: orb 2
+	show statistics: false
+	choice: attack
+	choice: health
+	choice: arcane
+	choice: attack and arcane
+	choice: health and arcane
+	choice: blank
+	choice: hidden
+	default: stylesheet; card.stat_2; orb_default(input: value, id: 2)
+	script: orb_script(input: value, id: 2)
+	card list visible: false
+	card list name: Orb 2
+	card list column: 801
+	card list width: 100
+	description: The second orb of the card.
+card field:
+	type: choice
+	name: orb 3
+	show statistics: false
+	choice: attack
+	choice: health
+	choice: arcane
+	choice: attack and arcane
+	choice: health and arcane
+	choice: blank
+	choice: hidden
+	default: stylesheet; card.stat_3; orb_default(input: value, id: 3)
+	script: orb_script(input: value, id: 3)
+	card list visible: false
+	card list name: Orb 3
+	card list column: 802
+	card list width: 100
+	description: The third orb of the card.
+card field:
+	type: choice
+	name: orb 4
+	show statistics: false
+	choice: attack
+	choice: health
+	choice: arcane
+	choice: attack and arcane
+	choice: health and arcane
+	choice: blank
+	choice: hidden
+	default: stylesheet; card.stat_4; orb_default(input: value, id: 4)
+	script: orb_script(input: value, id: 4)
+	card list visible: false
+	card list name: Orb 4
+	card list column: 803
+	card list width: 100
+	description: The fourth orb of the card.
+
+card field:
+	type: text
+	name: stat 1
+	show statistics: false
+	default: stylesheet; stat_default(input: value, id: 1)
+	script: stat_script(input: value, id: 1)
+	card list allow: false
+	description: The first stat of the card.
+card field:
+	type: text
+	name: stat 2
+	show statistics: false
+	default: stylesheet; stat_default(input: value, id: 2)
+	script: stat_script(input: value, id: 2)
+	card list allow: false
+	description: The second stat of the card.
+card field:
+	type: text
+	name: stat 3
+	show statistics: false
+	default: stylesheet; stat_default(input: value, id: 3)
+	script: stat_script(input: value, id: 3)
+	card list allow: false
+	description: The third stat of the card.
+card field:
+	type: text
+	name: stat 4
+	show statistics: false
+	default: stylesheet; stat_default(input: value, id: 4)
+	script: stat_script(input: value, id: 4)
+	card list allow: false
+	description: The fourth stat of the card.
+
+card field:
+	type: text
+	name: attack 1
+	show statistics: false
+	editable: false
+	script: card.stat_1; card.stat_2; card.stat_3; card.stat_4; card.orb_1; card.orb_2; card.orb_3; card.orb_4; read_stat("attack")
+	card list visible: true
+	card list name: Attack
+	card list column: 60
+	card list width: 50
+	description: The attack of the card.
+
+card field:
+	type: text
+	name: health 1
+	show statistics: false
+	editable: false
+	script: card.stat_1; card.stat_2; card.stat_3; card.stat_4; card.orb_1; card.orb_2; card.orb_3; card.orb_4; read_stat("health")
+	card list visible: true
+	card list name: Health
+	card list column: 70
+	card list width: 50
+	description: The health of the card.
+
+card field:
+	type: text
+	name: arcane 1
+	show statistics: false
+	editable: false
+	script: card.stat_1; card.stat_2; card.stat_3; card.stat_4; card.orb_1; card.orb_2; card.orb_3; card.orb_4; read_stat("arcane")
+	card list visible: true
+	card list name: Arcane
+	card list column: 80
+	card list width: 50
+	description: The arcane of the card.
+
+card field:
+	type: text
+	name: text 1
+	multi line: true
+	show statistics: false
+	script: text_script(input: value, id: 1)
+	card list visible: false
+	card list name: Text
+	card list column: 1000
+	card list width: 250
+	description: The entire rules text and lore text of the card.
+
+card field:
+	type: text
+	name: rule text 1
+	multi line: true
+	show statistics: false
+	default: stylesheet; rule_text_default(input: value, id: 1)
+	script: rule_text_script(input: value, id: 1)
+	card list visible: false
+	card list name: Rule Text
+	card list column: 1010
+	card list width: 250
+	description: The rule text of the card.
+card field:
+	type: text
+	name: rule text 2
+	multi line: true
+	show statistics: false
+	default: stylesheet; rule_text_default(input: value, id: 2)
+	script: rule_text_script(input: value, id: 2)
+	card list visible: false
+	card list name: Rule Text 2
+	card list column: 1011
+	card list width: 250
+	description: The second rule text of the card.
+
+card field:
+	type: text
+	name: lore text 1
+	multi line: true
+	show statistics: false
+	default: stylesheet; lore_text_default(input: value, id: 1)
+	script: card.rule_text_1; lore_text_script(input: value, id: 1)
+	card list visible: false
+	card list name: Lore Text
+	card list column: 1020
+	card list width: 250
+	description: The lore text of the card.
+
+card field:
+	type: choice
+	name: lore bar 1
+	show statistics: false
+	choice: up
+	choice: down
+	choice: both
+	choice: hidden
+	default: stylesheet; card.rule_text_1; card.lore_text_1; lore_bar_default(input: value, id: 1)
+	script: lore_bar_script(input: value, id: 1)
+	card list visible: false
+	card list name: Lore Bar
+	card list column: 1030
+	card list width: 100
+	description: The bar between the top and bottom of the textbox.
+
+card field:
+	type: image
+	name: art 1
+	show statistics: false
+	card list allow: false
+	description: The illustration of the card.
+
+card field:
+	type: image
+	name: popout art 1
+	show statistics: false
+	card list allow: false
+	description: An extra illustration, used to make popout effects.
+
+card field:
+	type: text
+	name: artist 1
+	show statistics: false
+	default: stylesheet; artist_default(input: value, id: 1)
+	script: artist_script(input: value, id: 1)
+	card list visible: true
+	card list name: Artist
+	card list column: 110
+	card list width: 150
+	description: The illustrator's name.
+
+card field:
+	type: text
+	name: artist line 1
+	show statistics: false
+	script: forward_editor(suffix: " :Artist", field: card.artist_1)
+	card list allow: false
+	description: The text line containing the artist.
+
+card field:
+	type: text
+	name: designer 1
+	show statistics: false
+	default: stylesheet; designer_default(input: value, id: 1)
+	script: designer_script(input: value, id: 1)
+	card list visible: false
+	card list name: Designer
+	card list column: 120
+	card list width: 150
+	description: The designer's name.
+
+card field:
+	type: text
+	name: revision 1
+	show statistics: false
+	default: stylesheet; revision_default(input: value, id: 1)
+	script: revision_script(input: value, id: 1)
+	card list visible: true
+	card list name: Rev
+	card list column: 130
+	card list width: 80
+	description: The revision number of the card.
+
+card field:
+	type: text
+	name: saga 1
+	show statistics: false
+	default: stylesheet; saga_default(input: value, id: 1)
+	script: saga_script(input: value, id: 1)
+	card list visible: true
+	card list name: Saga
+	card list column: 140
+	card list width: 200
+	description: The saga this card is part of.
+
+card field:
+	type: text
+	name: saga line 1
+	show statistics: false
+	script: forward_editor(prefix: "Saga: ", field: card.saga_1)
+	card list allow: false
+	description: The text line containing the saga.
+
+card field:
+	type: text
+	name: auto collector number 1
+	show statistics: false
+	editable: false
+	script: set.collector_number_format; collector_number_script(input: value, id: 1)
+	card list allow: false
+	description: The automatic collector number of the card, and total card count.
+
+card field:
+	type: text
+	name: custom collector number 1
+	show statistics: false
+	script: custom_collector_number_script(input: value, id: 1)
+	card list allow: false
+	description: The manual collector number of the card, and total card count.
+
+card field:
+	type: text
+	name: collector number 1
+	show statistics: false
+	script: card.auto_collector_number_1; card.custom_collector_number_1; set.collector_number_format; if auto_collector_number() then card.auto_collector_number_1 else card.custom_collector_number_1
+	card list visible: true
+	card list name: Number
+	card list column: 100
+	card list width: 80
+	description: The collector number of the card, and total card count.
+
+card field:
+	type: text
+	name: sorted notes
+	multi line: true
+	show statistics: false
+	script: card.notes
+	card list visible: false
+	card list name: Notes
+	card list column: 2000
+	card list width: 250
+	description: A mirror of card notes to make it sortable.
+
+card field:
+	type: text
+	name: time modified
+	show statistics: false
+	script: card.time_modified
+	card list visible: false
+	card list name: Time Modified
+	card list column: 2010
+	card list width: 100
+	description: A mirror of time modified to make it sortable.
+
+card field:
+	type: text
+	name: time created
+	show statistics: false
+	script: card.time_created
+	card list visible: false
+	card list name: Time Created
+	card list column: 2020
+	card list width: 100
+	description: A mirror of time created to make it sortable.
+
+card field:
+	type: text
+	name: custom sort
+	show statistics: false
+	#script: custom_sort()
+	card list visible: false
+	card list name: Custom Sort
+	card list column: 9999
+	card list width: 50
+	description: A utility field to sort by more than one column. (Currently not implemented.)

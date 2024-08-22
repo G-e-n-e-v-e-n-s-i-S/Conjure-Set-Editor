@@ -1,0 +1,572 @@
+﻿
+round :=
+{
+	if		input == 0
+		or	input == "0"
+		or	input == "0.0"
+		or	input == "" then 0
+	else if	input > 0 then
+	(
+		int := to_int(input)
+		dec := input-int
+		if dec >= 0.5 then int+1 else int
+	)
+	else
+	(
+		int := to_int(input)
+		dec := input-int
+		if dec <= -0.5 then int-1 else int
+	)
+}
+
+round_away :=
+{
+	if		input == 0
+		or	input == "0"
+		or	input == "0.0"
+		or	input == "" then 0
+	else if	input > 0 then
+	(
+		int := to_int(input)
+		dec := input-int
+		if dec > 0.0 then int+1 else int
+	)
+	else
+	(
+		int := to_int(input)
+		dec := input-int
+		if dec < 0.0 then int-1 else int
+	)
+}
+
+to_int_lax :=
+{
+	input := trim(input)
+	if	input == ""
+	or	input == "x"
+	or	input == "X"
+	or	input == "*"
+	or	input == "-"
+	then 0
+	else to_int(input)
+}
+
+pad :=
+{
+	input := to_string(input)
+	missing := length(input) - to - 1
+	for x from 0 to missing do (
+		input := "0" + input
+	)
+	input
+}
+
+list_contains :=
+{
+	contained := false
+	count := length(list) - 1
+	for x from 0 to count do (if list[x] == input then contained := true; "")
+	contained
+}
+
+clamp :=
+{
+	if input < minimum then minimum
+	else if input > maximum then maximum
+	else input
+}
+
+get_alpha_percentage :=
+{
+	alpha_value :=	if input == "" then default
+					else to_number(input) or else default
+	if alpha_value < 0 then 0.0
+	else if alpha_value <= 100 then alpha_value/100.0
+	else 1.0
+}
+
+crop_safe :=
+{
+	if		offset_x < 0
+		or	offset_y < 0
+		or	width < 1
+		or	height < 1
+		or	offset_x + width > max_x
+		or	offset_y + height > max_y
+	then ""
+	else crop(input, offset_x: offset_x, offset_y: offset_y, width: width, height: height)
+}
+
+popout_left :=		{ split := split_comma(styling.popout_art_coordinates or else ""); if length(split) > 3 and split.0 != "" and split.0 != "-" then clamp(split.0, maximum:2500, minimum:-500)	else 0 }
+popout_top :=		{ split := split_comma(styling.popout_art_coordinates or else ""); if length(split) > 3 and split.1 != "" and split.1 != "-" then clamp(split.1, maximum:3500, minimum:-500)	else 0 }
+popout_width :=		{ split := split_comma(styling.popout_art_coordinates or else ""); if length(split) > 3 and split.2 != "" and split.2 != "-" then clamp(split.2, maximum:2500, minimum:0)		else 0 }
+popout_height :=	{ split := split_comma(styling.popout_art_coordinates or else ""); if length(split) > 3 and split.3 != "" and split.3 != "-" then clamp(split.3, maximum:3500, minimum:0)		else 0 }
+
+background_image :=
+{
+	alpha := get_alpha_percentage(alpha, default: default_alpha)
+	set_alpha(
+		recolor_image(
+			"/conjure-shared.mse-include/colorable.png",
+			color: color
+		),
+		alpha: alpha
+	)
+}@(default_alpha: 45)
+
+split_comma := split_text@(match:" *, *")
+replace_spaces_with_commas := replace@(match: ",? +", replace: ",")
+contract_spaces := replace@(match: "  +", replace: " ")
+remove_brackets := replace@(match: "[\\[\\]]", replace: "")
+
+replace_with_atom_soft_line := replace@(match: "\n", replace: "<atom><soft-line>\n</soft-line></atom>")
+fix_soft_line := replace@(match:"(<atom>)?<soft-line>(.*?)</soft-line>(</atom>)?", replace: { replace_with_atom_soft_line(_2) })
+
+filter_numbers_lax :=	filter_text@(match: "[*xX0-9]+")
+filter_numbers :=		filter_text@(match: "^[0-9]+")
+
+start_with_number_lax := match@(match: "^[*xX0-9]")
+
+numbers_script :=
+{
+	tagless := filter_numbers_lax(remove_tags(input))
+	size := length(tagless)
+	if size < 2 then tagless
+	else if size == 2 then add_old_tag(tagless)
+	else if start_with_number_lax(input) then add_old_tag(tagless.0 + tagless.2)	### if the input starts with a digit, then the digit was inserted at the beginning of the field (otherwise the input would start with a <old> tag), in which case we have to overwrite the old first digit
+	else add_old_tag(tagless.0 + tagless.1)											### otherwise, the digit was inserted at the second or third position, in which case we can just discard the last digit
+}
+
+add_old_tag :=
+{
+	"<old>" + input.0 + "</old><old>" + input.1 + "</old>"
+}
+
+card_code_filter := replace@(match:"^[CURMSL][WUBRGMZACL][0-9]+ ?[-—]? ?", replace:"")
+strip_card_codes :=
+{
+	save := input
+	input := card_code_filter(input)
+	if trim(input) == "" then save else input
+}
+
+remove_grey := replace@(match: ", ?grey", replace: "")
+
+remove_blend_options := replace@(match: ", ?blend[^,]+", replace: "")
+
+is_modal :=		contains@(match:"<li>")
+
+is_character :=	match@(match: "(?i)character")
+is_object :=	match@(match: "(?i)object")
+is_token :=
+{
+	false
+}
+
+is_red :=		match@(match: "(?i)red")
+is_orange :=	match@(match: "(?i)orange")
+is_yellow :=	match@(match: "(?i)yellow")
+is_green :=		match@(match: "(?i)green")
+is_blue :=		match@(match: "(?i)blue")
+is_indigo :=	match@(match: "(?i)indigo")
+is_violet :=	match@(match: "(?i)violet")
+is_grey :=		match@(match: "(?i)grey")
+
+is_r :=			match@(match: "(?i)r")
+is_o :=			match@(match: "(?i)o")
+is_y :=			match@(match: "(?i)y")
+is_g :=			match@(match: "(?i)g")
+is_b :=			match@(match: "(?i)b")
+is_i :=			match@(match: "(?i)i")
+is_v :=			match@(match: "(?i)v")
+is_c :=			match@(match: "(?i)c")
+
+colors_to_number :=
+{
+	(if is_red(input)		then "1" else "0") +
+	(if is_orange(input)	then "1" else "0") +
+	(if is_yellow(input)	then "1" else "0") +
+	(if is_green(input)		then "1" else "0") +
+	(if is_blue(input)		then "1" else "0") +
+	(if is_indigo(input)	then "1" else "0") +
+	(if is_violet(input)	then "1" else "0") +
+	(if is_grey(input)		then "1" else "0")
+}
+
+colors_to_letters :=
+{
+	(if is_red(input)		then "r" else "") +
+	(if is_orange(input)	then "o" else "") +
+	(if is_yellow(input)	then "y" else "") +
+	(if is_green(input)		then "g" else "") +
+	(if is_blue(input)		then "b" else "") +
+	(if is_indigo(input)	then "i" else "") +
+	(if is_violet(input)	then "v" else "") +
+	(if is_grey(input)		then "c" else "")
+}
+
+letters_to_colors :=
+{
+	substring(
+		begin: 1,
+		(if is_r(input)		then ", red"	else "") +
+		(if is_o(input)		then ", orange"	else "") +
+		(if is_y(input)		then ", yellow"	else "") +
+		(if is_g(input)		then ", green"	else "") +
+		(if is_b(input)		then ", blue"	else "") +
+		(if is_i(input)		then ", indigo"	else "") +
+		(if is_v(input)		then ", violet"	else "") +
+		(if is_c(input)		then ", grey"	else "")
+	)
+}
+
+symbol_context :=
+	"(?ix)								### case insensitive, ignore whitespace
+	(^|[\\s(\"“‘'’,:;—-]|[0-9])			### start of the string, white space, parentheses, quote, comma, colon, dash or number
+	<match>								### the actual symbol
+	([\\s),\\.\"”’':;—-]|$)"			### white space, parentheses, comma, dot, quote, colon, dash or end of the string
+
+replace_symbols := replace@(match: "([ROYGBIVLU]+[0-9]*X?)", in_context: symbol_context, replace: {"<sym-auto>" + _1 + "</sym-auto>"})
+
+symbol_number_context :=
+	"(?ix)															### case insensitive, ignore whitespace
+	(^|[(\"“‘'’,:;—]|pay\\s|add\\s|create\\s|</sym>|</sym-auto>)	### start of the string, parentheses, quote, comma, colon, dash, pay, add or sym tag
+	<match>															### the actual symbol
+	([\\s),\\.\"”’':;—-]|$)"										### white space, parentheses, comma, dot, quote, colon, dash or end of the string
+
+replace_number_symbols := replace@(match: "([0-9X][0-9]?)", in_context: symbol_number_context, replace: {"<sym-auto>" + _1 + "</sym-auto>"})
+
+frame_default :=
+{
+	colors := letters_to_colors(card["mana_cost_" + id])
+	object := if is_object(card["super_type_" + id]) then "grey" else ""
+	colors + (if colors != "" then ", " else "") + object
+}
+frame_script := { value }
+
+outer_border_default := { set.border }
+outer_border_script := { value }
+
+inner_border_script :=
+{
+	outer_border := card["outer_border_" + id]
+	if outer_border == "hidden" or outer_border == "bottom full art" then "hidden" else "shown"
+}
+
+#bleed_border_default := { set.bleed_border }
+#bleed_border_script := { value }
+
+name_default := { "" }
+name_script := { value }
+
+type_over_type := replace@(match:" ?[-:]$", replace:"")
+
+split_types := split_text@(match: ", *| +|<atom-sep>[^<]*</atom-sep>", include_empty:false)
+
+all_super_types :=
+{
+	all := for each card in set do
+	(
+		parts := split_types(remove_tags(card.super_type_1))
+		for each part in parts do ("," + part)
+	)
+	substring(all, begin: 1)
+}
+
+all_sub_types :=
+{
+	all := for each card in set do
+	(
+		parts := split_types(remove_tags(card.sub_type_1))
+		for each part in parts do ("," + part)
+	)
+	substring(all, begin: 1)
+}
+
+remove_super_type_prefixes := replace@(match: "(?i)Quick|Mythic|Ongoing|Core", replace: "") + contract_spaces + trim
+filter_super_type_prefixes := filter_text@(match: "(?i)Quick|Mythic|Ongoing|Core| ") + contract_spaces + trim
+
+super_type_default := { "" }
+super_type_script :=
+{
+	input := remove_tag(tag: "<word-list-")
+	input := type_over_type()
+	"<word-list-super_type>" + input + "</word-list-super_type>"
+}
+
+sub_type_default := { "" }
+sub_type_script :=
+{
+	input := remove_tag(tag: "<word-list-")
+	input := remove_tag(tag: "<soft")
+	parts := split_types(input)
+	size := length(parts) - 1
+	(for x from 0 to size do ((if x == 0 then "" else " ") + "<word-list-sub_type>" + parts[x] + "</word-list-sub_type>")) +
+	(if length(parts) > 0 then "<soft> </soft>" else "") +
+	("<word-list-sub_type></word-list-sub_type>")
+}
+
+type_script :=
+{
+	combined_editor(
+		field1:				card.super_type_1,
+		separator:			" — ",
+		field2:				card.sub_type_1,
+		soft_before_empty:	true,
+		hide_when_empty:	true
+	)
+}
+
+mana_filter :=
+	to_upper +
+	sort_text@(order: "[/ROYGBIVX0123456789]")
+
+mana_cost_sort_ROYGBIV :=
+	mana_filter +
+	### sort hybrid pairs
+	replace@(
+		match: "./.",
+		in_context: "(^|[^/])<match>($|[^/])",
+		replace: {sort_text(order:"in_place(9876543210ROYGBIV)")}
+	) +
+	### move number hybrids at the end
+	replace@(
+		match: "(^|.*[^/])([0-9]/[^/0-9])([^/].*)",
+		replace: "\\1\\3\\2"
+	) +
+	### move numbers at the end
+	replace@(
+		match: "(^|.*[^/0-9])([0-9]+)([^/0-9].*)",
+		replace: "\\1\\3\\2"
+	) +
+	### move numbers in front of a number hybrid at the end
+	replace@(
+		match: "(^|.*[^/0-9])([0-9]+)([0-9]/.*)",
+		replace: "\\1\\3\\2"
+	) +
+	### move X at the end
+	replace@(
+		match: "(.*)X(.*)",
+		replace: "\\1\\2X"
+	)
+
+mana_cost_default := { "" }
+mana_cost_script :=
+{
+	if set.mana_cost_sort == "ROYGBIV" then mana_cost_sort_ROYGBIV()
+	else mana_filter()
+}
+
+pip_split := break_text@(match: "(?ix) [0-9]/[ROYGBIV] | [ROYGBIV](/[ROYGBIV])?")
+pip_count :=
+{
+	total_count := length(input) - 1
+	for x from 0 to total_count do (if contains(input[x], match: symbol) then 1 else 0)
+}
+
+cmc_split := break_text@(match: "(?ix) [0-9]+(?!/) | [ROYGBIV0-9](/[ROYGBIV])\{0,4} ")
+cmc :=
+{
+	for each sym in cmc_split(to_text()) do (
+		numbers := filter_numbers(sym)
+		if numbers != "" then	to_int(numbers)
+		else					1					#### all other symbols are 1
+	)
+}
+
+orb_default :=
+{
+	if card["stat_" + id] == "" then "hidden" else (
+	if		id == 1 then	"attack"
+	else if	id == 2 then	"health"
+	else if	id == 3 then	"arcane"
+	else					"blank")
+}
+orb_script := { value }
+
+stat_default := { "" }
+stat_script := filter_numbers_lax + to_upper
+
+read_stat :=
+{
+	if		contains(card.orb_1, match: input) then card.stat_1
+	else if	contains(card.orb_2, match: input) then card.stat_2
+	else if	contains(card.orb_3, match: input) then card.stat_3
+	else if	contains(card.orb_4, match: input) then card.stat_4
+	else ""
+}
+
+has_rule := { trim(remove_tags(card.rule_text_1)) != "" }
+has_lore := { trim(remove_tags(card.lore_text_1)) != "" }
+
+lore_bar_default := { if has_rule() and has_lore() then set.lore_bar else "hidden" }
+lore_bar_script := { value }
+
+artist_default := { set.artist }
+artist_script := { value }
+
+designer_default := { set.designer }
+designer_script := { value }
+
+saga_default := { set.title }
+saga_script := { value }
+
+revision_default := { "" }
+revision_script := { value }
+
+custom_collector_number_default := { collector_number_script() }
+custom_collector_number_script := { value }
+
+auto_collector_number := { styling.automatic_collector_number or else true }
+
+collector_number :=
+{
+	position(
+		of: card
+		in: set
+		order_by: { colors_to_number(card.frame_1) + card.name_1 }
+	) + 1
+}
+collector_number_script :=
+{
+	if set.collector_number_format == "hidden" then "" else (
+	number := collector_number()
+	if not contains(set.collector_number_format, match: "/") then
+	(
+		if		contains(set.collector_number_format, match: "0001") then	number := pad(number, to: 4)
+		else if	contains(set.collector_number_format, match: "001") then	number := pad(number, to: 3)
+		number
+	)
+	else
+	(
+		count := length(set.cards)
+		if		contains(set.collector_number_format, match: "0001") then	(number := pad(number, to: 4); count := pad(count, to: 4))
+		else if	contains(set.collector_number_format, match: "001") then	(number := pad(number, to: 3); count := pad(count, to: 3))
+		number + "/" + count
+	))
+}
+
+bolden_keywords := { false }
+
+spellcheck_exceptions_match := match@(match:
+	"(?ix)^(?:							### match whole word
+	  <atom-[^>]*>.*?</atom-[^>]*>		### cardnames and stuff
+	| [+-]?[0-9X]+ / [+-]?[0-9X]+		### '3/3', '+X/+X'
+	)$")
+
+rule_text_default := { "" }
+rule_text_script :=
+	### step 1 : remove automatic markers
+	remove_tag@(tag: "<sym-auto>") +
+	remove_tag@(tag: "<i-auto>")   +
+	remove_tag@(tag: "<b-auto>")   +
+	remove_tag@(tag: "<error-spelling") +
+	remove_tag@(tag: "<nospellcheck") +
+	remove_tag@(tag: "<color") +
+	#remove_tag@(tag: "<li>") +
+	#remove_tag@(tag: "<bullet>") +
+	#remove_tag@(tag: "<align") +
+	#remove_tag@(tag: "<margin") +
+	### step 2 : reminder text for keywords
+	### step 2a : expand reminder texts
+	expand_keywords@(
+		default_expand:
+		{
+			chosen(set.automatic_reminder_text, choice: mode)
+		},
+		combine:
+		{
+			keyword := "<nospellcheck>{keyword}</nospellcheck>"
+			if bolden_keywords() then keyword := "<b-auto>" + keyword + "</b-auto>"
+			reminder := process_english_hints(reminder)
+			keyword + if expand then "<atom-reminder-{mode}> ({reminder})</atom-reminder-{mode}>" else ""
+		}
+	) +
+	### step 2b : move reminder texts to the end of the line
+	replace@(
+		match: "(<atom-reminder-[^>]+> (?:(?!</kw).*?)</atom-reminder-[^>]+></kw[^>]*>)([^\n]*)",
+		replace: "\\2\\1"
+	) +
+	### step 2c : remove duplicate reminder text
+	replace@(
+		match: "(<atom-reminder-[^>]*>[^)]+[)]</atom-reminder-[^>]*>)([^\n]+)\\1"
+		replace: "\\2\\1"
+	) +
+	### step 2d : combine reminder texts
+	replace@(
+		match: "[)](</i-auto>)?(</atom-reminder-[^>]+></kw-[^>]>) ?(<atom-reminder-[^>]+> )(<i-auto>)?[(]"
+		replace: "\\2\\3"
+	) +
+	### step 3 : expand shortcut word CARDNAME
+	replace@(
+		match: "CARDNAME>?",
+		in_context: "(^|[[:space:]]|\\(|,|\\.|:|“|\"|'|‘|-|—|/|​)<match>",		### TODO: Allow any punctuation before
+		replace: { "<nospellcheck>" + (if card.name_1 == "" then "CARDNAME" else strip_card_codes(card.name_1)) + "</nospellcheck>" }
+	) +
+	### step 4 : symbols
+	### step 4a : explict non symbols
+	replace@(
+		match: "\\][-+=]?[ROYGBIVLUX0-9/]+\\[",
+		replace: {"<nosym>" + remove_brackets(input) + "</nosym>"}
+	) +
+	### step 4b : mana and tap symbols
+	replace_symbols +
+	replace_number_symbols +
+	### step 4c : explicit symbols
+	replace@(
+		match: "\\[[-+=]?[ROYGBIVLUX0-9/]+\\]",
+		replace: {"<sym>" + remove_brackets(input) + "</sym>"}
+	) +
+	### step 5 : italicize text in parenthesis
+	replace@(
+	 	match: "[(]([^)\n]|[(][^)\n]*[)])*[)]?",
+		in_context: "(^|[[:space:]])<match>|<atom-keyword><match></",
+	 	replace: "<i-auto>&</i-auto>"
+	) +
+	### step 6 : automatic capitalization, but not after "("
+	replace@(
+		match: "([ ]*: |—| — )"		### preceded by this
+		     + "([[:lower:]])"		### match this
+		     + "(?![)])",			### not followed by this
+		replace: { _1 + to_upper(_2) }
+	) +
+	### step 7 : fix for soft line breaks
+	fix_soft_line +
+	### step 8 : spellcheck
+	{ 
+		if set.spell_check then
+		check_spelling(
+			language: "en_US",
+			extra_dictionary: "/conjure.mse-game/dictionaries/conjure-words",
+			extra_match: spellcheck_exceptions_match
+		)
+	  else input
+	}
+
+lore_text_default := { "" }
+lore_text_script :=
+	### step 1 : remove tags
+	remove_tag@(tag: "<i-flavor>") +
+	#### step 2 : fix for soft line breaks
+	fix_soft_line +
+	### step 3 : spellcheck
+	{
+		if set.spell_check then
+		check_spelling(
+			language: "en_US",
+			extra_dictionary: "/conjure.mse-game/dictionaries/conjure-words",
+			extra_match: spellcheck_exceptions_match
+		)
+		else input
+	} +
+	### step 4 : surround by italic tags
+	{ "<i-flavor>" + input + "</i-flavor>" }
+
+text_script :=
+{
+	combined_editor(
+		field1:				card.rule_text_1,
+		separator:			"<line>\n</line>",
+		field2:				card.lore_text_1
+	)
+}

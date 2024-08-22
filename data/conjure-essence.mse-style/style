@@ -1,0 +1,541 @@
+﻿mse version: 2.4.0
+game: conjure
+short name: Essence
+icon: thumbnail.png
+position hint: 1
+
+version: 2024-08-31
+depends on:
+	package: conjure.mse-game
+	version: 2024-08-31
+depends on:
+	package: conjure-shared.mse-include
+	version: 2024-08-31
+depends on:
+	package: conjure-symbols.mse-symbol-font
+	version: 2024-08-31
+
+card width: 1500
+card height: 2100
+card dpi: 600
+
+
+### blanks by Conjure UCG
+### code by GenevensiS
+
+
+####################################### Extra scripts
+
+init script:
+	card_shape := { "essence" }
+	
+	swap_fonts_name_default :=
+	[
+		name: {"Book Antiqua Bold"},
+		size: {64},
+		color: {"black"},
+		vertical: {0},
+		italic: {"Book Antiqua Bold Italic"}
+	]
+	swap_fonts_type_default :=
+	[
+		name: {"Book Antiqua Bold"},
+		size: {38},
+		color: {"black"},
+		vertical: {0},
+		italic: {"Book Antiqua Bold Italic"}
+	]
+	swap_fonts_rule_default :=
+	[
+		name: {"Book Antiqua"},
+		size: {64},
+		color: {"black"},
+		vertical: {0},
+		italic: {"Book Antiqua Italic"}
+	]
+	swap_fonts_lore_default :=
+	[
+		name: {"Book Antiqua"},
+		size: {44},
+		color: {"black"},
+		vertical: {0},
+		italic: {"Book Antiqua Italic"}
+	]
+	swap_fonts_info_default :=
+	[
+		name: {"Book Antiqua"},
+		size: {26},
+		color: {rgb(185,180,185)},
+		vertical: {0},
+		italic: {"Book Antiqua Italic"}
+	]
+	
+	namebox_background_image := { background_image(color: styling.namebox_color, alpha: styling.namebox_opacity_percentage) }
+	typebox_background_image := { background_image(color: styling.typebox_color, alpha: styling.typebox_opacity_percentage) }
+	
+	is_symboled := { styling.mana_symbols }
+	symbol_padding := { 66 }
+	symbol_size := { 190 }
+	symbol_count := { length(colors_to_letters(card.frame_1)) }
+	symbol_position :=
+	{
+		total_available_space := stylesheet.card_width - 2 * symbol_padding()
+		symbol_padding() + total_available_space * input/(symbol_count()+1)
+	}
+	
+	border_mask :=
+	{
+		base := to_image("/conjure-shared.mse-include/outer border mask" + (if card.outer_border_1 == "bottom" or card.outer_border_1 == "bottom full art" then " bottom" else "") + ".png")
+		count := symbol_count()
+		if is_symboled() and count >= 1 then
+		(
+			half_size := symbol_size()/2
+			for x from 1 to count do (
+				offset := 2 * (1500 - symbol_position(x))
+				mask := crop_safe("symbol border mask.png", offset_x: offset, offset_y: 0, width: 3000, height: 4200, max_x: 6000, max_y: 4200)
+				base := combine_blend(image1: base, image2: mask, combine: "add")
+				""
+			)
+			base
+		)
+		else base
+	}
+	
+	art_mask :=
+	{
+		boxes :=	"image mask.png"
+		outer :=	"/conjure-shared.mse-include/outer border image mask" + (if card.outer_border_1 == "bottom" or card.outer_border_1 == "bottom full art" then " bottom" else "") + ".png"
+		final :=	if card.outer_border_1 == "hidden" then boxes else combine_blend(image1: boxes, image2: outer, combine: "multiply")
+		crop(final, offset_x: 2 * art_left(), offset_y: 2 * art_top(), width: 2 * (art_right() - art_left()), height: 2 * (art_bottom() - art_top()))
+	}
+	
+	art_left :=		{ 0 }
+	art_right :=	{ stylesheet.card_width }
+	art_top :=		{ if styling.stretch_art_to_whole_card or card.outer_border_1 != "top and bottom"	then 0						else 310 }
+	art_bottom :=	{ if styling.stretch_art_to_whole_card or card.outer_border_1 == "hidden"			then stylesheet.card_height	else 1866 }
+
+####################################### Styling fields
+
+styling field:
+	type:			text
+	name:			popout art coordinates
+	description:	The coordinates for the popout image field, formatted as "left,top,width,height". Used to make the illustration jump in front of the frame.
+styling field:
+	type:			boolean
+	name:			stretch art to whole card
+	description:	Make the image span the whole card instead of just the visible part. Use this to help make popout effects.
+	initial:		no
+
+styling field:
+	type:			boolean
+	name:			mana symbols
+	description:	Display the mana symbols?
+
+styling field:
+	type:			boolean
+	name:			automatic collector number
+	description:	Automatically calculate the card number, or manually type it in?
+
+styling field:
+	type:			boolean
+	name:			center name
+	description:	Center the name on the card.
+	initial:		yes
+styling field:
+	type:			text
+	name:			custom name font
+	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
+styling field:
+	type:			text
+	name:			namebox opacity percentage
+	description:	Set the opacity percentage for the namebox. Opaque is 100, transparent is 0, default is 45.
+styling field:
+	type:			color
+	name:			namebox color
+	description:	Use the specified color for the namebox background.
+	choice:
+		name:			black
+		color:			rgb(0,0,0)
+	choice:
+		name:			white
+		color:			rgb(255,255,255)
+	initial:		rgb(255,255,255)
+
+styling field:
+	type:			boolean
+	name:			center type
+	description:	Center the type on the card.
+	initial:		yes
+styling field:
+	type:			text
+	name:			custom type font
+	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
+styling field:
+	type:			text
+	name:			typebox opacity percentage
+	description:	Set the opacity percentage for the typebox. Opaque is 100, transparent is 0, default is 45.
+styling field:
+	type:			color
+	name:			typebox color
+	description:	Use the specified color for the textbox background.
+	choice:
+		name:			black
+		color:			rgb(0,0,0)
+	choice:
+		name:			white
+		color:			rgb(255,255,255)
+	initial:		rgb(255,255,255)
+
+styling field:
+	type:			text
+	name:			custom info font
+	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
+
+####################################### Card styles
+
+card style:
+	############################# Frame
+	frame 1:
+		left:				0
+		top:				0
+		width:				{ stylesheet.card_width }
+		height:				{ stylesheet.card_height }
+		z index:			30
+		popup style:		in place
+		render style:		image
+		choice images:
+			"":					/conjure.mse-game/blend icons/c.png
+			red:				/conjure.mse-game/blend icons/r.png
+			orange:				/conjure.mse-game/blend icons/o.png
+			yellow:				/conjure.mse-game/blend icons/y.png
+			green:				/conjure.mse-game/blend icons/g.png
+			blue:				/conjure.mse-game/blend icons/b.png
+			indigo:				/conjure.mse-game/blend icons/i.png
+			violet:				/conjure.mse-game/blend icons/v.png
+			grey:				/conjure.mse-game/blend icons/c.png
+			blend reversed:		/conjure.mse-game/blend icons/reversed.png
+			blend vertical:		/conjure.mse-game/blend icons/vertical.png
+			blend offset 1:		/conjure.mse-game/blend icons/offset 1.png
+			blend offset 2:		/conjure.mse-game/blend icons/offset 2.png
+			blend offset 4:		/conjure.mse-game/blend icons/offset 4.png
+		image:				{ color_blend(card.frame_1, folder: "card top") }
+		mask:				card mask.png
+	outer border 1:
+		left:				0
+		top:				0
+		width:				{ stylesheet.card_width }
+		height:				{ stylesheet.card_height }
+		z index:			20
+		visible:			{ card.outer_border_1 != "hidden" }
+		popup style:		in place
+		render style:		image
+		image:				{ color_blend(card.frame_1, folder: "/conjure-shared.mse-include/outer border") }
+		mask:				{ border_mask() }
+	
+	############################# Nameline
+	name 1:
+		left:				{ 120	+ (if card_style.mana_cost_1.content_width == 0								then 0 else card_style.mana_cost_1.content_width + 16) }
+		right:				{ 1380	- (if card_style.mana_cost_1.content_width == 0 or not styling.center_name	then 0 else card_style.mana_cost_1.content_width + 16) }
+		top:				{ 94 + name_font_vertical() }
+		height:				110
+		z index:			1000
+		alignment:			{if styling.center_name then "middle center shrink-overflow" else "middle right shrink-overflow"}
+		font:
+			name:				{ name_font() }
+			italic name:		{ name_font_italic() }
+			color:				{ name_font_color() }
+			size:				{ name_font_size() }
+			scale down to:		10
+	mana cost 1:
+		left:				108
+		width:				{ max(140, card_style.mana_cost_1.content_width + 24) }
+		top:				101
+		height:				110
+		z index:			1010
+		alignment:			middle left
+		always symbol:		true
+		font:
+			name:				Book Antiqua
+			italic name:		Book Antiqua Italic
+			size:				{ name_font_size() }
+			color:				black
+		symbol font:
+			name:				conjure-symbols
+			size:				{ name_font_size() }
+	
+	############################# Typeline
+	type 1:
+		left:				156
+		right:				1344
+		top:				224
+		height:				66
+		z index:			1000
+		alignment:			{if styling.center_type then "middle center shrink-overflow" else "middle left shrink-overflow"}
+		font:
+			name:				{ type_font() }
+			italic name:		{ type_font_italic() }
+			color:				{ type_font_color() }
+			size:				{ type_font_size() }
+			scale down to:		10
+	
+	############################# Information
+	designer 1:
+		left:				134
+		top:				1976
+		width:				545
+		height:				44
+		z index:			1000
+		alignment:			middle left shrink-overflow
+		font:
+			name:				{ info_font() }
+			italic name:		{ info_font_italic() }
+			color:				{ info_font_color() }
+			size:				{ info_font_size() }
+			scale down to:		10
+	artist line 1:
+		right:				1366
+		top:				1976
+		width:				545
+		height:				44
+		z index:			1000
+		alignment:			middle right shrink-overflow
+		font:
+			name:				{ info_font() }
+			italic name:		{ info_font_italic() }
+			color:				{ info_font_color() }
+			size:				{ info_font_size() }
+			scale down to:		10
+	saga line 1:
+		left:				134
+		top:				2026
+		width:				545
+		height:				44
+		z index:			1000
+		alignment:			middle left shrink-overflow
+		font:
+			name:				{ info_font() }
+			italic name:		{ info_font_italic() }
+			color:				{ info_font_color() }
+			size:				{ info_font_size() }
+			scale down to:		10
+	auto collector number 1:
+		right:				1366
+		top:				2026
+		width:				{ if auto_collector_number() then 545 else 0 }
+		height:				44
+		z index:			1000
+		alignment:			middle right shrink-overflow
+		font:
+			name:				{ info_font() }
+			italic name:		{ info_font_italic() }
+			color:				{ info_font_color() }
+			size:				{ info_font_size() }
+			scale down to:		10
+	custom collector number 1:
+		right:				1366
+		top:				2026
+		width:				{ if auto_collector_number() then 0 else 545 }
+		height:				44
+		z index:			1000
+		alignment:			middle right shrink-overflow
+		font:
+			name:				{ info_font() }
+			italic name:		{ info_font_italic() }
+			color:				{ info_font_color() }
+			size:				{ info_font_size() }
+			scale down to:		10
+	revision 1:
+		left:				695
+		top:				2026
+		width:				110
+		height:				44
+		z index:			1000
+		alignment:			middle center shrink-overflow
+		font:
+			name:				{ info_font() }
+			italic name:		{ info_font_italic() }
+			color:				{ info_font_color() }
+			size:				{ info_font_size() }
+			scale down to:		10
+	
+	############################# Illustration
+	art 1:
+		left:				{ art_left() }
+		right:				{ art_right() }
+		top:				{ art_top() }
+		bottom:				{ art_bottom() }
+		z index:			0
+		mask:				{ art_mask() }
+	popout art 1:
+		left:				{ popout_left() }
+		top:				{ popout_top() }
+		width:				{ popout_width() }
+		height:				{ popout_height() }
+		z index:			500
+	
+####################################### Extra card fields
+
+extra card field:
+	type:				choice
+	name:				namebox background
+	editable:			false
+	save value:			false
+	choice:				namebox background
+extra card field:
+	type:				choice
+	name:				typebox background
+	editable:			false
+	save value:			false
+	choice:				typebox background
+extra card field:
+	type:				choice
+	name:				mana symbol 1
+	editable:			false
+	save value:			false
+	choice:				mana symbol 1
+extra card field:
+	type:				choice
+	name:				mana symbol 2
+	editable:			false
+	save value:			false
+	choice:				mana symbol 2
+extra card field:
+	type:				choice
+	name:				mana symbol 3
+	editable:			false
+	save value:			false
+	choice:				mana symbol 3
+extra card field:
+	type:				choice
+	name:				mana symbol 4
+	editable:			false
+	save value:			false
+	choice:				mana symbol 4
+extra card field:
+	type:				choice
+	name:				mana symbol 5
+	editable:			false
+	save value:			false
+	choice:				mana symbol 5
+extra card field:
+	type:				choice
+	name:				mana symbol 6
+	editable:			false
+	save value:			false
+	choice:				mana symbol 6
+extra card field:
+	type:				choice
+	name:				mana symbol 7
+	editable:			false
+	save value:			false
+	choice:				mana symbol 7
+extra card field:
+	type:				choice
+	name:				mana symbol 8
+	editable:			false
+	save value:			false
+	choice:				mana symbol 8
+
+####################################### Extra card styles
+
+extra card style:
+	namebox background:
+		left:				0
+		top:				0
+		width:				{ stylesheet.card_width }
+		height:				{ stylesheet.card_height }
+		z index:			31
+		popup style:		in place
+		render style:		image
+		image:				{ namebox_background_image() }
+		mask:				/conjure-shared.mse-include/namebox mask.png
+	typebox background:
+		left:				0
+		top:				0
+		width:				{ stylesheet.card_width }
+		height:				{ stylesheet.card_height }
+		z index:			31
+		popup style:		in place
+		render style:		image
+		image:				{ typebox_background_image() }
+		mask:				/conjure-shared.mse-include/typebox mask.png
+	mana symbol 1:
+		left:				{ symbol_position(1) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 1 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[0] + ".png" }
+	mana symbol 2:
+		left:				{ symbol_position(2) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 2 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[1] + ".png" }
+	mana symbol 3:
+		left:				{ symbol_position(3) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 3 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[2] + ".png" }
+	mana symbol 4:
+		left:				{ symbol_position(4) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 4 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[3] + ".png" }
+	mana symbol 5:
+		left:				{ symbol_position(5) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 5 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[4] + ".png" }
+	mana symbol 6:
+		left:				{ symbol_position(6) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 6 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[5] + ".png" }
+	mana symbol 7:
+		left:				{ symbol_position(7) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 7 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[6] + ".png" }
+	mana symbol 8:
+		left:				{ symbol_position(8) - symbol_size()/2 }
+		top:				1776
+		width:				{ symbol_size() }
+		height:				{ symbol_size() }
+		z index:			31
+		visible:			{ is_symboled() and symbol_count() >= 8 }
+		popup style:		in place
+		render style:		image
+		image:				{ "mana symbols/" + colors_to_letters(card.frame_1)[7] + ".png" }

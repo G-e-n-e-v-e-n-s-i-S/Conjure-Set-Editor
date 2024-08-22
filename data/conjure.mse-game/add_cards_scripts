@@ -1,0 +1,111 @@
+
+add cards script:
+	name: 1 card of each color
+	description: Adds 8 empty cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "red"]),
+			new_card([name: "", frame_1: "orange"]),
+			new_card([name: "", frame_1: "yellow"]),
+			new_card([name: "", frame_1: "green"]),
+			new_card([name: "", frame_1: "blue"]),
+			new_card([name: "", frame_1: "indigo"]),
+			new_card([name: "", frame_1: "violet"]),
+			new_card([name: "", frame_1: "grey"])
+		]
+
+add cards script:
+	name: 5 red cards
+	description: Adds 5 empty red cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "red"]),
+			new_card([name: "", frame_1: "red"]),
+			new_card([name: "", frame_1: "red"]),
+			new_card([name: "", frame_1: "red"]),
+			new_card([name: "", frame_1: "red"])
+		]
+
+add cards script:
+	name: 5 orange cards
+	description: Adds 5 empty orange cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "orange"]),
+			new_card([name: "", frame_1: "orange"]),
+			new_card([name: "", frame_1: "orange"]),
+			new_card([name: "", frame_1: "orange"]),
+			new_card([name: "", frame_1: "orange"])
+		]
+
+add cards script:
+	name: 5 yellow cards
+	description: Adds 5 empty yellow cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "yellow"]),
+			new_card([name: "", frame_1: "yellow"]),
+			new_card([name: "", frame_1: "yellow"]),
+			new_card([name: "", frame_1: "yellow"]),
+			new_card([name: "", frame_1: "yellow"])
+		]
+
+add cards script:
+	name: 5 green cards
+	description: Adds 5 empty green cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "green"]),
+			new_card([name: "", frame_1: "green"]),
+			new_card([name: "", frame_1: "green"]),
+			new_card([name: "", frame_1: "green"]),
+			new_card([name: "", frame_1: "green"])
+		]
+
+add cards script:
+	name: 5 blue cards
+	description: Adds 5 empty blue cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "blue"]),
+			new_card([name: "", frame_1: "blue"]),
+			new_card([name: "", frame_1: "blue"]),
+			new_card([name: "", frame_1: "blue"]),
+			new_card([name: "", frame_1: "blue"])
+		]
+
+add cards script:
+	name: 5 indigo cards
+	description: Adds 5 empty indigo cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "indigo"]),
+			new_card([name: "", frame_1: "indigo"]),
+			new_card([name: "", frame_1: "indigo"]),
+			new_card([name: "", frame_1: "indigo"]),
+			new_card([name: "", frame_1: "indigo"])
+		]
+
+add cards script:
+	name: 5 violet cards
+	description: Adds 5 empty violet cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "violet"]),
+			new_card([name: "", frame_1: "violet"]),
+			new_card([name: "", frame_1: "violet"]),
+			new_card([name: "", frame_1: "violet"]),
+			new_card([name: "", frame_1: "violet"])
+		]
+
+add cards script:
+	name: 5 grey cards
+	description: Adds 5 empty grey cards to the set
+	script:
+		[
+			new_card([name: "", frame_1: "grey"]),
+			new_card([name: "", frame_1: "grey"]),
+			new_card([name: "", frame_1: "grey"]),
+			new_card([name: "", frame_1: "grey"]),
+			new_card([name: "", frame_1: "grey"])
+		]

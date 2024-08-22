@@ -1,0 +1,98 @@
+﻿word list:
+	name: super_type
+	word:
+		name: Quick 
+		is prefix: true
+	word:
+		name: Mythic 
+		is prefix: true
+	word:
+		name: Ongoing 
+		is prefix: true
+	word:
+		name: Core 
+		is prefix: true
+		line below: true
+	word: Action
+	word: Spell
+	word: Character
+	word: Object
+	word: Essence
+	word: Object Character
+
+word list:
+	name: sub_type
+	word:
+		script: all_sub_types()
+		line below: true
+	word:
+		name: all sub types
+		word: Alchemist
+		word: Ancient
+		word: Aqua
+		word: Armor
+		word: Artificer
+		word: Aspect
+		word: Avatar
+		word: Bard
+		word: Beast
+		word: Bow
+		word: Clawed
+		word: Cleric
+		word: Construct
+		word: Cryo
+		word: Curse
+		word: Demon
+		word: Divine
+		word: Druid
+		word: Elemental
+		word: Elf
+		word: Esper
+		word: Familiar
+		word: Fanged
+		word: Focus
+		word: Geist
+		word: Geo
+		word: Giant
+		word: God
+		word: Golem
+		word: Hero
+		word: Horned
+		word: Horror
+		word: Idol
+		word: Illusion
+		word: Imp
+		word: Insect
+		word: Instrument
+		word: Knife
+		word: Mace
+		word: Monk
+		word: Mutant
+		word: Necro
+		word: Pest
+		word: Plant
+		word: Potion
+		word: Pyro
+		word: Ranger
+		word: Relic
+		word: Rogue
+		word: Scaly
+		word: Shade
+		word: Shaman
+		word: Shield
+		word: Slimy
+		word: Soldier
+		word: Song
+		word: Spear
+		word: Spirit
+		word: Swimming
+		word: Sword
+		word: Trick
+		word: Undead
+		word: Vampire
+		word: Void
+		word: Warrior
+		word: Wild
+		word: Winged
+		word: Wizard
+		word: Zephyr

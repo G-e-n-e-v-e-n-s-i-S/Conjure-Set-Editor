@@ -1,0 +1,295 @@
+
+color_zwsp_map :=
+[
+		"C":			"​C"
+		"R":			"​​R"
+		"O":			"​​​O"
+		"Y":			"​​​​Y"
+		"G":			"​​​​​G"
+		"B":			"​​​​​​B"
+		"I":			"​​​​​​​I"
+		"V":			"​​​​​​​​V"
+		"RO":			"​​​​​​​​​RO"
+		"RY":			"​​​​​​​​​​RY"
+		"RG":			"​​​​​​​​​​​RG"
+		"RB":			"​​​​​​​​​​​​RB"
+		"RI":			"​​​​​​​​​​​​​RI"
+		"RV":			"​​​​​​​​​​​​​​RV"
+		"OY":			"​​​​​​​​​​​​​​​OY"
+		"OG":			"​​​​​​​​​​​​​​​​OG"
+		"OB":			"​​​​​​​​​​​​​​​​​OB"
+		"OI":			"​​​​​​​​​​​​​​​​​​OI"
+		"OV":			"​​​​​​​​​​​​​​​​​​​OV"
+		"YG":			"​​​​​​​​​​​​​​​​​​​​YG"
+		"YB":			"​​​​​​​​​​​​​​​​​​​​​YB"
+		"YI":			"​​​​​​​​​​​​​​​​​​​​​​YI"
+		"YV":			"​​​​​​​​​​​​​​​​​​​​​​​YV"
+		"GB":			"​​​​​​​​​​​​​​​​​​​​​​​​GB"
+		"GI":			"​​​​​​​​​​​​​​​​​​​​​​​​​GI"
+		"GV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​GV"
+		"BI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​BI"
+		"BV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​BV"
+		"IV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​IV"
+		"ROY":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROY"
+		"ROG":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROG"
+		"ROB":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROB"
+		"ROI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROI"
+		"ROV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ROV"
+		"RYG":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYG"
+		"RYB":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYB"
+		"RYI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYI"
+		"RYV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RYV"
+		"RGB":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RGB"
+		"RGI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RGI"
+		"RGV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RGV"
+		"RBI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RBI"
+		"RBV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RBV"
+		"RIV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​RIV"
+		"OYG":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYG"
+		"OYB":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYB"
+		"OYI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYI"
+		"OYV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OYV"
+		"OGB":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OGB"
+		"OGI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OGI"
+		"OGV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OGV"
+		"OBI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OBI"
+		"OBV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OBV"
+		"OIV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​OIV"
+		"YGB":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YGB"
+		"YGI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YGI"
+		"YGV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YGV"
+		"YBI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YBI"
+		"YBV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YBV"
+		"YIV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​YIV"
+		"GBI":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​GBI"
+		"GBV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​GBV"
+		"GIV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​GIV"
+		"BIV":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​BIV"
+		"4+":			"​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​4+"
+]
+color_stat :=
+{
+	colors := replace(to_upper(colors_to_letters(card.frame_1)), match: "C", replace: "")
+	color_count := length(colors)
+	result :=	if color_count > 3 then "4+"
+				else if color_count == 0 then "C"
+				else colors
+	color_zwsp_map[result] or else color_zwsp_map[reverse(result)]
+}
+
+color_count_stat :=
+{
+	colors := replace(to_upper(colors_to_letters(card.frame_1)), match: "C", replace: "")
+	length(colors)
+}
+
+pip_zwsp_map :=
+[
+	"R":		"​R"
+	"RR":		"​​RR"
+	"RRR":		"​​​RRR"
+	"RRRR+":	"​​​​RRRR+"
+	"O":		"​​​​​O"
+	"OO":		"​​​​​​OO"
+	"OOO":		"​​​​​​​OOO"
+	"OOOO+":	"​​​​​​​​OOOO+"
+	"Y":		"​​​​​​​​​Y"
+	"YY":		"​​​​​​​​​​YY"
+	"YYY":		"​​​​​​​​​​​YYY"
+	"YYYY+":	"​​​​​​​​​​​​YYYY+"
+	"G":		"​​​​​​​​​​​​​G"
+	"GG":		"​​​​​​​​​​​​​​GG"
+	"GGG":		"​​​​​​​​​​​​​​​GGG"
+	"GGGG+":	"​​​​​​​​​​​​​​​​GGGG+"
+	"B":		"​​​​​​​​​​​​​​​​​B"
+	"BB":		"​​​​​​​​​​​​​​​​​​BB"
+	"BBB":		"​​​​​​​​​​​​​​​​​​​BBB"
+	"BBBB+":	"​​​​​​​​​​​​​​​​​​​​BBBB+"
+	"I":		"​​​​​​​​​​​​​​​​​​​​​I"
+	"II":		"​​​​​​​​​​​​​​​​​​​​​​II"
+	"III":		"​​​​​​​​​​​​​​​​​​​​​​​III"
+	"IIII+":	"​​​​​​​​​​​​​​​​​​​​​​​​IIII+"
+	"V":		"​​​​​​​​​​​​​​​​​​​​​​​​​V"
+	"VV":		"​​​​​​​​​​​​​​​​​​​​​​​​​​VV"
+	"VVV":		"​​​​​​​​​​​​​​​​​​​​​​​​​​​VVV"
+	"VVVV+":	"​​​​​​​​​​​​​​​​​​​​​​​​​​​​VVVV+"
+]
+pip_count_stat :=
+{
+	symbols := pip_split(card.mana_cost_1)
+	
+	R_count := pip_count(symbols, symbol: "R")
+	O_count := pip_count(symbols, symbol: "O")
+	Y_count := pip_count(symbols, symbol: "Y")
+	G_count := pip_count(symbols, symbol: "G")
+	B_count := pip_count(symbols, symbol: "B")
+	I_count := pip_count(symbols, symbol: "I")
+	V_count := pip_count(symbols, symbol: "V")
+	
+	substring(
+		begin: 1,
+		pip_value_stat(R_count, symbol: "R") +
+		pip_value_stat(O_count, symbol: "O") +
+		pip_value_stat(Y_count, symbol: "Y") +
+		pip_value_stat(G_count, symbol: "G") +
+		pip_value_stat(B_count, symbol: "B") +
+		pip_value_stat(I_count, symbol: "I") +
+		pip_value_stat(V_count, symbol: "V")
+	)
+}
+pip_value_stat :=
+{
+	if		input > 4	then	"," + pip_zwsp_map[symbol + symbol + symbol + symbol + "+"]
+	else if	input == 3	then	"," + pip_zwsp_map[symbol + symbol + symbol]
+	else if	input == 2	then	"," + pip_zwsp_map[symbol + symbol]
+	else if	input == 1	then	"," + pip_zwsp_map[symbol]
+	else						""
+}
+
+mana_cost_stat :=
+{
+	remove_tags(card.mana_cost_1)
+}
+
+cmc_stat :=
+{
+	remove_tags(card.cmc_1)
+}
+
+attack_stat :=
+{
+	remove_tags(card.attack_1)
+}
+
+health_stat :=
+{
+	remove_tags(card.health_1)
+}
+
+arcane_stat :=
+{
+	remove_tags(card.arcane_1)
+}
+
+super_type_prefix_stat :=
+{
+	result := remove_tags(card.super_type_1)
+	result := filter_super_type_prefixes(result)
+	replace_spaces_with_commas(result)
+}
+
+super_type_stat :=
+{
+	result := remove_tags(card.super_type_1)
+	result := remove_super_type_prefixes(result)
+	replace_spaces_with_commas(result)
+}
+
+sub_type_stat :=
+{
+	replace_spaces_with_commas(trim(remove_tags(card.sub_type_1)))
+}
+
+rules_word_count_stat :=
+{
+	word_count_stat(card["rule_text_1"])
+}
+
+word_count_stat := break_text@(match:"[^[:space:]]+") + length
+
+split_notes_stat :=
+{
+	regex := set.card_notes_split or else ""
+	if regex == "" then regex := " *(\\.|\\n|;|,|(?=!)) *"
+	regex := replace_full_width_commas_stat(regex)
+	notes := replace_full_width_commas_stat(card.notes)
+	result := replace(notes, match: regex, replace: ",")
+	result := clean_commas_stat(result)
+	result
+}
+clean_commas_stat := replace@(match: ",+", replace: ",") + replace@(match: "^,", replace: "") + replace@(match: ",$", replace: "")
+replace_full_width_commas_stat := replace@(match:",", replace: "，")
+
+revision_stat :=
+{
+	trim(card.revision_1)
+}
+
+artist_stat :=
+{
+	result := trim(replace_full_width_commas_stat(card.artist_1))
+	if result == "" then " No Artist" else result
+}
+
+filter_stat :=
+{
+	if set.filter_statistics or else "" == "" then "Kept" else (
+	initial := escape_quotes_filter_stat(replace_squote_stat(set.filter_statistics))
+	negate := if initial.0 == "!" then (initial := substring(initial, begin:1); true) else false
+	initial_filters := get_filter_values_stat(initial)
+	initial_keys := get_filter_keys_stat(initial)
+	initial_modes := get_filter_modes_stat(initial)
+	count := length(initial_filters)-1
+	if count != length(initial_keys)-1 or count != length(initial_modes)-1 then "!! Failed to parse filters !!" else (
+	fields := []
+	filters := []
+	keys := []
+	modes := []
+	for x from 0 to count do
+	(
+		key := trim(initial_keys[x])
+		mode := initial_modes[x]
+		field :=		if		key == "illustrator"	then	card.artist
+						else if	key == "super type"
+							or	key == "super_type"
+							or	key == "supertype"		then	remove_tags(card.super_type)
+						else if	key == "sub type"
+							or	key == "sub_type"
+							or	key == "subtype"		then	remove_tags(card.sub_type)
+						else if	key == "casting cost"
+							or	key == "casting_cost"
+							or	key == "cost"			then	card.mana_cost
+						else if	key == "card notes"
+							or	key == "card_notes"
+							or	key == "sorted notes"
+							or	key == "sorted_notes"	then	card.notes
+						else									(card[key] or else card[replace_space_stat(key)]) or else nil
+		filter := remove_quotes_stat(initial_filters[x])
+		fields := fields + [escape_quotes_field_stat(replace_squote_stat(field))]
+		filters := filters + [filter]
+		keys := keys + [key]
+		modes := modes + [mode]
+	)
+	message := "Kept"
+	for x from 0 to count do
+	(
+		if message == "Kept" or message == "Filtered" then (
+		if fields[x] == nil then message := "!! Could not find card field named [ " + keys[x] + " ] !!" else (
+		field := trim(remove_tags(fields[x]))
+		filter := filters[x]
+		key := keys[x]
+		mode := modes[x]
+		if		(mode == "==" and field != filter)
+			or	(mode == "!=" and field == filter)
+			or	(mode == "=:" and not contains(to_lower(field), match: to_lower(filter)))
+			or	(mode == "!:" and contains(to_lower(field), match: to_lower(filter)))		then message := "Filtered"
+		else if (mode == "\<=" or mode == ">=") and field != ""								then (	field_number := to_number(field) or else nil
+																									filter_number := to_number(filter) or else nil
+																									if		field_number == nil									then message := "!! Could not convert the value of card field [ " + key + " ] to a number !!"
+																									else if	filter_number == nil								then message := "!! Could not convert the value of filter [ " + key + mode + "\"" + unescape_quotes_filter_stat(filter) + "\" ] to a number !!"
+																									else if	(mode == "\<=" and field_number > filter_number)
+																										or	(mode == ">=" and field_number < filter_number)		then message := "Filtered")))
+	)
+	if		message == "Filtered" and negate then	"Kept"
+	else if	message == "Kept" and negate then		"Filtered"
+	else											message))
+}
+unescape_quotes_filter_stat := replace@(match: "\\[\\[quoteescape\\]\\]", replace: "\\\\\"")
+escape_quotes_filter_stat := replace@(match: "(\\\\\")|“|”", replace: "[[quoteescape]]")
+escape_quotes_field_stat := replace@(match: "(\\\")|“|”", replace: "[[quoteescape]]")
+replace_squote_stat := replace@(match: "'", replace: "’")
+replace_space_stat := replace@(match: " ", replace: "_")
+get_filter_values_stat := trim + break_text@(match: "\"[^\"]*\"")
+get_filter_keys_stat := trim + replace@(match: "\"[^\"]*\"", replace: "") + replace@(match: "=:|!:|==|!=|\<=|>=", replace: "") + split_text@(match: ", ?")
+get_filter_modes_stat := trim + replace@(match: "\"[^\"]*\"", replace: "") + break_text@(match: "=:|!:|==|!=|\<=|>=")
+remove_quotes_stat := replace@(match: "\"", replace: "")

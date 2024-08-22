@@ -1,0 +1,117 @@
+
+set field:
+	type: info
+	name: Set Information
+
+set field:
+	type: text
+	name: title
+	identifying: true
+	description: The name of this set.
+
+set field:
+	type: text
+	name: description
+	multi line: true
+	description: An overall description of this set.
+
+set field:
+	type: info
+	name: Defaults and Automation
+
+set field:
+	type: text
+	name: artist
+	description: The default illustrator name that will appear on new cards. Can then be changed manually and individually on the card.
+
+set field:
+	type: text
+	name: designer
+	description: The default designer name that will appear on new cards. Can then be changed manually and individually on the card.
+
+set field:
+	type: choice
+	name: border
+	choice: top and bottom
+	choice: bottom
+	choice: bottom full art
+	choice: hidden
+	description: The default colored border shape that will appear on new cards. Can then be changed manually and individually on the card.
+
+#set field:
+#	type: text
+#	name: bleed border shape
+#	choice: rounded
+#	choice: square
+#	choice: diagonal
+#	choice: hidden
+#	description: The default outer black border shape that will appear on new cards. Can then be changed manually and individually on the card.
+
+#set field:
+#	type: color
+#	name: bleed border color
+#	description: The border color that will appear on new cards.
+#	choice:
+#		name: black
+#		color: rgb(0,0,0)
+#	choice:
+#		name: white
+#		color: rgb(255,255,255)
+#	choice:
+#		name: silver
+#		color: rgb(200,200,200)
+#	choice:
+#		name: gold
+#		color: rgb(200,180,0)
+
+set field:
+	type: choice
+	name: collector number format
+	description: What style of automatic card numbers should be used?
+	choice: 0001/0099
+	choice: 0001
+	choice: 001/099
+	choice: 001
+	choice: 1/99
+	choice: 1
+	choice: hidden
+
+set field:
+	type: multiple choice
+	name: automatic reminder text
+	choice: core
+	choice: expert
+	choice: custom
+	initial: core, expert, custom
+	description: For which kinds of keywords should reminder text be added by default? Can be enabled/disabled on the card by right clicking the keyword.
+
+set field:
+	type: choice
+	name: mana cost sort
+	choice: ROYGBIV
+	choice: Unsorted
+	description: Should the mana cost be sorted automatically?
+
+set field:
+	type: choice
+	name: lore bar
+	choice: up
+	choice: down
+	choice: both
+	choice: hidden
+	description: Enables the bar between rule text and lore text.
+
+set field:
+	type: boolean
+	name: spell check
+	description: Marks spelling errors on cards.
+
+#set field:
+#	type: text
+#	name: custom sort
+#	description: Sort by multiple card fields. Write the names of the card fields, separated by commas. (Currently not implemented.)
+
+default set style:
+	automatic reminder text:
+		render style:	checklist
+		direction:		vertical

@@ -1,0 +1,458 @@
+﻿mse version: 2.4.0
+short name: Main Symbols
+position hint: 00
+icon: mana sol r.png
+
+version: 2024-08-31
+
+
+horizontal space: 4
+image font size: 380
+
+
+####################################### Symbols
+
+symbol:
+	code: L
+	image: sym l.png
+
+symbol:
+	code: U
+	image: sym u.png
+
+
+####################################### Mana Hybrid
+
+symbol:
+	code: R/O
+	image: mana dia r o.png
+
+symbol:
+	code: R/Y
+	image: mana dia r y.png
+
+symbol:
+	code: R/G
+	image: mana dia r g.png
+
+symbol:
+	code: R/B
+	image: mana dia r b.png
+
+symbol:
+	code: R/I
+	image: mana dia r i.png
+
+symbol:
+	code: R/V
+	image: mana dia r v.png
+
+symbol:
+	code: O/R
+	image: mana dia o r.png
+
+symbol:
+	code: O/Y
+	image: mana dia o y.png
+
+symbol:
+	code: O/G
+	image: mana dia o g.png
+
+symbol:
+	code: O/B
+	image: mana dia o b.png
+
+symbol:
+	code: O/I
+	image: mana dia o i.png
+
+symbol:
+	code: O/V
+	image: mana dia o v.png
+
+symbol:
+	code: Y/R
+	image: mana dia y r.png
+
+symbol:
+	code: Y/O
+	image: mana dia y o.png
+
+symbol:
+	code: Y/G
+	image: mana dia y g.png
+
+symbol:
+	code: Y/B
+	image: mana dia y b.png
+
+symbol:
+	code: Y/I
+	image: mana dia y i.png
+
+symbol:
+	code: Y/V
+	image: mana dia y v.png
+
+symbol:
+	code: G/R
+	image: mana dia g r.png
+
+symbol:
+	code: G/O
+	image: mana dia g o.png
+
+symbol:
+	code: G/Y
+	image: mana dia g y.png
+
+symbol:
+	code: G/B
+	image: mana dia g b.png
+
+symbol:
+	code: G/I
+	image: mana dia g i.png
+
+symbol:
+	code: G/V
+	image: mana dia g v.png
+
+symbol:
+	code: B/R
+	image: mana dia b r.png
+
+symbol:
+	code: B/O
+	image: mana dia b o.png
+
+symbol:
+	code: B/Y
+	image: mana dia b y.png
+
+symbol:
+	code: B/G
+	image: mana dia b g.png
+
+symbol:
+	code: B/I
+	image: mana dia b i.png
+
+symbol:
+	code: B/V
+	image: mana dia b v.png
+
+symbol:
+	code: I/R
+	image: mana dia i r.png
+
+symbol:
+	code: I/O
+	image: mana dia i o.png
+
+symbol:
+	code: I/Y
+	image: mana dia i y.png
+
+symbol:
+	code: I/G
+	image: mana dia i g.png
+
+symbol:
+	code: I/B
+	image: mana dia i b.png
+
+symbol:
+	code: I/V
+	image: mana dia i v.png
+
+symbol:
+	code: V/R
+	image: mana dia v r.png
+
+symbol:
+	code: V/O
+	image: mana dia v o.png
+
+symbol:
+	code: V/Y
+	image: mana dia v y.png
+
+symbol:
+	code: V/G
+	image: mana dia v g.png
+
+symbol:
+	code: V/B
+	image: mana dia v b.png
+
+symbol:
+	code: V/I
+	image: mana dia v i.png
+
+
+####################################### Generic Hybrid
+
+symbol:
+	code: 2/R
+	image: mana dia 2 r.png
+
+symbol:
+	code: 2/O
+	image: mana dia 2 o.png
+
+symbol:
+	code: 2/Y
+	image: mana dia 2 y.png
+
+symbol:
+	code: 2/G
+	image: mana dia 2 g.png
+
+symbol:
+	code: 2/B
+	image: mana dia 2 b.png
+
+symbol:
+	code: 2/I
+	image: mana dia 2 i.png
+
+symbol:
+	code: 2/V
+	image: mana dia 2 v.png
+
+
+####################################### Mana
+
+symbol:
+	code: R
+	image: mana sol r.png
+
+symbol:
+	code: O
+	image: mana sol o.png
+
+symbol:
+	code: Y
+	image: mana sol y.png
+
+symbol:
+	code: G
+	image: mana sol g.png
+
+symbol:
+	code: B
+	image: mana sol b.png
+
+symbol:
+	code: I
+	image: mana sol i.png
+
+symbol:
+	code: V
+	image: mana sol v.png
+
+
+####################################### Generic
+
+symbol:
+	code: 20
+	image: mana num 20.png
+
+symbol:
+	code: 19
+	image: mana num 19.png
+
+symbol:
+	code: 18
+	image: mana num 18.png
+
+symbol:
+	code: 17
+	image: mana num 17.png
+
+symbol:
+	code: 16
+	image: mana num 16.png
+
+symbol:
+	code: 15
+	image: mana num 15.png
+
+symbol:
+	code: 14
+	image: mana num 14.png
+
+symbol:
+	code: 13
+	image: mana num 13.png
+
+symbol:
+	code: 12
+	image: mana num 12.png
+
+symbol:
+	code: 11
+	image: mana num 11.png
+
+symbol:
+	code: 10
+	image: mana num 10.png
+
+symbol:
+	code: 9
+	image: mana num 9.png
+
+symbol:
+	code: 8
+	image: mana num 8.png
+
+symbol:
+	code: 7
+	image: mana num 7.png
+
+symbol:
+	code: 6
+	image: mana num 6.png
+
+symbol:
+	code: 5
+	image: mana num 5.png
+
+symbol:
+	code: 4
+	image: mana num 4.png
+
+symbol:
+	code: 3
+	image: mana num 3.png
+
+symbol:
+	code: 2
+	image: mana num 2.png
+
+symbol:
+	code: 1
+	image: mana num 1.png
+
+symbol:
+	code: 0
+	image: mana num 0.png
+
+symbol:
+	code: X
+	image: mana num x.png
+
+
+####################################### Insert-symbol menu
+
+insert symbol menu:
+	item: L
+	item: U
+	item:
+		type: line
+	item: R
+	item: O
+	item: Y
+	item: G
+	item: B
+	item: I
+	item: V
+	item:
+		type: line
+	item: X
+	item:
+		name: generic
+		item: 0
+		item: 1
+		item: 2
+		item: 3
+		item: 4
+		item: 5
+		item: 6
+		item: 7
+		item: 8
+		item: 9
+		item: 10
+		item: 11
+		item: 12
+		item: 13
+		item: 14
+		item: 15
+		item: 16
+		item: 17
+		item: 18
+		item: 19
+		item: 20
+	item:
+		type: line
+	item:
+		type: line
+	item:
+		name: hybrid
+		item:
+			name: with R
+			item: R/O
+			item: R/Y
+			item: R/G
+			item: R/B
+			item: R/I
+			item: R/V
+		item:
+			name: with O
+			item: O/R
+			item: O/Y
+			item: O/G
+			item: O/B
+			item: O/I
+			item: O/V
+		item:
+			name: with Y
+			item: Y/R
+			item: Y/O
+			item: Y/G
+			item: Y/B
+			item: Y/I
+			item: Y/V
+		item:
+			name: with G
+			item: G/R
+			item: G/O
+			item: G/Y
+			item: G/B
+			item: G/I
+			item: G/V
+		item:
+			name: with B
+			item: B/R
+			item: B/O
+			item: B/Y
+			item: B/G
+			item: B/I
+			item: B/V
+		item:
+			name: with I
+			item: I/R
+			item: I/O
+			item: I/Y
+			item: I/G
+			item: I/B
+			item: I/V
+		item:
+			name: with V
+			item: V/R
+			item: V/O
+			item: V/Y
+			item: V/G
+			item: V/B
+			item: V/I
+		item:
+			name: with 2
+			item: 2/R
+			item: 2/O
+			item: 2/Y
+			item: 2/G
+			item: 2/B
+			item: 2/I
+			item: 2/V
