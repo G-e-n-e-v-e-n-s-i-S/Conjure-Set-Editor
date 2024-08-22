@@ -256,6 +256,8 @@ inner_border_script :=
 #bleed_border_default := { set.bleed_border }
 #bleed_border_script := { value }
 
+full_name_script := { card.name_1 }
+
 name_default := { "" }
 name_script := { value }
 

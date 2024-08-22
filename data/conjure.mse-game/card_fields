@@ -80,16 +80,27 @@ card field:
 
 card field:
 	type: text
-	name: name 1
+	name: name
 	identifying: true
 	show statistics: false
-	default: stylesheet; name_default(input: value, id: 1)
-	script: name_script(input: value, id: 1)
+	script: full_name_script(input: value)
 	card list visible: true
 	card list name: Name
 	card list column: 0
 	card list width: 250
-	description: The name of the card.
+	description: The full name of the card.
+
+card field:
+	type: text
+	name: name 1
+	show statistics: false
+	default: stylesheet; name_default(input: value, id: 1)
+	script: name_script(input: value, id: 1)
+	card list visible: false
+	card list name: Name 1
+	card list column: 0
+	card list width: 251
+	description: The first name of the card.
 
 card field:
 	type: text
