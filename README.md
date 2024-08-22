@@ -33,3 +33,19 @@ To change the type of stat boxes, click here:
 ![stats](https://github.com/G-e-n-e-v-e-n-s-i-S/Conjure-Set-Editor/blob/main/readme_images/stats.png)
 
 There are some additional customization options in the "Style" and "Set info" tabs.
+
+If you want to make popout art, that is, parts of the art that jump in front of the frame, you can watch this tutorial here:
+
+https://www.youtube.com/watch?v=oc6Fy8_BkKo&ab_channel=CajunAvenger
+
+If you want to add keywords, they are located in the following file:
+
+Conjure-Set-Editor/data/conjure.mse-game/keywords
+
+Open it with a text editor, then look at how existing keywords a formatted to add yours.
+Always make a backup of your keyword file, as when you'll want to update CSE, you might overwrite it, loosing your modifications.
+
+To export renders of your cards, go to "File" menu, then "Export", then "All card images..."
+
+If you have problems with this, come ask questions on the Discord server:
+https://discord.gg/t3tetd5YMc
