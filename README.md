@@ -2,9 +2,9 @@
 Version of Magic Set Editor made for the Conjure Uncollectible Card Game.
 
 # Installation
-1. Click on the green "Code" button, and click on "Download ZIP".
-2. Extract the ZIP file, and open the resulting folder.
-3. Open the subfolder `fonts`. It contains several `.ttf` files. Select them all, right-click on one of them, then click "Install". If the "Install" option is not available, double-click on each of the files. It should open a program with an "Install" button somewhere.
+1. Click on the green "Code" button, then click on "Download ZIP".
+2. Extract the ZIP file, then open the resulting folder.
+3. Open the subfolder named `fonts`. It contains several `.ttf` files. Select them all, right-click on one of them, then click "Install". If the "Install" option is not available, double-click on each of the files. It should open a program with an "Install" button somewhere.
 4. If you already had a previous version of CSE, move or copy all other subfolders into your existing CSE folder, allowing overwrite. Otherwise, this folder acts as a stand alone installation.
 5. Open the program by double-clicking on the "magicseteditor.exe" file.
 6. Click on the "New Set" button, select the "Conjure" game, select the "Main" template, then click "Ok".
@@ -20,7 +20,7 @@ Some values are not obvious to find. for example the box for the lore text is in
 
 It will become bigger once you have written text inside.
 
-The color of the frame should adapt automatically to the mana cost, but if you want to change it manually, click somwhere here:
+The color of the frame should adapt automatically to the mana cost, but if you want to change it manually, click somewhere here:
 
 ![frame](https://github.com/G-e-n-e-v-e-n-s-i-S/Conjure-Set-Editor/blob/main/readme_images/frame.png)
 
