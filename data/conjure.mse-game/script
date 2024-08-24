@@ -397,10 +397,10 @@ stat_script := filter_numbers_lax + to_upper
 
 read_stat :=
 {
-	if		contains(card.orb_1, match: input) then card.stat_1
-	else if	contains(card.orb_2, match: input) then card.stat_2
-	else if	contains(card.orb_3, match: input) then card.stat_3
-	else if	contains(card.orb_4, match: input) then card.stat_4
+	if		contains(card.orb_1, match: input) then (card.stat_1 + if input == "arcane" then (if contains(card.orb_1, match: "attack") then "A" else if contains(card.orb_1, match: "health") then "H" else "") else "")
+	else if	contains(card.orb_2, match: input) then (card.stat_2 + if input == "arcane" then (if contains(card.orb_2, match: "attack") then "A" else if contains(card.orb_2, match: "health") then "H" else "") else "")
+	else if	contains(card.orb_3, match: input) then (card.stat_3 + if input == "arcane" then (if contains(card.orb_3, match: "attack") then "A" else if contains(card.orb_3, match: "health") then "H" else "") else "")
+	else if	contains(card.orb_4, match: input) then (card.stat_4 + if input == "arcane" then (if contains(card.orb_4, match: "attack") then "A" else if contains(card.orb_4, match: "health") then "H" else "") else "")
 	else ""
 }
 

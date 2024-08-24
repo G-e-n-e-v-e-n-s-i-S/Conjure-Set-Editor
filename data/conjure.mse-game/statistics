@@ -156,6 +156,21 @@ statistics dimension:
 	script: arcane_stat()
 
 statistics dimension:
+	name: Arcane Link
+	position hint: 22
+	icon: stats icons/arcane_link.png
+	description: What the arcane value is linked to on the card.
+	show empty: false
+	script: arcane_link_stat()
+	group: Attack
+	group: Health
+	group: None
+	colors:
+		Attack	: rgb(141,40,38)
+		Health	: rgb(156,116,66)
+		None	: rgb(0,0,0)
+
+statistics dimension:
 	name: Super Type Prefix
 	position hint: 30
 	icon: stats icons/type.png

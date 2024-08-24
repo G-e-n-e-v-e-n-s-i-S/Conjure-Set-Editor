@@ -158,17 +158,25 @@ cmc_stat :=
 
 attack_stat :=
 {
-	remove_tags(card.attack_1)
+	remove_tags(filter_numbers_lax(card.attack_1))
 }
 
 health_stat :=
 {
-	remove_tags(card.health_1)
+	remove_tags(filter_numbers_lax(card.health_1))
 }
 
 arcane_stat :=
 {
-	remove_tags(card.arcane_1)
+	remove_tags(filter_numbers_lax(card.arcane_1))
+}
+
+arcane_link_stat :=
+{
+	if		contains(card.arcane_1, match: "A")	then	"Attack"
+	else if	contains(card.arcane_1, match: "H")	then	"Health"
+	else if	trim(card.arcane_1) == ""			then	""
+	else												"None"
 }
 
 super_type_prefix_stat :=
