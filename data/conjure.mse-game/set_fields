@@ -87,6 +87,13 @@ set field:
 
 set field:
 	type: choice
+	name: reminder text location
+	choice: separate paragraph
+	choice: end of paragraph
+	description: Where should reminder text be inserted?
+
+set field:
+	type: choice
 	name: mana cost sort
 	choice: ROYGBIV
 	choice: Unsorted

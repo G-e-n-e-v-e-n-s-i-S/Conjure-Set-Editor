@@ -119,7 +119,7 @@ replace_spaces_with_commas := replace@(match: ",? +", replace: ",")
 contract_spaces := replace@(match: "  +", replace: " ")
 remove_brackets := replace@(match: "[\\[\\]]", replace: "")
 
-replace_with_atom_soft_line := replace@(match: "\n", replace: "<atom><soft-line>\n</soft-line></atom>")
+replace_with_atom_soft_line := replace@(match: "\n", replace: "<atom-line><soft-line>\n</soft-line></atom-line>")
 fix_soft_line := replace@(match:"(<atom>)?<soft-line>(.*?)</soft-line>(</atom>)?", replace: { replace_with_atom_soft_line(_2) })
 
 filter_numbers_lax :=	filter_text@(match: "[*xX0-9]+")
@@ -455,6 +455,15 @@ collector_number_script :=
 }
 
 bolden_keywords := { false }
+move_reminder_to_last_line := replace@(
+		match: "(<atom-reminder-[^>]+> (?:(?!</kw).*?)</atom-reminder-[^>]+></kw[^>]*>)(.*\n.*$)",
+		replace: "\\2\\1"
+	)
+move_reminder_to_new_line :=
+	replace@(
+		match: "(^((?!<atom-reminder).)+<atom-reminder-[^>]+>) ",
+		replace: "\\1\n"
+	)
 
 spellcheck_exceptions_match := match@(match:
 	"(?ix)^(?:							### match whole word
@@ -471,6 +480,7 @@ rule_text_script :=
 	remove_tag@(tag: "<error-spelling") +
 	remove_tag@(tag: "<nospellcheck") +
 	remove_tag@(tag: "<color") +
+	remove_tag@(tag: "<atom-line") +
 	#remove_tag@(tag: "<li>") +
 	#remove_tag@(tag: "<bullet>") +
 	#remove_tag@(tag: "<align") +
@@ -490,21 +500,45 @@ rule_text_script :=
 			keyword + if expand then "<atom-reminder-{mode}> ({reminder})</atom-reminder-{mode}>" else ""
 		}
 	) +
-	### step 2b : move reminder texts to the end of the line
+	### step 2b : move reminder texts to the last line
+	{
+		if set.reminder_text_location != "separate paragraph" then input else
+		(
+			old := input
+			new := move_reminder_to_last_line(input)
+			changed := old != new		### optimisation to not check string equality if we don't have to
+			for x from 1 to 4 do		### if you need more than 4 reminders on your card then maybe reconsider your design ^^
+			(
+				if changed then
+				(
+					old := new
+					new := move_reminder_to_last_line(new)
+					if x < 4 then changed := old != new
+				)
+				""
+			)
+			new
+		)
+	} +
+	### step 2c : move reminder texts to the end of the line
 	replace@(
 		match: "(<atom-reminder-[^>]+> (?:(?!</kw).*?)</atom-reminder-[^>]+></kw[^>]*>)([^\n]*)",
 		replace: "\\2\\1"
 	) +
-	### step 2c : remove duplicate reminder text
+	### step 2d : remove duplicate reminder text
 	replace@(
 		match: "(<atom-reminder-[^>]*>[^)]+[)]</atom-reminder-[^>]*>)([^\n]+)\\1"
 		replace: "\\2\\1"
 	) +
-	### step 2d : combine reminder texts
+	### step 2e : combine reminder texts
 	replace@(
 		match: "[)](</i-auto>)?(</atom-reminder-[^>]+></kw-[^>]>) ?(<atom-reminder-[^>]+> )(<i-auto>)?[(]"
 		replace: "\\2\\3"
 	) +
+	### step 2f : move reminder texts to new line
+	{
+		if set.reminder_text_location == "separate paragraph" then move_reminder_to_new_line(input) else input
+	} +
 	### step 3 : expand shortcut word CARDNAME
 	replace@(
 		match: "CARDNAME>?",
