@@ -20,6 +20,1015 @@ symbol:
 	code: U
 	image: sym u.png
 
+####################################### Mana Trybrid
+
+symbol:
+	code: R/O/Y
+	image: mana try r o y.png
+
+symbol:
+	code: R/O/G
+	image: mana try r o g.png
+
+symbol:
+	code: R/O/B
+	image: mana try r o b.png
+
+symbol:
+	code: R/O/I
+	image: mana try r o i.png
+
+symbol:
+	code: R/O/V
+	image: mana try r o v.png
+
+symbol:
+	code: R/Y/O
+	image: mana try r y o.png
+
+symbol:
+	code: R/Y/G
+	image: mana try r y g.png
+
+symbol:
+	code: R/Y/B
+	image: mana try r y b.png
+
+symbol:
+	code: R/Y/I
+	image: mana try r y i.png
+
+symbol:
+	code: R/Y/V
+	image: mana try r y v.png
+
+symbol:
+	code: R/G/O
+	image: mana try r g o.png
+
+symbol:
+	code: R/G/Y
+	image: mana try r g y.png
+
+symbol:
+	code: R/G/B
+	image: mana try r g b.png
+
+symbol:
+	code: R/G/I
+	image: mana try r g i.png
+
+symbol:
+	code: R/G/V
+	image: mana try r g v.png
+
+symbol:
+	code: R/B/O
+	image: mana try r b o.png
+
+symbol:
+	code: R/B/Y
+	image: mana try r b y.png
+
+symbol:
+	code: R/B/G
+	image: mana try r b g.png
+
+symbol:
+	code: R/B/I
+	image: mana try r b i.png
+
+symbol:
+	code: R/B/V
+	image: mana try r b v.png
+
+symbol:
+	code: R/I/O
+	image: mana try r i o.png
+
+symbol:
+	code: R/I/Y
+	image: mana try r i y.png
+
+symbol:
+	code: R/I/G
+	image: mana try r i g.png
+
+symbol:
+	code: R/I/B
+	image: mana try r i b.png
+
+symbol:
+	code: R/I/V
+	image: mana try r i v.png
+
+symbol:
+	code: R/V/O
+	image: mana try r v o.png
+
+symbol:
+	code: R/V/Y
+	image: mana try r v y.png
+
+symbol:
+	code: R/V/G
+	image: mana try r v g.png
+
+symbol:
+	code: R/V/B
+	image: mana try r v b.png
+
+symbol:
+	code: R/V/I
+	image: mana try r v i.png
+
+symbol:
+	code: O/R/Y
+	image: mana try o r y.png
+
+symbol:
+	code: O/R/G
+	image: mana try o r g.png
+
+symbol:
+	code: O/R/B
+	image: mana try o r b.png
+
+symbol:
+	code: O/R/I
+	image: mana try o r i.png
+
+symbol:
+	code: O/R/V
+	image: mana try o r v.png
+
+symbol:
+	code: O/Y/R
+	image: mana try o y r.png
+
+symbol:
+	code: O/Y/G
+	image: mana try o y g.png
+
+symbol:
+	code: O/Y/B
+	image: mana try o y b.png
+
+symbol:
+	code: O/Y/I
+	image: mana try o y i.png
+
+symbol:
+	code: O/Y/V
+	image: mana try o y v.png
+
+symbol:
+	code: O/G/R
+	image: mana try o g r.png
+
+symbol:
+	code: O/G/Y
+	image: mana try o g y.png
+
+symbol:
+	code: O/G/B
+	image: mana try o g b.png
+
+symbol:
+	code: O/G/I
+	image: mana try o g i.png
+
+symbol:
+	code: O/G/V
+	image: mana try o g v.png
+
+symbol:
+	code: O/B/R
+	image: mana try o b r.png
+
+symbol:
+	code: O/B/Y
+	image: mana try o b y.png
+
+symbol:
+	code: O/B/G
+	image: mana try o b g.png
+
+symbol:
+	code: O/B/I
+	image: mana try o b i.png
+
+symbol:
+	code: O/B/V
+	image: mana try o b v.png
+
+symbol:
+	code: O/I/R
+	image: mana try o i r.png
+
+symbol:
+	code: O/I/Y
+	image: mana try o i y.png
+
+symbol:
+	code: O/I/G
+	image: mana try o i g.png
+
+symbol:
+	code: O/I/B
+	image: mana try o i b.png
+
+symbol:
+	code: O/I/V
+	image: mana try o i v.png
+
+symbol:
+	code: O/V/R
+	image: mana try o v r.png
+
+symbol:
+	code: O/V/Y
+	image: mana try o v y.png
+
+symbol:
+	code: O/V/G
+	image: mana try o v g.png
+
+symbol:
+	code: O/V/B
+	image: mana try o v b.png
+
+symbol:
+	code: O/V/I
+	image: mana try o v i.png
+
+symbol:
+	code: Y/R/O
+	image: mana try y r o.png
+
+symbol:
+	code: Y/R/G
+	image: mana try y r g.png
+
+symbol:
+	code: Y/R/B
+	image: mana try y r b.png
+
+symbol:
+	code: Y/R/I
+	image: mana try y r i.png
+
+symbol:
+	code: Y/R/V
+	image: mana try y r v.png
+
+symbol:
+	code: Y/O/R
+	image: mana try y o r.png
+
+symbol:
+	code: Y/O/G
+	image: mana try y o g.png
+
+symbol:
+	code: Y/O/B
+	image: mana try y o b.png
+
+symbol:
+	code: Y/O/I
+	image: mana try y o i.png
+
+symbol:
+	code: Y/O/V
+	image: mana try y o v.png
+
+symbol:
+	code: Y/G/R
+	image: mana try y g r.png
+
+symbol:
+	code: Y/G/O
+	image: mana try y g o.png
+
+symbol:
+	code: Y/G/B
+	image: mana try y g b.png
+
+symbol:
+	code: Y/G/I
+	image: mana try y g i.png
+
+symbol:
+	code: Y/G/V
+	image: mana try y g v.png
+
+symbol:
+	code: Y/B/R
+	image: mana try y b r.png
+
+symbol:
+	code: Y/B/O
+	image: mana try y b o.png
+
+symbol:
+	code: Y/B/G
+	image: mana try y b g.png
+
+symbol:
+	code: Y/B/I
+	image: mana try y b i.png
+
+symbol:
+	code: Y/B/V
+	image: mana try y b v.png
+
+symbol:
+	code: Y/I/R
+	image: mana try y i r.png
+
+symbol:
+	code: Y/I/O
+	image: mana try y i o.png
+
+symbol:
+	code: Y/I/G
+	image: mana try y i g.png
+
+symbol:
+	code: Y/I/B
+	image: mana try y i b.png
+
+symbol:
+	code: Y/I/V
+	image: mana try y i v.png
+
+symbol:
+	code: Y/V/R
+	image: mana try y v r.png
+
+symbol:
+	code: Y/V/O
+	image: mana try y v o.png
+
+symbol:
+	code: Y/V/G
+	image: mana try y v g.png
+
+symbol:
+	code: Y/V/B
+	image: mana try y v b.png
+
+symbol:
+	code: Y/V/I
+	image: mana try y v i.png
+
+symbol:
+	code: G/R/O
+	image: mana try g r o.png
+
+symbol:
+	code: G/R/Y
+	image: mana try g r y.png
+
+symbol:
+	code: G/R/B
+	image: mana try g r b.png
+
+symbol:
+	code: G/R/I
+	image: mana try g r i.png
+
+symbol:
+	code: G/R/V
+	image: mana try g r v.png
+
+symbol:
+	code: G/O/R
+	image: mana try g o r.png
+
+symbol:
+	code: G/O/Y
+	image: mana try g o y.png
+
+symbol:
+	code: G/O/B
+	image: mana try g o b.png
+
+symbol:
+	code: G/O/I
+	image: mana try g o i.png
+
+symbol:
+	code: G/O/V
+	image: mana try g o v.png
+
+symbol:
+	code: G/Y/R
+	image: mana try g y r.png
+
+symbol:
+	code: G/Y/O
+	image: mana try g y o.png
+
+symbol:
+	code: G/Y/B
+	image: mana try g y b.png
+
+symbol:
+	code: G/Y/I
+	image: mana try g y i.png
+
+symbol:
+	code: G/Y/V
+	image: mana try g y v.png
+
+symbol:
+	code: G/B/R
+	image: mana try g b r.png
+
+symbol:
+	code: G/B/O
+	image: mana try g b o.png
+
+symbol:
+	code: G/B/Y
+	image: mana try g b y.png
+
+symbol:
+	code: G/B/I
+	image: mana try g b i.png
+
+symbol:
+	code: G/B/V
+	image: mana try g b v.png
+
+symbol:
+	code: G/I/R
+	image: mana try g i r.png
+
+symbol:
+	code: G/I/O
+	image: mana try g i o.png
+
+symbol:
+	code: G/I/Y
+	image: mana try g i y.png
+
+symbol:
+	code: G/I/B
+	image: mana try g i b.png
+
+symbol:
+	code: G/I/V
+	image: mana try g i v.png
+
+symbol:
+	code: G/V/R
+	image: mana try g v r.png
+
+symbol:
+	code: G/V/O
+	image: mana try g v o.png
+
+symbol:
+	code: G/V/Y
+	image: mana try g v y.png
+
+symbol:
+	code: G/V/B
+	image: mana try g v b.png
+
+symbol:
+	code: G/V/I
+	image: mana try g v i.png
+
+symbol:
+	code: B/R/O
+	image: mana try b r o.png
+
+symbol:
+	code: B/R/Y
+	image: mana try b r y.png
+
+symbol:
+	code: B/R/G
+	image: mana try b r g.png
+
+symbol:
+	code: B/R/I
+	image: mana try b r i.png
+
+symbol:
+	code: B/R/V
+	image: mana try b r v.png
+
+symbol:
+	code: B/O/R
+	image: mana try b o r.png
+
+symbol:
+	code: B/O/Y
+	image: mana try b o y.png
+
+symbol:
+	code: B/O/G
+	image: mana try b o g.png
+
+symbol:
+	code: B/O/I
+	image: mana try b o i.png
+
+symbol:
+	code: B/O/V
+	image: mana try b o v.png
+
+symbol:
+	code: B/Y/R
+	image: mana try b y r.png
+
+symbol:
+	code: B/Y/O
+	image: mana try b y o.png
+
+symbol:
+	code: B/Y/G
+	image: mana try b y g.png
+
+symbol:
+	code: B/Y/I
+	image: mana try b y i.png
+
+symbol:
+	code: B/Y/V
+	image: mana try b y v.png
+
+symbol:
+	code: B/G/R
+	image: mana try b g r.png
+
+symbol:
+	code: B/G/O
+	image: mana try b g o.png
+
+symbol:
+	code: B/G/Y
+	image: mana try b g y.png
+
+symbol:
+	code: B/G/I
+	image: mana try b g i.png
+
+symbol:
+	code: B/G/V
+	image: mana try b g v.png
+
+symbol:
+	code: B/I/R
+	image: mana try b i r.png
+
+symbol:
+	code: B/I/O
+	image: mana try b i o.png
+
+symbol:
+	code: B/I/Y
+	image: mana try b i y.png
+
+symbol:
+	code: B/I/G
+	image: mana try b i g.png
+
+symbol:
+	code: B/I/V
+	image: mana try b i v.png
+
+symbol:
+	code: B/V/R
+	image: mana try b v r.png
+
+symbol:
+	code: B/V/O
+	image: mana try b v o.png
+
+symbol:
+	code: B/V/Y
+	image: mana try b v y.png
+
+symbol:
+	code: B/V/G
+	image: mana try b v g.png
+
+symbol:
+	code: B/V/I
+	image: mana try b v i.png
+
+symbol:
+	code: I/R/O
+	image: mana try i r o.png
+
+symbol:
+	code: I/R/Y
+	image: mana try i r y.png
+
+symbol:
+	code: I/R/G
+	image: mana try i r g.png
+
+symbol:
+	code: I/R/B
+	image: mana try i r b.png
+
+symbol:
+	code: I/R/V
+	image: mana try i r v.png
+
+symbol:
+	code: I/O/R
+	image: mana try i o r.png
+
+symbol:
+	code: I/O/Y
+	image: mana try i o y.png
+
+symbol:
+	code: I/O/G
+	image: mana try i o g.png
+
+symbol:
+	code: I/O/B
+	image: mana try i o b.png
+
+symbol:
+	code: I/O/V
+	image: mana try i o v.png
+
+symbol:
+	code: I/Y/R
+	image: mana try i y r.png
+
+symbol:
+	code: I/Y/O
+	image: mana try i y o.png
+
+symbol:
+	code: I/Y/G
+	image: mana try i y g.png
+
+symbol:
+	code: I/Y/B
+	image: mana try i y b.png
+
+symbol:
+	code: I/Y/V
+	image: mana try i y v.png
+
+symbol:
+	code: I/G/R
+	image: mana try i g r.png
+
+symbol:
+	code: I/G/O
+	image: mana try i g o.png
+
+symbol:
+	code: I/G/Y
+	image: mana try i g y.png
+
+symbol:
+	code: I/G/B
+	image: mana try i g b.png
+
+symbol:
+	code: I/G/V
+	image: mana try i g v.png
+
+symbol:
+	code: I/B/R
+	image: mana try i b r.png
+
+symbol:
+	code: I/B/O
+	image: mana try i b o.png
+
+symbol:
+	code: I/B/Y
+	image: mana try i b y.png
+
+symbol:
+	code: I/B/G
+	image: mana try i b g.png
+
+symbol:
+	code: I/B/V
+	image: mana try i b v.png
+
+symbol:
+	code: I/V/R
+	image: mana try i v r.png
+
+symbol:
+	code: I/V/O
+	image: mana try i v o.png
+
+symbol:
+	code: I/V/Y
+	image: mana try i v y.png
+
+symbol:
+	code: I/V/G
+	image: mana try i v g.png
+
+symbol:
+	code: I/V/B
+	image: mana try i v b.png
+
+symbol:
+	code: V/R/O
+	image: mana try v r o.png
+
+symbol:
+	code: V/R/Y
+	image: mana try v r y.png
+
+symbol:
+	code: V/R/G
+	image: mana try v r g.png
+
+symbol:
+	code: V/R/B
+	image: mana try v r b.png
+
+symbol:
+	code: V/R/I
+	image: mana try v r i.png
+
+symbol:
+	code: V/O/R
+	image: mana try v o r.png
+
+symbol:
+	code: V/O/Y
+	image: mana try v o y.png
+
+symbol:
+	code: V/O/G
+	image: mana try v o g.png
+
+symbol:
+	code: V/O/B
+	image: mana try v o b.png
+
+symbol:
+	code: V/O/I
+	image: mana try v o i.png
+
+symbol:
+	code: V/Y/R
+	image: mana try v y r.png
+
+symbol:
+	code: V/Y/O
+	image: mana try v y o.png
+
+symbol:
+	code: V/Y/G
+	image: mana try v y g.png
+
+symbol:
+	code: V/Y/B
+	image: mana try v y b.png
+
+symbol:
+	code: V/Y/I
+	image: mana try v y i.png
+
+symbol:
+	code: V/G/R
+	image: mana try v g r.png
+
+symbol:
+	code: V/G/O
+	image: mana try v g o.png
+
+symbol:
+	code: V/G/Y
+	image: mana try v g y.png
+
+symbol:
+	code: V/G/B
+	image: mana try v g b.png
+
+symbol:
+	code: V/G/I
+	image: mana try v g i.png
+
+symbol:
+	code: V/B/R
+	image: mana try v b r.png
+
+symbol:
+	code: V/B/O
+	image: mana try v b o.png
+
+symbol:
+	code: V/B/Y
+	image: mana try v b y.png
+
+symbol:
+	code: V/B/G
+	image: mana try v b g.png
+
+symbol:
+	code: V/B/I
+	image: mana try v b i.png
+
+symbol:
+	code: V/I/R
+	image: mana try v i r.png
+
+symbol:
+	code: V/I/O
+	image: mana try v i o.png
+
+symbol:
+	code: V/I/Y
+	image: mana try v i y.png
+
+symbol:
+	code: V/I/G
+	image: mana try v i g.png
+
+symbol:
+	code: V/I/B
+	image: mana try v i b.png
+
+symbol:
+	code: 2/R/O
+	image: mana try 2 r o.png
+
+symbol:
+	code: 2/R/Y
+	image: mana try 2 r y.png
+
+symbol:
+	code: 2/R/G
+	image: mana try 2 r g.png
+
+symbol:
+	code: 2/R/B
+	image: mana try 2 r b.png
+
+symbol:
+	code: 2/R/I
+	image: mana try 2 r i.png
+
+symbol:
+	code: 2/R/V
+	image: mana try 2 r v.png
+
+symbol:
+	code: 2/O/R
+	image: mana try 2 o r.png
+
+symbol:
+	code: 2/O/Y
+	image: mana try 2 o y.png
+
+symbol:
+	code: 2/O/G
+	image: mana try 2 o g.png
+
+symbol:
+	code: 2/O/B
+	image: mana try 2 o b.png
+
+symbol:
+	code: 2/O/I
+	image: mana try 2 o i.png
+
+symbol:
+	code: 2/O/V
+	image: mana try 2 o v.png
+
+symbol:
+	code: 2/Y/R
+	image: mana try 2 y r.png
+
+symbol:
+	code: 2/Y/O
+	image: mana try 2 y o.png
+
+symbol:
+	code: 2/Y/G
+	image: mana try 2 y g.png
+
+symbol:
+	code: 2/Y/B
+	image: mana try 2 y b.png
+
+symbol:
+	code: 2/Y/I
+	image: mana try 2 y i.png
+
+symbol:
+	code: 2/Y/V
+	image: mana try 2 y v.png
+
+symbol:
+	code: 2/G/R
+	image: mana try 2 g r.png
+
+symbol:
+	code: 2/G/O
+	image: mana try 2 g o.png
+
+symbol:
+	code: 2/G/Y
+	image: mana try 2 g y.png
+
+symbol:
+	code: 2/G/B
+	image: mana try 2 g b.png
+
+symbol:
+	code: 2/G/I
+	image: mana try 2 g i.png
+
+symbol:
+	code: 2/G/V
+	image: mana try 2 g v.png
+
+symbol:
+	code: 2/B/R
+	image: mana try 2 b r.png
+
+symbol:
+	code: 2/B/O
+	image: mana try 2 b o.png
+
+symbol:
+	code: 2/B/Y
+	image: mana try 2 b y.png
+
+symbol:
+	code: 2/B/G
+	image: mana try 2 b g.png
+
+symbol:
+	code: 2/B/I
+	image: mana try 2 b i.png
+
+symbol:
+	code: 2/B/V
+	image: mana try 2 b v.png
+
+symbol:
+	code: 2/I/R
+	image: mana try 2 i r.png
+
+symbol:
+	code: 2/I/O
+	image: mana try 2 i o.png
+
+symbol:
+	code: 2/I/Y
+	image: mana try 2 i y.png
+
+symbol:
+	code: 2/I/G
+	image: mana try 2 i g.png
+
+symbol:
+	code: 2/I/B
+	image: mana try 2 i b.png
+
+symbol:
+	code: 2/I/V
+	image: mana try 2 i v.png
+
+symbol:
+	code: 2/V/R
+	image: mana try 2 v r.png
+
+symbol:
+	code: 2/V/O
+	image: mana try 2 v o.png
+
+symbol:
+	code: 2/V/Y
+	image: mana try 2 v y.png
+
+symbol:
+	code: 2/V/G
+	image: mana try 2 v g.png
+
+symbol:
+	code: 2/V/B
+	image: mana try 2 v b.png
+
+symbol:
+	code: 2/V/I
+	image: mana try 2 v i.png
 
 ####################################### Mana Hybrid
 
@@ -392,7 +1401,7 @@ insert symbol menu:
 	item:
 		name: hybrid
 		item:
-			name: with R
+			name: R
 			item: R/O
 			item: R/Y
 			item: R/G
@@ -400,7 +1409,7 @@ insert symbol menu:
 			item: R/I
 			item: R/V
 		item:
-			name: with O
+			name: O
 			item: O/R
 			item: O/Y
 			item: O/G
@@ -408,7 +1417,7 @@ insert symbol menu:
 			item: O/I
 			item: O/V
 		item:
-			name: with Y
+			name: Y
 			item: Y/R
 			item: Y/O
 			item: Y/G
@@ -416,7 +1425,7 @@ insert symbol menu:
 			item: Y/I
 			item: Y/V
 		item:
-			name: with G
+			name: G
 			item: G/R
 			item: G/O
 			item: G/Y
@@ -424,7 +1433,7 @@ insert symbol menu:
 			item: G/I
 			item: G/V
 		item:
-			name: with B
+			name: B
 			item: B/R
 			item: B/O
 			item: B/Y
@@ -432,7 +1441,7 @@ insert symbol menu:
 			item: B/I
 			item: B/V
 		item:
-			name: with I
+			name: I
 			item: I/R
 			item: I/O
 			item: I/Y
@@ -440,7 +1449,7 @@ insert symbol menu:
 			item: I/B
 			item: I/V
 		item:
-			name: with V
+			name: V
 			item: V/R
 			item: V/O
 			item: V/Y
@@ -448,7 +1457,7 @@ insert symbol menu:
 			item: V/B
 			item: V/I
 		item:
-			name: with 2
+			name: 2
 			item: 2/R
 			item: 2/O
 			item: 2/Y
@@ -456,3 +1465,371 @@ insert symbol menu:
 			item: 2/B
 			item: 2/I
 			item: 2/V
+	item:
+		name: trybrid
+		item:
+			name: R
+			item:
+				name: O
+				item: R/O/Y
+				item: R/O/G
+				item: R/O/B
+				item: R/O/I
+				item: R/O/V
+			item:
+				name: Y
+				item: R/Y/O
+				item: R/Y/G
+				item: R/Y/B
+				item: R/Y/I
+				item: R/Y/V
+			item:
+				name: G
+				item: R/G/O
+				item: R/G/Y
+				item: R/G/B
+				item: R/G/I
+				item: R/G/V
+			item:
+				name: B
+				item: R/B/O
+				item: R/B/Y
+				item: R/B/G
+				item: R/B/I
+				item: R/B/V
+			item:
+				name: I
+				item: R/I/O
+				item: R/I/Y
+				item: R/I/G
+				item: R/I/B
+				item: R/I/V
+			item:
+				name: V
+				item: R/V/O
+				item: R/V/Y
+				item: R/V/G
+				item: R/V/B
+				item: R/V/I
+		item:
+			name: O
+			item:
+				name: R
+				item: O/R/Y
+				item: O/R/G
+				item: O/R/B
+				item: O/R/I
+				item: O/R/V
+			item:
+				name: Y
+				item: O/Y/R
+				item: O/Y/G
+				item: O/Y/B
+				item: O/Y/I
+				item: O/Y/V
+			item:
+				name: G
+				item: O/G/R
+				item: O/G/Y
+				item: O/G/B
+				item: O/G/I
+				item: O/G/V
+			item:
+				name: B
+				item: O/B/R
+				item: O/B/Y
+				item: O/B/G
+				item: O/B/I
+				item: O/B/V
+			item:
+				name: I
+				item: O/I/R
+				item: O/I/Y
+				item: O/I/G
+				item: O/I/B
+				item: O/I/V
+			item:
+				name: V
+				item: O/V/R
+				item: O/V/Y
+				item: O/V/G
+				item: O/V/B
+				item: O/V/I
+		item:
+			name: Y
+			item:
+				name: R
+				item: Y/R/O
+				item: Y/R/G
+				item: Y/R/B
+				item: Y/R/I
+				item: Y/R/V
+			item:
+				name: O
+				item: Y/O/R
+				item: Y/O/G
+				item: Y/O/B
+				item: Y/O/I
+				item: Y/O/V
+			item:
+				name: G
+				item: Y/G/R
+				item: Y/G/O
+				item: Y/G/B
+				item: Y/G/I
+				item: Y/G/V
+			item:
+				name: B
+				item: Y/B/R
+				item: Y/B/O
+				item: Y/B/G
+				item: Y/B/I
+				item: Y/B/V
+			item:
+				name: I
+				item: Y/I/R
+				item: Y/I/O
+				item: Y/I/G
+				item: Y/I/B
+				item: Y/I/V
+			item:
+				name: V
+				item: Y/V/R
+				item: Y/V/O
+				item: Y/V/G
+				item: Y/V/B
+				item: Y/V/I
+		item:
+			name: G
+			item:
+				name: R
+				item: G/R/O
+				item: G/R/Y
+				item: G/R/B
+				item: G/R/I
+				item: G/R/V
+			item:
+				name: O
+				item: G/O/R
+				item: G/O/Y
+				item: G/O/B
+				item: G/O/I
+				item: G/O/V
+			item:
+				name: Y
+				item: G/Y/R
+				item: G/Y/O
+				item: G/Y/B
+				item: G/Y/I
+				item: G/Y/V
+			item:
+				name: B
+				item: G/B/R
+				item: G/B/O
+				item: G/B/Y
+				item: G/B/I
+				item: G/B/V
+			item:
+				name: I
+				item: G/I/R
+				item: G/I/O
+				item: G/I/Y
+				item: G/I/B
+				item: G/I/V
+			item:
+				name: V
+				item: G/V/R
+				item: G/V/O
+				item: G/V/Y
+				item: G/V/B
+				item: G/V/I
+		item:
+			name: B
+			item:
+				name: R
+				item: B/R/O
+				item: B/R/Y
+				item: B/R/G
+				item: B/R/I
+				item: B/R/V
+			item:
+				name: O
+				item: B/O/R
+				item: B/O/Y
+				item: B/O/G
+				item: B/O/I
+				item: B/O/V
+			item:
+				name: Y
+				item: B/Y/R
+				item: B/Y/O
+				item: B/Y/G
+				item: B/Y/I
+				item: B/Y/V
+			item:
+				name: G
+				item: B/G/R
+				item: B/G/O
+				item: B/G/Y
+				item: B/G/I
+				item: B/G/V
+			item:
+				name: I
+				item: B/I/R
+				item: B/I/O
+				item: B/I/Y
+				item: B/I/G
+				item: B/I/V
+			item:
+				name: V
+				item: B/V/R
+				item: B/V/O
+				item: B/V/Y
+				item: B/V/G
+				item: B/V/I
+		item:
+			name: I
+			item:
+				name: R
+				item: I/R/O
+				item: I/R/Y
+				item: I/R/G
+				item: I/R/B
+				item: I/R/V
+			item:
+				name: O
+				item: I/O/R
+				item: I/O/Y
+				item: I/O/G
+				item: I/O/B
+				item: I/O/V
+			item:
+				name: Y
+				item: I/Y/R
+				item: I/Y/O
+				item: I/Y/G
+				item: I/Y/B
+				item: I/Y/V
+			item:
+				name: G
+				item: I/G/R
+				item: I/G/O
+				item: I/G/Y
+				item: I/G/B
+				item: I/G/V
+			item:
+				name: B
+				item: I/B/R
+				item: I/B/O
+				item: I/B/Y
+				item: I/B/G
+				item: I/B/V
+			item:
+				name: V
+				item: I/V/R
+				item: I/V/O
+				item: I/V/Y
+				item: I/V/G
+				item: I/V/B
+		item:
+			name: V
+			item:
+				name: R
+				item: V/R/O
+				item: V/R/Y
+				item: V/R/G
+				item: V/R/B
+				item: V/R/I
+			item:
+				name: O
+				item: V/O/R
+				item: V/O/Y
+				item: V/O/G
+				item: V/O/B
+				item: V/O/I
+			item:
+				name: Y
+				item: V/Y/R
+				item: V/Y/O
+				item: V/Y/G
+				item: V/Y/B
+				item: V/Y/I
+			item:
+				name: G
+				item: V/G/R
+				item: V/G/O
+				item: V/G/Y
+				item: V/G/B
+				item: V/G/I
+			item:
+				name: B
+				item: V/B/R
+				item: V/B/O
+				item: V/B/Y
+				item: V/B/G
+				item: V/B/I
+			item:
+				name: I
+				item: V/I/R
+				item: V/I/O
+				item: V/I/Y
+				item: V/I/G
+				item: V/I/B
+		item:
+			name: 2
+			item:
+				name: R
+				item: 2/R/O
+				item: 2/R/Y
+				item: 2/R/G
+				item: 2/R/B
+				item: 2/R/I
+				item: 2/R/V
+			item:
+				name: O
+				item: 2/O/R
+				item: 2/O/Y
+				item: 2/O/G
+				item: 2/O/B
+				item: 2/O/I
+				item: 2/O/V
+			item:
+				name: Y
+				item: 2/Y/R
+				item: 2/Y/O
+				item: 2/Y/G
+				item: 2/Y/B
+				item: 2/Y/I
+				item: 2/Y/V
+			item:
+				name: G
+				item: 2/G/R
+				item: 2/G/O
+				item: 2/G/Y
+				item: 2/G/B
+				item: 2/G/I
+				item: 2/G/V
+			item:
+				name: B
+				item: 2/B/R
+				item: 2/B/O
+				item: 2/B/Y
+				item: 2/B/G
+				item: 2/B/I
+				item: 2/B/V
+			item:
+				name: I
+				item: 2/I/R
+				item: 2/I/O
+				item: 2/I/Y
+				item: 2/I/G
+				item: 2/I/B
+				item: 2/I/V
+			item:
+				name: V
+				item: 2/V/R
+				item: 2/V/O
+				item: 2/V/Y
+				item: 2/V/G
+				item: 2/V/B
+				item: 2/V/I

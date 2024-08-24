@@ -226,7 +226,7 @@ symbol_context :=
 	<match>										### the actual symbol
 	([\\s),\\.\"”’':;—-]|</param-mana>|$)"		### white space, parentheses, comma, dot, quote, colon, dash or end of the string
 
-replace_symbols := replace@(match: "([ROYGBIVLU]+[0-9]*X?)", in_context: symbol_context, replace: {"<sym-auto>" + _1 + "</sym-auto>"})
+replace_symbols := replace@(match: "((L|U|(2/|R|O|Y|G|B|I|V|/)+)[0-9]*X?)", in_context: symbol_context, replace: {"<sym-auto>" + _1 + "</sym-auto>"})
 
 symbol_number_context :=
 	"(?ix)																		### case insensitive, ignore whitespace
@@ -325,6 +325,12 @@ mana_filter :=
 
 mana_cost_sort_ROYGBIV :=
 	mana_filter +
+	### sort hybrid trios
+	replace@(
+		match: "././.",
+		in_context: "(^|[^/])<match>($|[^/])",
+		replace: {sort_text(order:"in_place(9876543210ROYGBIV)")}
+	) +
 	### sort hybrid pairs
 	replace@(
 		match: "./.",
@@ -366,7 +372,7 @@ pip_count :=
 	for x from 0 to total_count do (if contains(input[x], match: symbol) then 1 else 0)
 }
 
-cmc_split := break_text@(match: "(?ix) [0-9]+(?!/) | [ROYGBIV0-9](/[ROYGBIV])\{0,4} ")
+cmc_split := break_text@(match: "(?ix) [0-9]+(?!/) | [ROYGBIV0-9](/[ROYGBIV])\{0,2} ")
 cmc :=
 {
 	for each sym in cmc_split(to_text()) do (
