@@ -1,0 +1,91 @@
+﻿mse version: 2.4.0
+short name: Spreadsheet
+full name: Tab Separated values
+position hint: 000
+icon: icon.png
+version: 2024-08-31
+
+depends on:
+	package: conjure.mse-game
+	version: 2024-08-31
+
+game: conjure
+create directory: false
+file type: *.txt|*.txt|*.*|*.*
+
+option field:
+	type: multiple choice
+	name: values
+	description: What values to export.
+	choice: Name
+	choice: Mana Cost
+	choice: CMC
+	choice: Color
+	choice: Type
+	choice: Super Type
+	choice: Sub Type
+	choice: Stats
+	choice: Rule Text
+	choice: Lore Text
+	choice: Artist
+	choice: Designer
+	choice: Collector Number
+	choice: Revision
+	choice: Saga
+	choice: Border Shape
+	choice: Lore Bar Shape
+	choice: Notes
+	initial: Name, Mana Cost, Type, Stats, Rule Text, Lore Text, Revision, Saga, Notes
+
+option style:
+	values:
+		render style:	checklist
+		direction:		vertical
+
+script:
+	escape_characters :=
+		replace@(match:"<atom><soft-line>\n</soft-line></atom>", replace:"") +
+		replace@(match:"\n", replace:"\\\\n ") +
+		replace@(match:"\t", replace:"\\\\t ")
+	replace_commas := replace@(match: ", ", replace: "	")
+	split_commas := split_text@(match: ", ")
+	replace_stats := replace@(match: "Stats", replace: "Attack	Health	Arcane")
+	
+	exporter_name_filter := filter_text@(match:"!exporte?r?name [^\n\<]+")
+	exporter_name_grabber := replace@(match:"!exporte?r?name ", replace:"")
+	
+	value_map :=
+	[
+		"Name":				{ export_name := exporter_name_grabber(exporter_name_filter(card.notes)); if export_name != "" then export_name else card.name }
+		"Mana Cost":		{ card.mana_cost_1 }
+		"CMC":				{ card.cmc_1 }
+		"Color":			{ card.frame_1 }
+		"Type":				{ card.type_1 }
+		"Super Type":		{ card.super_type_1 }
+		"Sub Type":			{ card.sub_type_1 }
+		"Stats":			{ card.attack_1 + "	" + card.health_1 + "	" + card.arcane_1 }
+		"Rule Text":		{ escape_characters(card.rule_text_1) }
+		"Lore Text":		{ escape_characters(card.lore_text_1) }
+		"Artist":			{ card.artist_1 }
+		"Designer":			{ card.designer_1 }
+		"Collector Number":	{ card.collector_number_1 }
+		"Revision":			{ card.revision_1 }
+		"Saga":				{ card.saga_1 }
+		"Border Shape":		{ card.outer_border_1 }
+		"Lore Bar Shape":	{ card.lore_bar_1 }
+		"Notes":			{ escape_characters(card.notes) }
+	]
+	
+	write_header := { replace_commas(replace_stats(options.values)) + "\n" }
+	write_card :=
+	{
+		split := split_commas(options.values)
+		count := length(split) - 1
+		card_values := for x from 0 to count do
+		(
+			"	" + value_map[split[x]]()
+		)
+		substring(card_values, begin:1) + "\n"
+	}
+	write_set := for each card in cards do write_card()
+	to_string(to_text(write_header() + write_set))
