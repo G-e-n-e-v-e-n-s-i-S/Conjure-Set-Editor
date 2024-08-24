@@ -219,7 +219,7 @@ styling field:
 ####################################### Styling styles
 
 styling style:
-	center text:
+	center rule text:
 		render style: both
 		choice images:
 			always:				/conjure.mse-game/menu icons/center-always.png
@@ -667,7 +667,7 @@ extra card style:
 		z index:			30
 		popup style:		in place
 		render style:		image
-		image:				{ color_blend(card.frame_1, folder: "card bottom opaque", mask_folder: "card bottom mask") }
+		image:				{ color_blend(card.frame_1, folder: "card bottom") }
 		mask:				card mask.png
 	textbox background:
 		left:				0
