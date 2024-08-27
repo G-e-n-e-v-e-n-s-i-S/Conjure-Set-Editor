@@ -110,6 +110,12 @@ set field:
 
 set field:
 	type: boolean
+	name: show print bleed area
+	description: Shows the part of the card that will be trimmed when printed.
+	initial: no
+
+set field:
+	type: boolean
 	name: spell check
 	description: Marks spelling errors on cards.
 

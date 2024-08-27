@@ -79,6 +79,17 @@ card field:
 #	description: The black border around the card.
 
 card field:
+	type: choice
+	name: bleed area 1
+	show statistics: false
+	editable: false
+	choice: shown
+	choice: hidden
+	script: set.show_print_bleed_area; bleed_area_script(input: value, id: 1)
+	card list allow: false
+	description: The part of the card that will be trimmed when printing.
+
+card field:
 	type: text
 	name: name
 	identifying: true

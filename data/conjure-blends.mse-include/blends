@@ -11,6 +11,22 @@ max_color_count := 8
 #### Prefix of colorless frame
 empty_color := "c"
 
+#### Where the transitions between colors happen
+fade_positions :=
+{
+	bleed_offset := bleed/stylesheet.card_width
+	fade_position_percent := x/color_count
+	fade_position_percent_bleed_corrected := (stylesheet.card_width - 2*bleed)/stylesheet.card_width * fade_position_percent
+	bleed_offset + fade_position_percent_bleed_corrected
+}
+#### Half size of the transitions between colors
+fade_sizes :=
+{
+	fade_size_percent := (color_count - 2) / (max_color_count - 2)
+	fade_size_percent_bleed_corrected := (stylesheet.card_width - 2*bleed)/stylesheet.card_width * fade_size_percent
+	0.05 * (1 - fade_size_percent_bleed_corrected) + 0.02 * fade_size_percent_bleed_corrected
+}
+
 #### Blend behavior
 horizontal_blend :=
 {
@@ -19,15 +35,14 @@ horizontal_blend :=
 	else if	color_count == 1 then template(colors[0])
 	else (
 	color_count := clamp(color_count, minimum: 2, maximum: max_color_count)
-	fade_size_percent := (color_count - 2) / (max_color_count - 2)
-	fade_size := 0.05 * (1 - fade_size_percent) + 0.02 * fade_size_percent
 	result := template(colors[offset mod color_count])
+	fade_size := fade_sizes()
 	for x from 1 to color_count-1 do (
 		result :=	linear_blend(
 						image1:	result,
 						image2:	template(colors[(offset + x) mod color_count]),
-						x1:		x/color_count - fade_size,
-						x2:		x/color_count + fade_size,
+						x1:		fade_positions(x) - fade_size,
+						x2:		fade_positions(x) + fade_size,
 						y1:		0,
 						y2:		0
 					)

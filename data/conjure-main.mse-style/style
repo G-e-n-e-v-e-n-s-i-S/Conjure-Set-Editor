@@ -15,8 +15,8 @@ depends on:
 	package: conjure-symbols.mse-symbol-font
 	version: 2024-08-31
 
-card width: 1500
-card height: 2100
+card width: 1644
+card height: 2244
 card dpi: 600
 
 
@@ -98,9 +98,8 @@ init script:
 	
 	art_left :=		{ 0 }
 	art_right :=	{ stylesheet.card_width }
-	art_top :=		{ if styling.stretch_art_to_whole_card or card.outer_border_1 != "top and bottom"	then 0																					else 310 }
-	art_bottom :=	{ if styling.stretch_art_to_whole_card or card.outer_border_1 == "hidden"			then stylesheet.card_height	else if card.inner_border_1 == "hidden"			then 1848	else 1320 }
-		
+	art_top :=		{ if styling.stretch_art_to_whole_card or card.outer_border_1 != "top and bottom"	then 0																					else 310 + bleed }
+	art_bottom :=	{ if styling.stretch_art_to_whole_card or card.outer_border_1 == "hidden"			then stylesheet.card_height	else if card.inner_border_1 == "hidden"	then 1848 + bleed	else 1307 + bleed }
 
 ####################################### Styling fields
 
@@ -279,12 +278,23 @@ card style:
 		render style:		image
 		image:				{ color_blend(card.frame_1, folder: "/conjure-shared.mse-include/inner border") }
 		mask:				/conjure-shared.mse-include/inner border mask.png
+	bleed area 1:
+		left:				0
+		top:				0
+		width:				{ stylesheet.card_width }
+		height:				{ stylesheet.card_height }
+		z index:			2000
+		visible:			{ card.bleed_area_1 != "hidden" }
+		popup style:		in place
+		render style:		image
+		image:				/conjure-shared.mse-include/colorable.png
+		mask:				/conjure-shared.mse-include/bleed area mask.png
 	
 	############################# Nameline
 	name 1:
-		left:				{ 120	+ (if card_style.mana_cost_1.content_width == 0								then 0 else card_style.mana_cost_1.content_width + 16) }
-		right:				{ 1380	- (if card_style.mana_cost_1.content_width == 0 or not styling.center_name	then 0 else card_style.mana_cost_1.content_width + 16) }
-		top:				{ 94 + name_font_vertical() }
+		left:				{ 120	+ (if card_style.mana_cost_1.content_width == 0								then 0 else card_style.mana_cost_1.content_width + 16) + bleed }
+		right:				{ 1380	- (if card_style.mana_cost_1.content_width == 0 or not styling.center_name	then 0 else card_style.mana_cost_1.content_width + 16) + bleed }
+		top:				{ 94 + bleed + name_font_vertical() }
 		height:				110
 		z index:			1000
 		alignment:			{if styling.center_name then "middle center shrink-overflow" else "middle right shrink-overflow"}
@@ -295,9 +305,9 @@ card style:
 			size:				{ name_font_size() }
 			scale down to:		10
 	mana cost 1:
-		left:				108
+		left:				{ 108 + bleed }
 		width:				{ max(140, card_style.mana_cost_1.content_width + 24) }
-		top:				101
+		top:				{ 101 + bleed }
 		height:				110
 		z index:			1010
 		alignment:			middle left
@@ -313,9 +323,9 @@ card style:
 	
 	############################# Typeline
 	type 1:
-		left:				156
-		right:				1344
-		top:				{ 224 + type_font_vertical() }
+		left:				{ 156 + bleed }
+		right:				{ 1344 + bleed }
+		top:				{ 224 + bleed + type_font_vertical() }
 		height:				66
 		z index:			1000
 		alignment:			{if styling.center_type then "middle center shrink-overflow" else "middle left shrink-overflow"}
@@ -328,10 +338,10 @@ card style:
 	
 	############################# Textbox
 	rule text 1:
-		left:				140
-		right:				1360
-		top:				{ (if has_lore() then 1335 else 1355) + rule_font_vertical() }
-		bottom:				{ rule_text_bottom() + rule_font_vertical() }
+		left:				{ 140 + bleed }
+		right:				{ 1360 + bleed }
+		top:				{ (if has_lore() then 1335 else 1355) + bleed + rule_font_vertical() }
+		bottom:				{ rule_text_bottom() + bleed + rule_font_vertical() }
 		z index:			1010
 		line height soft:		0.9
 		line height hard:		{ if is_modal(card.rule_text_1) then 0.9 else 1.2 }
@@ -359,10 +369,10 @@ card style:
 			size:				{ rule_font_size() }
 			scale down to:		10
 	lore text 1:
-		left:				70
-		right:				1430
-		top:				{ (if has_rule() then rule_text_bottom() else 1355) + lore_font_vertical() }
-		bottom:				{ 1978 + lore_font_vertical() }
+		left:				{ 70 + bleed }
+		right:				{ 1430 + bleed }
+		top:				{ (if has_rule() then rule_text_bottom() else 1355) + bleed + lore_font_vertical() }
+		bottom:				{ 1978 + bleed + lore_font_vertical() }
 		z index:			1000
 		line height soft:		0.9
 		line height hard:		{ if is_modal(card.rule_text_1) then 0.9 else 1.2 }
@@ -383,8 +393,8 @@ card style:
 			size:				{ lore_font_size() }
 			scale down to:		10
 	lore bar 1:
-		left:				150
-		top:				{ rule_text_bottom() - lore_bar_height()/2 }
+		left:				{ 150 + bleed }
+		top:				{ rule_text_bottom() - lore_bar_height()/2 + bleed }
 		width:				1200
 		height:				{ lore_bar_height() }
 		z index:			1010
@@ -394,8 +404,8 @@ card style:
 	
 	############################# Stats
 	stat 1:
-		left:				50
-		top:				340
+		left:				{ 50 + bleed }
+		top:				{ 340 + bleed }
 		width:				130
 		height:				130
 		z index:			1000
@@ -412,8 +422,8 @@ card style:
 			size:				{ if length(card.stat_1) > 2 then 70 else if length(card.stat_1) > 1 then 90 else 110 }
 			scale down to:		10
 	stat 2:
-		left:				50
-		top:				530
+		left:				{ 50 + bleed }
+		top:				{ 530 + bleed }
 		width:				130
 		height:				130
 		z index:			1000
@@ -430,8 +440,8 @@ card style:
 			size:				{ if length(card.stat_2) > 2 then 70 else if length(card.stat_2) > 1 then 90 else 110 }
 			scale down to:		10
 	stat 3:
-		left:				50
-		top:				720
+		left:				{ 50 + bleed }
+		top:				{ 720 + bleed }
 		width:				130
 		height:				130
 		z index:			1000
@@ -448,8 +458,8 @@ card style:
 			size:				{ if length(card.stat_3) > 2 then 70 else if length(card.stat_3) > 1 then 90 else 110 }
 			scale down to:		10
 	stat 4:
-		left:				50
-		top:				910
+		left:				{ 50 + bleed }
+		top:				{ 910 + bleed }
 		width:				130
 		height:				130
 		z index:			1000
@@ -466,8 +476,8 @@ card style:
 			size:				{ if length(card.stat_4) > 2 then 70 else if length(card.stat_4) > 1 then 90 else 110 }
 			scale down to:		10
 	orb 1:
-		left:				20
-		top:				310
+		left:				{ 20 + bleed }
+		top:				{ 310 + bleed }
 		width:				190
 		height:				190
 		z index:			900
@@ -483,8 +493,8 @@ card style:
 			hidden:				/conjure.mse-game/orb icons/hidden.png
 		image:				{ "/conjure-shared.mse-include/orb/" + card.orb_1 + ".png" }
 	orb 2:
-		left:				20
-		top:				500
+		left:				{ 20 + bleed }
+		top:				{ 500 + bleed }
 		width:				190
 		height:				190
 		z index:			900
@@ -500,8 +510,8 @@ card style:
 			hidden:				/conjure.mse-game/orb icons/hidden.png
 		image:				{ "/conjure-shared.mse-include/orb/" + card.orb_2 + ".png" }
 	orb 3:
-		left:				20
-		top:				690
+		left:				{ 20 + bleed }
+		top:				{ 690 + bleed }
 		width:				190
 		height:				190
 		z index:			900
@@ -517,8 +527,8 @@ card style:
 			hidden:				/conjure.mse-game/orb icons/hidden.png
 		image:				{ "/conjure-shared.mse-include/orb/" + card.orb_3 + ".png" }
 	orb 4:
-		left:				20
-		top:				880
+		left:				{ 20 + bleed }
+		top:				{ 880 + bleed }
 		width:				190
 		height:				190
 		z index:			900
@@ -536,8 +546,8 @@ card style:
 	
 	############################# Information
 	designer 1:
-		left:				134
-		top:				{ 1976 + info_font_vertical() }
+		left:				{ 134 + bleed }
+		top:				{ 1976 + bleed + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -549,8 +559,8 @@ card style:
 			size:				{ info_font_size() }
 			scale down to:		10
 	artist line 1:
-		right:				1366
-		top:				{ 1976 + info_font_vertical() }
+		right:				{ 1366 + bleed }
+		top:				{ 1976 + bleed + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -562,8 +572,8 @@ card style:
 			size:				{ info_font_size() }
 			scale down to:		10
 	saga line 1:
-		left:				134
-		top:				{ 2026 + info_font_vertical() }
+		left:				{ 134 + bleed }
+		top:				{ 2026 + bleed + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -575,8 +585,8 @@ card style:
 			size:				{ info_font_size() }
 			scale down to:		10
 	auto collector number 1:
-		right:				1366
-		top:				{ 2026 + info_font_vertical() }
+		right:				{ 1366 + bleed }
+		top:				{ 2026 + bleed + info_font_vertical() }
 		width:				{ if auto_collector_number() then 545 else 0 }
 		height:				44
 		z index:			1000
@@ -588,8 +598,8 @@ card style:
 			size:				{ info_font_size() }
 			scale down to:		10
 	custom collector number 1:
-		right:				1366
-		top:				{ 2026 + info_font_vertical() }
+		right:				{ 1366 + bleed }
+		top:				{ 2026 + bleed + info_font_vertical() }
 		width:				{ if auto_collector_number() then 0 else 545 }
 		height:				44
 		z index:			1000
@@ -601,8 +611,8 @@ card style:
 			size:				{ info_font_size() }
 			scale down to:		10
 	revision 1:
-		left:				695
-		top:				{ 2026 + info_font_vertical() }
+		left:				{ 695 + bleed }
+		top:				{ 2026 + bleed + info_font_vertical() }
 		width:				110
 		height:				44
 		z index:			1000

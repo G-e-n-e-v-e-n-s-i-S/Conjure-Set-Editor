@@ -93,7 +93,7 @@ crop_safe :=
 		or	height < 1
 		or	offset_x + width > max_x
 		or	offset_y + height > max_y
-	then ""
+	then nil
 	else crop(input, offset_x: offset_x, offset_y: offset_y, width: width, height: height)
 }
 
@@ -252,6 +252,10 @@ inner_border_script :=
 	outer_border := card["outer_border_" + id]
 	if outer_border == "hidden" or outer_border == "bottom full art" then "hidden" else "shown"
 }
+
+bleed := 72
+
+bleed_area_script := { if set.show_print_bleed_area then "shown" else "hidden" }
 
 #bleed_border_default := { set.bleed_border }
 #bleed_border_script := { value }
