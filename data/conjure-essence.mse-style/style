@@ -64,7 +64,7 @@ init script:
 	swap_fonts_info_default :=
 	[
 		name: {"Book Antiqua"},
-		size: {26},
+		size: {28},
 		color: {rgb(185,180,185)},
 		vertical: {0},
 		italic: {"Book Antiqua Italic"}
@@ -292,7 +292,7 @@ card style:
 	############################# Information
 	designer 1:
 		left:				{ 134 + bleed }
-		top:				{ 1976 + bleed + info_font_vertical() }
+		top:				{ 1978 + bleed + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -302,10 +302,11 @@ card style:
 			italic name:		{ info_font_italic() }
 			color:				{ info_font_color() }
 			size:				{ info_font_size() }
+			weight:				bold
 			scale down to:		10
 	artist line 1:
 		right:				{ 1366 + bleed }
-		top:				{ 1976 + bleed + info_font_vertical() }
+		top:				{ 1978 + bleed + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -315,10 +316,11 @@ card style:
 			italic name:		{ info_font_italic() }
 			color:				{ info_font_color() }
 			size:				{ info_font_size() }
+			weight:				bold
 			scale down to:		10
 	saga line 1:
 		left:				{ 134 + bleed }
-		top:				{ 2026 + bleed + info_font_vertical() }
+		top:				{ 2030 + bleed + info_font_vertical() }
 		width:				545
 		height:				44
 		z index:			1000
@@ -328,10 +330,11 @@ card style:
 			italic name:		{ info_font_italic() }
 			color:				{ info_font_color() }
 			size:				{ info_font_size() }
+			weight:				bold
 			scale down to:		10
 	auto collector number 1:
 		right:				{ 1366 + bleed }
-		top:				{ 2026 + bleed + info_font_vertical() }
+		top:				{ 2030 + bleed + info_font_vertical() }
 		width:				{ if auto_collector_number() then 545 else 0 }
 		height:				44
 		z index:			1000
@@ -341,10 +344,11 @@ card style:
 			italic name:		{ info_font_italic() }
 			color:				{ info_font_color() }
 			size:				{ info_font_size() }
+			weight:				bold
 			scale down to:		10
 	custom collector number 1:
 		right:				{ 1366 + bleed }
-		top:				{ 2026 + bleed + info_font_vertical() }
+		top:				{ 2030 + bleed + info_font_vertical() }
 		width:				{ if auto_collector_number() then 0 else 545 }
 		height:				44
 		z index:			1000
@@ -354,10 +358,11 @@ card style:
 			italic name:		{ info_font_italic() }
 			color:				{ info_font_color() }
 			size:				{ info_font_size() }
+			weight:				bold
 			scale down to:		10
 	revision 1:
 		left:				{ 695 + bleed }
-		top:				{ 2026 + bleed + info_font_vertical() }
+		top:				{ 2030 + bleed + info_font_vertical() }
 		width:				110
 		height:				44
 		z index:			1000
@@ -367,6 +372,7 @@ card style:
 			italic name:		{ info_font_italic() }
 			color:				{ info_font_color() }
 			size:				{ info_font_size() }
+			weight:				bold
 			scale down to:		10
 	
 	############################# Illustration
