@@ -4,11 +4,17 @@ has keywords: true
 ####################################### Keyword modes
 
 keyword mode:
+	name: keyterm
+	description: Basic game concepts
+keyword mode:
 	name: core
 	description: Core set keywords
 keyword mode:
 	name: expert
 	description: Expert set keywords
+keyword mode:
+	name: counter
+	description: Counter types
 keyword mode:
 	is default: true
 	name: custom
@@ -40,6 +46,14 @@ keyword parameter type:
 		description: No changes made.
 		script: \{{input}\}
 
+keyword parameter type:
+	name: an
+	match: an?
+	refer script:
+		name: normal
+		description: A or An.
+		script: \{{input}\}
+
 ####################################### Keywords
 
 keyword:
@@ -55,10 +69,40 @@ keyword:
 	reminder: Airborne — This Character can only be blocked by other Characters with Airborne.
 
 keyword:
+	keyword: Amalgam
+	match: Amalgam
+	mode: core
+	reminder: Amalgam - When you play this card you may sacrifice any number of Field Cards that share a card Sub-Type with this card, if you do, subtract the sacrificed cards mana cost from this card's mana cost.
+
+keyword:
+	keyword: Amass
+	match: Amass <atom-param>name</atom-param>
+	mode: core
+	reminder: Amass {param1} — For each mana in this card’s mana cost you may lock an unlocked Field card that is a {param1} to pay for a mana in the cost of a matching color to that card’s own color or 1 colorless mana.
+
+keyword:
+	keyword: Arrive
+	match: Arrive
+	mode: core
+	reminder: Arrive — When this card is put on the Field, ...
+
+keyword:
 	keyword: Barrier
 	match: Barrier <atom-param>mana</atom-param>
 	mode: core
 	reminder: Barrier — This card can’t be targeted by cards or abilities you opponents control unless the controller of that card or ability pays {param1}.
+
+keyword:
+	keyword: Barrier
+	match: Barrier — <atom-param>name</atom-param>
+	mode: core
+	reminder: Barrier — This card can’t be targeted by cards or abilities you opponents control unless the controller of that card or ability {param1}.
+
+keyword:
+	keyword: Barrier
+	match: Barrier from <atom-param>name</atom-param>
+	mode: core
+	reminder: Barrier — This card can’t be targeted by cards or abilities you opponents control from {param1} sources.
 
 keyword:
 	keyword: Barrier
@@ -67,16 +111,28 @@ keyword:
 	reminder: Barrier — This card can’t be targeted by cards or abilities you opponents control.
 
 keyword:
+	keyword: Battlecry
+	match: Battlecry
+	mode: core
+	reminder: Battlecry — Whenever this card attacks, ...
+
+keyword:
 	keyword: Bloodlust
 	match: Bloodlust
 	mode: core
-	reminder: Bloodlust — This Character must attack each Battle if able.
+	reminder: Bloodlust — This Character attacks each Battle if able.
 
 keyword:
 	keyword: Coalesce
 	match: Coalesce
 	mode: core
-	reminder: Coalesce — Whenever an Essence arrives under your control, [Effect]
+	reminder: Coalesce — Whenever an Essence arrives under your control, ...
+
+keyword:
+	keyword: Decayed
+	match: Decayed
+	mode: core
+	reminder: Decayed — Whenever any amount of damage is dealt to this card, its controller sacrifices it. Whenever this card attacks, its controller sacrifices it at the end of turn.
 
 keyword:
 	keyword: Depleted
@@ -97,6 +153,18 @@ keyword:
 	reminder: Dredge — You may banish any number of cards from your Grave when you play this card or use this ability. If you do, each card you banish pays for <sym>1</sym> in the mana cost.
 
 keyword:
+	keyword: Emissary
+	match: Emissary
+	mode: core
+	reminder: Emissary — When this card arrives, Donate it. This card can't attack or block its owner or cards its owner controls.
+
+keyword:
+	keyword: Empower
+	match: Empower
+	mode: core
+	reminder: Empower — Whenever you play a spell, ...
+
+keyword:
 	keyword: Firebreathing
 	match: Firebreathing <atom-param>mana</atom-param>
 	mode: core
@@ -107,6 +175,12 @@ keyword:
 	match: Firebreathing
 	mode: core
 	reminder: Firebreathing — <sym>R</sym>: This Character gains +1 Attack this turn.
+
+keyword:
+	keyword: Flux
+	match: Flux
+	mode: core
+	reminder: Flux — Replace each instance of "target" with "each" on this card.
 
 keyword:
 	keyword: Fortify
@@ -124,13 +198,13 @@ keyword:
 	keyword: Fury
 	match: Fury
 	mode: core
-	reminder: Fury — This Character deals Battle damage before each other Character without Fury during the Battle damage phase.
+	reminder: Fury — This Character deals Battle damage before each other Character without Fury during the Battle Damage Phase.
 
 keyword:
 	keyword: Gouge
 	match: Gouge <atom-param>number</atom-param>
 	mode: core
-	reminder: Gouge — Whenever this card deals damage to a player, that player Grinds {if param1.value == "1" then "" else english_number(param1) + " times "}that many cards.
+	reminder: Gouge — Whenever this card deals damage to a player, that player Grinds {param1} times that many cards.
 
 keyword:
 	keyword: Gouge
@@ -145,6 +219,12 @@ keyword:
 	reminder: Guardian — This card can't attack.
 
 keyword:
+	keyword: Illusion
+	match: Illusion
+	mode: core
+	reminder: Illusion — Whenever this card is successfully targeted by a card or ability its controller sacrifices it.
+
+keyword:
 	keyword: Immune
 	match: Immune to <atom-param>name</atom-param>
 	mode: core
@@ -152,15 +232,21 @@ keyword:
 
 keyword:
 	keyword: Intimidate
+	match: Intimidate
+	mode: core
+	reminder: Intimidate — This card must be blocked by an additional Character.
+
+keyword:
+	keyword: Intimidate
 	match: Intimidate <atom-param>number</atom-param>
 	mode: core
-	reminder: Intimidate — This card must be blocked by {english_number_a(param1)} additional Character(s).
+	reminder: Intimidate — This card must be blocked by {param1} additional Characters.
 
 keyword:
 	keyword: Invulnerable
 	match: Invulnerable
 	mode: core
-	reminder: Invulnerable — This card cannot be destroyed due to damage or non-rendering effects.
+	reminder: Invulnerable — This card cannot be destroyed due to damage or Non-Rendering effects.
 
 keyword:
 	keyword: Lethal
@@ -172,7 +258,7 @@ keyword:
 	keyword: Lucky
 	match: Lucky <atom-param>number</atom-param>
 	mode: core
-	reminder: Lucky — Whenever this card would be destroyed, instead flip {if param1.value == "1" then "a coin" else "up to " + param1.value + " coins"}. If you win {if param1.value == "1" then "the" else "a"} flip, don't destroy it, and remove all damage from it.
+	reminder: Lucky — Whenever this card would be destroyed, instead flip up to {param1} coins. If you win a flip, don't destroy it, and remove all damage from it and stop flipping coins.
 
 keyword:
 	keyword: Lucky
@@ -208,19 +294,37 @@ keyword:
 	keyword: Prismatic
 	match: Prismatic
 	mode: core
-	reminder: Prismatic — For each color of mana used to play this card, [Effect]
+	reminder: Prismatic — For each color of mana used to play this card, ...
 
 keyword:
 	keyword: Raid
 	match: Raid
 	mode: core
-	reminder: Raid — Whenever this card deals Battle damage to a player, [Effect]
+	reminder: Raid — Whenever this card deals Battle damage to a player, ...
+
+keyword:
+	keyword: Shade
+	match: Shade
+	mode: core
+	reminder: Shade — This card can't be blocked by or block other Characters unless they also have Shade and can't be targeted by cards or abilities (including your own).
+
+keyword:
+	keyword: Shielded
+	match: Shielded
+	mode: core
+	reminder: Shielded — This card arrives with a Shield counter.
 
 keyword:
 	keyword: Snare
 	match: Snare
 	mode: core
 	reminder: Snare — This Character may block Characters with Airborne.
+
+keyword:
+	keyword: Sovereign
+	match: Sovereign
+	mode: core
+	reminder: Sovereign — If you have the greatest Life Total, ...
 
 keyword:
 	keyword: Steadfast
@@ -232,7 +336,7 @@ keyword:
 	keyword: Sustain
 	match: Sustain <atom-param>number</atom-param>
 	mode: core
-	reminder: Sustain — Whenever this card deals damage, you gain {if param1.value == "1" then "" else english_number(param1) + " times "}that much life.
+	reminder: Sustain — Whenever this card deals damage, you gain {param1} times that much life.
 
 keyword:
 	keyword: Sustain
@@ -247,10 +351,22 @@ keyword:
 	reminder: Swift — This Character can attack and activate lock abilities the turn it's played.
 
 keyword:
+	keyword: Taunt
+	match: Taunt
+	mode: core
+	reminder: Taunt — Whenever this Character attacks, it must be blocked if able.
+
+keyword:
 	keyword: Thaumaturge
 	match: Thaumaturge
 	mode: core
-	reminder: Thaumaturge — This Character can only be blocked by Characters with Arcane, if this Character is blocked, compare each Character’s Arcane and destroy the one with less Arcane, if not, this Character deals Battle damage equal to its Arcane.
+	reminder: Thaumaturge — This Character can only be blocked by Characters with Arcane, if this Character is blocked, compare each Character’s Arcane and destroy the one with less Arcane. If not, this Character deals Battle damage equal to its Arcane.
+
+keyword:
+	keyword: Toughened
+	match: Toughened
+	mode: core
+	reminder: Toughened — Whenever this Character blocks, it deals Battle damage equal to its Health rather than any other stat.
 
 keyword:
 	keyword: Unblockable
@@ -274,10 +390,146 @@ keyword:
 	keyword: Volley
 	match: Volley <atom-param>number</atom-param>
 	mode: core
-	reminder: Volley — This Character deals Battle damage {if param1.value == "1" then "an additional time" else english_number(param1) + " additional times"} during the Battle damage phase.
+	reminder: Volley — This Character deals Battle damage {param1} additional times during the Battle damage phase.
 
 keyword:
 	keyword: Volley
 	match: Volley
 	mode: core
 	reminder: Volley — This Character deals Battle damage an additional time during the Battle damage phase.
+
+####################################### Keyterms
+
+keyword:
+	keyword: Crystallize
+	match: Crystallize: <atom-param>name</atom-param>
+	mode: keyterm
+	reminder: Crystallize — This card can only be Crystallized as {param1}.
+
+keyword:
+	keyword: Delve
+	match: Delve <atom-param>number</atom-param>
+	mode: keyterm
+	reminder: Delve {param1} — Look at the top {param1} cards of your Deck, you may put any number of them in your Grave. Put the rest on top of your Deck in any order.
+
+keyword:
+	keyword: Delve
+	match: Delve
+	mode: keyterm
+	reminder: Delve — Look at the top card of your Deck, you may put that card in your Grave.
+
+keyword:
+	keyword: Demise
+	match: Demise
+	mode: keyterm
+	reminder: Demise — When this card is destroyed and put into the Grave, ...
+
+keyword:
+	keyword: Donate
+	match: Donate <atom-param>an</atom-param> <atom-param>name</atom-param>
+	mode: keyterm
+	reminder: Donate {param2} — Target opponent gains control of a {param2} card you control.
+
+keyword:
+	keyword: Foretell
+	match: Foretell <atom-param>number</atom-param>
+	mode: keyterm
+	reminder: Foretell {param1} — Look at the top {param1} cards of your Deck, you may put any number of them on the bottom of your deck. Put the rest on top of your deck in any order.
+
+keyword:
+	keyword: Foretell
+	match: Foretell
+	mode: keyterm
+	reminder: Foretell — Look at the top card of your Deck, you may put that card on the bottom of your Deck.
+
+keyword:
+	keyword: Grind
+	match: Grind <atom-param>number</atom-param>
+	mode: keyterm
+	reminder: Grind {param1} — Remove the top {param1} cards of your Deck and put them into your Grave.
+
+keyword:
+	keyword: Grind
+	match: Grind
+	mode: keyterm
+	reminder: Grind — Remove the top card of your Deck and put it into your Grave.
+
+keyword:
+	keyword: Heal
+	match: Heal
+	mode: keyterm
+	reminder: Heal — The next time this card would be destroyed or dealt damage this turn, instead don't. If it's in Battle, remove it from Battle and lock it.
+
+keyword:
+	keyword: Recall
+	match: Recall
+	mode: keyterm
+	reminder: Recall — You may play this card from your Grave, then banish it.
+
+keyword:
+	keyword: Recover
+	match: Recover <atom-param>an</atom-param> <atom-param>name</atom-param>
+	mode: keyterm
+	reminder: Recover — Return target {param2} card from your Grave to your Hand.
+
+keyword:
+	keyword: Revive
+	match: Revive <atom-param>an</atom-param> <atom-param>name</atom-param>
+	mode: keyterm
+	reminder: Revive — Return target {param2} card from your Grave to the Field.
+
+keyword:
+	keyword: Switch
+	match: Switch <atom-param>an</atom-param> <atom-param>name</atom-param> card from <atom-param>name</atom-param> to <atom-param>name</atom-param>.
+	mode: keyterm
+	reminder: Switch a {param2} card from {param3} to {param4} — If a card is Switched to the Field it replaces the exsisting card.
+
+keyword:
+	keyword: Wish
+	match: Wish <atom-param>an</atom-param> <atom-param>name</atom-param> card to your <atom-param>name</atom-param>.
+	mode: keyterm
+	reminder: Wish — Move a {param2} card from your Wish Deck or Essence Deck and move it to {param3}.
+
+keyword:
+	keyword: Your Offset
+	match: Your Offset
+	mode: keyterm
+	reminder: Your Offset — At the end of your turn, ...
+
+keyword:
+	keyword: Each Offset
+	match: Each Offset
+	mode: keyterm
+	reminder: Each Offset — At the end of each turn, ...
+
+keyword:
+	keyword: Your Onset
+	match: Your Onset
+	mode: keyterm
+	reminder: Your Onset — At the start of your turn, ...
+
+keyword:
+	keyword: Each Onset
+	match: Each Onset
+	mode: keyterm
+	reminder: Each Onset — At the start of each turn, ...
+
+####################################### Counters
+
+keyword:
+	keyword: Shield counter
+	match: Shield counter
+	mode: counter
+	reminder: Shield counter — If a Field card with a Shield counter would be destroyed or dealt damage, instead remove a Shield counter from that card and prevent that card from being destroyed or being dealt damage.
+
+keyword:
+	keyword: Impede counter
+	match: Impede counter
+	mode: counter
+	reminder: Impede counter — If a Field Card with an Impede counter would unlock, instead remove 1 Impede counter from that card and don’t unlock it.
+
+keyword:
+	keyword: Seal counter
+	match: Seal counter
+	mode: counter
+	reminder: Seal counter — Any Field Card with a Seal counter can’t activate abilities, have abilities trigger, attack, block, or unlock. Each Onset the active player removes a Seal counter from each card they control.

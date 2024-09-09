@@ -79,10 +79,12 @@ set field:
 set field:
 	type: multiple choice
 	name: automatic reminder text
+	choice: keyterm
+	choice: counter
 	choice: core
 	choice: expert
 	choice: custom
-	initial: core, expert, custom
+	initial: keyterm, counter, core, expert, custom
 	description: For which kinds of keywords should reminder text be added by default? Can be enabled/disabled on the card by right clicking the keyword.
 
 set field:
