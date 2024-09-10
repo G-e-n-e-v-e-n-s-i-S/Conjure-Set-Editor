@@ -54,19 +54,22 @@ to_int_lax :=
 pad :=
 {
 	input := to_string(input)
-	missing := length(input) - to - 1
+	missing := to - length(input) - 1
 	for x from 0 to missing do (
 		input := "0" + input
 	)
 	input
 }
 
+list_occurence_count :=
+{
+	count := length(list) - 1
+	if count == -1 then 0 else
+	for x from 0 to count do (if list[x] == input then 1 else 0)
+}
 list_contains :=
 {
-	contained := false
-	count := length(list) - 1
-	for x from 0 to count do (if list[x] == input then contained := true; "")
-	contained
+	list_occurence_count(input, list: list) > 0
 }
 
 clamp :=

@@ -10,12 +10,40 @@ depends on:
 	version: 2024-08-31
 
 game: conjure
-create directory: false
+create directory: true
 file type: *.txt|*.txt|*.*|*.*
 
 option field:
+	type: choice
+	name: export images
+	description: Should card images be exported as well?
+	choice: Yes, With Bleed Margin
+	choice: Yes, Without Bleed Margin
+	choice: No
+	initial: No
+
+option field:
+	type: choice
+	name: image resolution
+	description: What size to export to.
+	choice: 200%    (Bigger File Size, Better Quality)
+	choice: 150%
+	choice: 100%
+	choice: 50%
+	choice: 25%      (Smaller File Size, Worse Quality)
+	initial: 100%
+
+option field:
+	type: choice
+	name: image extension
+	description: What compression method to use.
+	choice: PNG     (Bigger File Size, Better Quality)
+	choice: JPG       (Smaller File Size, Worse Quality)
+	initial: PNG     (Bigger File Size, Better Quality)
+
+option field:
 	type: multiple choice
-	name: values
+	name: spreadsheet values
 	description: What values to export.
 	choice: Name
 	choice: Mana Cost
@@ -38,11 +66,14 @@ option field:
 	initial: Name, Mana Cost, Type, Stats, Rule Text, Lore Text, Revision, Saga, Notes
 
 option style:
-	values:
+	spreadsheet values:
 		render style:	checklist
 		direction:		vertical
 
 script:
+	format_symbols :=
+		replace@(match: "<sym(-auto)?>", replace: "\{") +
+		replace@(match: "</sym(-auto)?>", replace: "}")
 	escape_characters :=
 		replace@(match:"<atom><soft-line>\n</soft-line></atom>", replace:"") +
 		replace@(match:"\n", replace:"\\\\n ") +
@@ -54,18 +85,24 @@ script:
 	exporter_name_filter := filter_text@(match:"!exporte?r?name [^\n\<]+")
 	exporter_name_grabber := replace@(match:"!exporte?r?name ", replace:"")
 	
+	extension_value := to_lower(replace(options.image_extension, match: " .*", replace: ""))
+	zoom_value := to_int(replace(options.image_resolution, match: "%.*", replace: ""))
+	trim_value := if options.export_images == "Yes, Without Bleed Margin" then bleed else 0
+	
+	name_list := []
+	
 	value_map :=
 	[
 		"Name":				{ export_name := exporter_name_grabber(exporter_name_filter(card.notes)); if export_name != "" then export_name else card.name }
 		"Mana Cost":		{ card.mana_cost_1 }
 		"CMC":				{ card.cmc_1 }
 		"Color":			{ card.frame_1 }
-		"Type":				{ card.type_1 }
-		"Super Type":		{ card.super_type_1 }
-		"Sub Type":			{ card.sub_type_1 }
+		"Type":				{ to_text(card.type_1) }
+		"Super Type":		{ to_text(card.super_type_1) }
+		"Sub Type":			{ to_text(card.sub_type_1) }
 		"Stats":			{ card.attack_1 + "	" + card.health_1 + "	" + card.arcane_1 }
-		"Rule Text":		{ escape_characters(card.rule_text_1) }
-		"Lore Text":		{ escape_characters(card.lore_text_1) }
+		"Rule Text":		{ to_text(escape_characters(format_symbols(card.rule_text_1))) }
+		"Lore Text":		{ to_text(escape_characters(format_symbols(card.lore_text_1))) }
 		"Artist":			{ card.artist_1 }
 		"Designer":			{ card.designer_1 }
 		"Collector Number":	{ card.collector_number_1 }
@@ -76,10 +113,10 @@ script:
 		"Notes":			{ escape_characters(card.notes) }
 	]
 	
-	write_header := { replace_commas(replace_stats(options.values)) + "\n" }
+	write_header := { replace_commas(replace_stats(options.spreadsheet_values)) + "\n" }
 	write_card :=
 	{
-		split := split_commas(options.values)
+		split := split_commas(options.spreadsheet_values)
 		count := length(split) - 1
 		card_values := for x from 0 to count do
 		(
@@ -87,5 +124,24 @@ script:
 		)
 		substring(card_values, begin:1) + "\n"
 	}
+	write_image :=
+	{
+		export_image := crop(
+			to_card_image(card, zoom: zoom_value, angle: 0),
+			offset_x: trim_value*zoom_value/100,
+			offset_y: trim_value*zoom_value/100,
+			width: (stylesheet.card_width-2*trim_value)*zoom_value/100,
+			height: (stylesheet.card_height-2*trim_value)*zoom_value/100
+		)
+		export_name := exporter_name_grabber(exporter_name_filter(card.notes))
+		if export_name == "" then export_name := card.name
+		count := list_occurence_count(export_name, list: name_list)
+		suffix := if count == 0 then "" else "_" + pad(count+1, to: 2)
+		write_image_file(export_image, file: export_name + suffix + "." + extension_value)
+		[export_name]
+	}
 	write_set := for each card in cards do write_card()
+	
+	if options.export_images != "No" then (for each card in cards do name_list := name_list + write_image(card: card); "")
+	
 	to_string(to_text(write_header() + write_set))
