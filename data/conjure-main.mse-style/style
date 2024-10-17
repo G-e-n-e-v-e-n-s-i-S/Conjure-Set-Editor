@@ -70,12 +70,6 @@ init script:
 		italic: {"Book Antiqua Italic"}
 	]
 	
-	namebox_background_image := { background_image(color: styling.namebox_color, alpha: styling.namebox_opacity_percentage) }
-	typebox_background_image := { background_image(color: styling.typebox_color, alpha: styling.typebox_opacity_percentage) }
-	textbox_background_image := { background_image(color: styling.textbox_color, alpha: styling.textbox_opacity_percentage) }
-	
-	lore_bar_height := { 50 }
-	
 	rule_text_bottom :=
 	{
 		if has_lore() then (1896 - lore_bar_height()/2 - card_style.lore_text_1.content_lines*64) else 1912
@@ -236,7 +230,7 @@ card style:
 		top:				0
 		width:				{ stylesheet.card_width }
 		height:				{ stylesheet.card_height }
-		z index:			30
+		z index:			50
 		popup style:		in place
 		render style:		image
 		choice images:
@@ -694,13 +688,13 @@ extra card style:
 		popup style:		in place
 		render style:		image
 		image:				{ textbox_background_image() }
-		mask:				/conjure-shared.mse-include/textbox mask.png
+		mask:				textbox mask.png
 	namebox background:
 		left:				0
 		top:				0
 		width:				{ stylesheet.card_width }
 		height:				{ stylesheet.card_height }
-		z index:			31
+		z index:			51
 		popup style:		in place
 		render style:		image
 		image:				{ namebox_background_image() }
@@ -710,7 +704,7 @@ extra card style:
 		top:				0
 		width:				{ stylesheet.card_width }
 		height:				{ stylesheet.card_height }
-		z index:			31
+		z index:			51
 		popup style:		in place
 		render style:		image
 		image:				{ typebox_background_image() }

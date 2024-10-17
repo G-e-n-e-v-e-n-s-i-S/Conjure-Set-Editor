@@ -105,6 +105,10 @@ popout_top :=		{ split := split_comma(styling.popout_art_coordinates or else "")
 popout_width :=		{ split := split_comma(styling.popout_art_coordinates or else ""); if length(split) > 3 and split.2 != "" and split.2 != "-" then clamp(split.2, maximum:2500, minimum:0)		else 0 }
 popout_height :=	{ split := split_comma(styling.popout_art_coordinates or else ""); if length(split) > 3 and split.3 != "" and split.3 != "-" then clamp(split.3, maximum:3500, minimum:0)		else 0 }
 
+namebox_background_image := { background_image(color: styling.namebox_color, alpha: styling.namebox_opacity_percentage) }
+typebox_background_image := { background_image(color: styling.typebox_color, alpha: styling.typebox_opacity_percentage) }
+textbox_background_image := { background_image(color: styling.textbox_color, alpha: styling.textbox_opacity_percentage) }
+
 background_image :=
 {
 	alpha := get_alpha_percentage(alpha, default: default_alpha)
@@ -619,3 +623,5 @@ text_script :=
 		field2:				card.lore_text_1
 	)
 }
+
+lore_bar_height := { 50 }

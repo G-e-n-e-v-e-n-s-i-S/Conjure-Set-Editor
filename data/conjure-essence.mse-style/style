@@ -48,7 +48,7 @@ init script:
 	swap_fonts_rule_default :=
 	[
 		name: {"Book Antiqua"},
-		size: {64},
+		size: {60},
 		color: {"black"},
 		vertical: {0},
 		italic: {"Book Antiqua Italic"}
@@ -103,7 +103,7 @@ init script:
 	
 	art_mask :=
 	{
-		boxes :=	"image mask.png"
+		boxes :=	"image " + (if styling.textbox then "textbox " else "") + "mask.png"
 		outer :=	"/conjure-shared.mse-include/outer border image mask" + (if card.outer_border_1 == "bottom" or card.outer_border_1 == "bottom full art" then " bottom" else "") + ".png"
 		final :=	if card.outer_border_1 == "hidden" then boxes else combine_blend(image1: boxes, image2: outer, combine: "multiply")
 		crop(final, offset_x: 2 * art_left(), offset_y: 2 * art_top(), width: 2 * (art_right() - art_left()), height: 2 * (art_bottom() - art_top()))
@@ -182,6 +182,54 @@ styling field:
 	initial:		rgb(255,255,255)
 
 styling field:
+	type:			boolean
+	name:			textbox
+	description:	Display a textbox?
+	initial:		no
+
+styling field:
+	type:			choice
+	name:			center rule text
+	description:	When to center rule text on the card.
+	choice:			always
+	choice:			3 lines or less
+	choice:			2 lines or less
+	choice:			1 line or less
+	choice:			never
+	initial:		2 lines or less
+styling field:
+	type:			choice
+	name:			align rule text vertically
+	description:	How to center rule text vertically on the card.
+	choice:			top
+	choice:			middle
+	choice:			bottom
+	initial:		middle
+styling field:
+	type:			text
+	name:			custom rule font
+	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
+#styling field:
+#	type:			text
+#	name:			custom lore font
+#	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
+styling field:
+	type:			text
+	name:			textbox opacity percentage
+	description:	Set the opacity percentage for the textbox. Opaque is 100, transparent is 0, default is 45.
+styling field:
+	type:			color
+	name:			textbox color
+	description:	Use the specified color for the textbox background.
+	choice:
+		name:			black
+		color:			rgb(0,0,0)
+	choice:
+		name:			white
+		color:			rgb(255,255,255)
+	initial:		rgb(255,255,255)
+
+styling field:
 	type:			text
 	name:			custom info font
 	description:	Formatted as "font name;font size;font color;vertical offset;italic font name" last 4 are optional. Color can be a name or R,G,B,A numbers.
@@ -200,7 +248,7 @@ card style:
 		top:				0
 		width:				{ stylesheet.card_width }
 		height:				{ stylesheet.card_height }
-		z index:			30
+		z index:			50
 		popup style:		in place
 		render style:		image
 		choice images:
@@ -219,13 +267,13 @@ card style:
 			blend offset 2:		/conjure.mse-game/blend icons/offset 2.png
 			blend offset 4:		/conjure.mse-game/blend icons/offset 4.png
 		image:				{ color_blend(card.frame_1, folder: "card top") }
-		mask:				card mask.png
+		mask:				{ "card " + (if styling.textbox then "textbox " else "") + "mask.png" }
 	outer border 1:
 		left:				0
 		top:				0
 		width:				{ stylesheet.card_width }
 		height:				{ stylesheet.card_height }
-		z index:			20
+		z index:			40
 		visible:			{ card.outer_border_1 != "hidden" }
 		popup style:		in place
 		render style:		image
@@ -287,6 +335,39 @@ card style:
 			italic name:		{ type_font_italic() }
 			color:				{ type_font_color() }
 			size:				{ type_font_size() }
+			scale down to:		10
+	
+	############################# Textbox
+	rule text 1:
+		left:				{ 140 + bleed }
+		right:				{ (if styling.textbox then 1360 else 140) + bleed }
+		top:				{ (if has_lore() then 1523 else 1543) + bleed + rule_font_vertical() }
+		bottom:				{ (if is_symboled() then 1747 else 1852) + bleed + rule_font_vertical() }
+		z index:			1010
+		line height soft:		0.9
+		line height hard:		{ if is_modal(card.rule_text_1) then 0.9 else 1.2 }
+		line height hard max:	{ if is_modal(card.rule_text_1) then 1.0 else 1.3 }
+		padding bottom:			{ 5 + (if card.lore_bar_1 == "hidden" then 0 else lore_bar_height()/2) }
+		alignment:
+			script:
+				styling.align_rule_text_vertically +
+				(
+					if	(styling.center_rule_text == "3 lines or less" and card_style.rule_text_1.content_lines <= 3)
+					or	(styling.center_rule_text == "2 lines or less" and card_style.rule_text_1.content_lines <= 2)
+					or	(styling.center_rule_text == "1 line or less" and card_style.rule_text_1.content_lines <= 1)
+					or	styling.center_rule_text == "always"
+					then " center"
+					else " left"
+				)
+		font:
+			name:				{ rule_font() }
+			italic name:		{ rule_font_italic() }
+			color:				{ rule_font_color() }
+			size:				{ rule_font_size() }
+			scale down to:		10
+		symbol font:
+			name:				conjure-symbols
+			size:				{ rule_font_size() }
 			scale down to:		10
 	
 	############################# Information
@@ -394,6 +475,18 @@ card style:
 
 extra card field:
 	type:				choice
+	name:				frame textbox
+	editable:			false
+	save value:			false
+	choice:				frame textbox
+extra card field:
+	type:				choice
+	name:				textbox background
+	editable:			false
+	save value:			false
+	choice:				textbox background
+extra card field:
+	type:				choice
 	name:				namebox background
 	editable:			false
 	save value:			false
@@ -456,12 +549,34 @@ extra card field:
 ####################################### Extra card styles
 
 extra card style:
-	namebox background:
+	frame textbox:
+		left:				0
+		top:				0
+		width:				{ stylesheet.card_width }
+		height:				{ stylesheet.card_height }
+		z index:			30
+		visible:			{ styling.textbox }
+		popup style:		in place
+		render style:		image
+		image:				{ color_blend(card.frame_1, folder: "card bottom") }
+		mask:				{ "card " + (if styling.textbox then "textbox " else "") + "mask.png" }
+	textbox background:
 		left:				0
 		top:				0
 		width:				{ stylesheet.card_width }
 		height:				{ stylesheet.card_height }
 		z index:			31
+		visible:			{ styling.textbox }
+		popup style:		in place
+		render style:		image
+		image:				{ textbox_background_image() }
+		mask:				textbox mask.png
+	namebox background:
+		left:				0
+		top:				0
+		width:				{ stylesheet.card_width }
+		height:				{ stylesheet.card_height }
+		z index:			51
 		popup style:		in place
 		render style:		image
 		image:				{ namebox_background_image() }
@@ -471,7 +586,7 @@ extra card style:
 		top:				0
 		width:				{ stylesheet.card_width }
 		height:				{ stylesheet.card_height }
-		z index:			31
+		z index:			51
 		popup style:		in place
 		render style:		image
 		image:				{ typebox_background_image() }
@@ -481,7 +596,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 1 }
 		popup style:		in place
 		render style:		image
@@ -491,7 +606,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 2 }
 		popup style:		in place
 		render style:		image
@@ -501,7 +616,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 3 }
 		popup style:		in place
 		render style:		image
@@ -511,7 +626,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 4 }
 		popup style:		in place
 		render style:		image
@@ -521,7 +636,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 5 }
 		popup style:		in place
 		render style:		image
@@ -531,7 +646,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 6 }
 		popup style:		in place
 		render style:		image
@@ -541,7 +656,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 7 }
 		popup style:		in place
 		render style:		image
@@ -551,7 +666,7 @@ extra card style:
 		top:				{ 1776 + bleed }
 		width:				{ symbol_size() }
 		height:				{ symbol_size() }
-		z index:			31
+		z index:			100
 		visible:			{ is_symboled() and symbol_count() >= 8 }
 		popup style:		in place
 		render style:		image
