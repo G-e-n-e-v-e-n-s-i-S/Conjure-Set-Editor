@@ -40,7 +40,7 @@ init script:
 	swap_fonts_type_default :=
 	[
 		name: {"Book Antiqua Bold"},
-		size: {38},
+		size: {46},
 		color: {"black"},
 		vertical: {0},
 		italic: {"Book Antiqua Bold Italic"}
@@ -325,8 +325,8 @@ card style:
 	type 1:
 		left:				{ 156 + bleed }
 		right:				{ 1344 + bleed }
-		top:				{ 224 + bleed + type_font_vertical() }
-		height:				66
+		top:				{ 225 + bleed + type_font_vertical() }
+		height:				88
 		z index:			1000
 		alignment:			{if styling.center_type then "middle center shrink-overflow" else "middle left shrink-overflow"}
 		font:
