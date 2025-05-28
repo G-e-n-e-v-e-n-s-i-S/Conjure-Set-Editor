@@ -34,6 +34,7 @@ word list:
 		word: Artificer
 		word: Aspect
 		word: Avatar
+		word: Axe
 		word: Bard
 		word: Beast
 		word: Bow
@@ -44,6 +45,7 @@ word list:
 		word: Curse
 		word: Demon
 		word: Divine
+		word: Dragon
 		word: Druid
 		word: Elemental
 		word: Elf
@@ -96,3 +98,4 @@ word list:
 		word: Winged
 		word: Wizard
 		word: Zephyr
+
